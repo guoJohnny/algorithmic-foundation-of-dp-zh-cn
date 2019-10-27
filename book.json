@@ -4,12 +4,14 @@
     "author" : "guoJohnny",
     "language" : "zh-hans",
     "plugins": [
+        "chapter-fold",
         "splitter",
         "github-buttons",
         "copy-code-button",
         "-lunr",
         "-search",
         "search-plus",
+        "expandable-chapters",
         "expandable-chapters-small",
         "anchor-navigation-ex",
         "latex-codecogs",
@@ -20,7 +22,8 @@
         "github",
         "github-buttons",
         "tbfed-pagefooter",
-        "sharing"      
+        "sharing",
+        "anchors"      
     ],
     "pluginsConfig": {
         "anchor-navigation-ex": {
