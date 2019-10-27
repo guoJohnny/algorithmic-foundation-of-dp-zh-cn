@@ -1,0 +1,113 @@
+{
+    "title" : "The Algorithmic Foundation of Differential Pivacy-zh-CN",
+    "description": "差分隐私算法基础-中文翻译",
+    "author" : "guoJohnny",
+    "language" : "zh-hans",
+    "plugins": [
+        "splitter",
+        "github-buttons",
+        "copy-code-button",
+        "-lunr",
+        "-search",
+        "search-plus",
+        "expandable-chapters-small",
+        "anchor-navigation-ex",
+        "latex-codecogs",
+        "katex",
+        "anchor-navigation-ex",
+        "donate",
+        "favicon",
+        "github",
+        "github-buttons",
+        "tbfed-pagefooter",
+        "sharing"      
+    ],
+    "pluginsConfig": {
+        "anchor-navigation-ex": {
+            "showLevel": true,
+            "multipleH1": false,
+            "mode": "float",
+            "showGoTop": true,
+            "float": {
+                "floatIcon": "fa fa-navicon",
+                "showLevelIcon": false,
+                "level1Icon": "fa fa-hand-o-right",
+                "level2Icon": "fa fa-hand-o-right",
+                "level3Icon": "fa fa-hand-o-right"
+            },
+            "pageTop": {
+                "showLevelIcon": false,
+                "level1Icon": "fa fa-hand-o-right",
+                "level2Icon": "fa fa-hand-o-right",
+                "level3Icon": "fa fa-hand-o-right"
+            },
+            "sharing": {
+                "douban": false,
+                "facebook": false,
+                "google": true,
+                "hatenaBookmark": false,
+                "instapaper": false,
+                "line": true,
+                "linkedin": true,
+                "messenger": false,
+                "pocket": false,
+                "qq": true,
+                "qzone": true,
+                "stumbleupon": false,
+                "twitter": false,
+                "viber": false,
+                "vk": false,
+                "weibo": true,
+                "whatsapp": false,
+                "all": [
+                    "facebook", "google", "twitter",
+                    "weibo", "instapaper", "linkedin",
+                    "pocket", "stumbleupon"
+                ]
+            }
+        },
+        "github": {
+            "url": "https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn"
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy <a href='http://guojohnny.com/' target='_blank'>GuoJohnny</a> 2019",
+            "modify_label": "修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "github-buttons": {
+              "buttons": [{
+                "user": "GuoJohnny",
+                "repo": "algorithmic-foundation-of-dp-zh-cn",
+                "type": "star",
+                "size": "small",
+                "count": true
+              },{
+                "user": "GuoJohnny",
+                "repo": "algorithmic-foundation-of-dp-zh-cn",
+                "type": "fork",
+                "size": "small",
+                "count": true
+              },{
+                "user": "GuoJohnny",
+                "repo": "algorithmic-foundation-of-dp-zh-cn",
+                "type": "watch",
+                "size": "small",
+                "count": true
+              }]
+        },
+        "donate": {
+            "wechat": "/assets/images/Wechat.png",
+            "alipay": "/assets//images/Alipay.png",
+            "title": "",
+            "button": "赏",
+            "alipayText": "支付宝打赏",
+            "wechatText": "微信打赏"
+        }
+    },
+     "styles": {
+        "website": "assets/styles/website.css"
+    },
+    "structure": {
+        "readme": "Introduction.md"
+    }
+}
