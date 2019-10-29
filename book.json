@@ -4,6 +4,7 @@
     "author" : "guoJohnny",
     "language" : "zh-hans",
     "plugins": [
+        "katex",
         "chapter-fold",
         "splitter",
         "github-buttons",
@@ -12,8 +13,7 @@
         "-search",
         "search-plus",
         "expandable-chapters",
-        "expandable-chapters-small",
-        "katex",
+        "expandable-chapters-small",       
         "donate",
         "favicon",
         "github",

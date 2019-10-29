@@ -10,7 +10,7 @@
 
 * [二、基本术语](2-Basic-Terms/Overview.md)
 	* [计算模型](2-Basic-Terms/The-model-of-computation.md)
-	* [定义隐私数据分析]()
+	* [定义隐私数据分析](2-Basic-Terms/Towards-defining-private-data-analysis.md)
 	* [形式化差分隐私]()
 	* [参考文献]()
 
