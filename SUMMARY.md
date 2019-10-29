@@ -9,7 +9,7 @@
 	* [参考文献](1-The-Promise-of-Differential-Privacy/Bibliographic-notes.md)
 
 * [二、基本术语](2-Basic-Terms/Overview.md)
-	* [计算模型]()
+	* [计算模型](2-Basic-Terms/The-model-of-computation.md)
 	* [定义隐私数据分析]()
 	* [形式化差分隐私]()
 	* [参考文献]()
