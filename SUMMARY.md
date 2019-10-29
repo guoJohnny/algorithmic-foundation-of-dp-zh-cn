@@ -6,7 +6,7 @@
 
 * [一、差分隐私的承诺](1-The-Promise-of-Differential-Privacy/Overview.md)
 	* [隐私保护的数据分析](1-The-Promise-of-Differential-Privacy/Privacy-preserving-data-analysis.md)
-	* [参考文献]()
+	* [参考文献](1-The-Promise-of-Differential-Privacy/Bibliographic-notes.md)
 
 * [二、基本术语](2-Basic-Terms/Overview.md)
 	* [计算模型]()
