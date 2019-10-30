@@ -4,7 +4,7 @@
     "author" : "guoJohnny",
     "language" : "zh-hans",
     "plugins": [
-        "katex",
+        "katex-plus",
         "chapter-fold",
         "splitter",
         "github-buttons",
