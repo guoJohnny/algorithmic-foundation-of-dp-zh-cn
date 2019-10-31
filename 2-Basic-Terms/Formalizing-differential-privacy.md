@@ -61,7 +61,7 @@ $$
 
 **定义2.2（随机化算法）** 具有域$A$和离散范围$B$的随机算法$\mathcal{M}$ 与 映射 $M:A \to \Delta(B)$相关联。 在输入$a∈A$时，算法$\mathcal{M}$以概率$M(a)_b$输出$\mathcal{M}(a)=b$（$b∈B$）。概率空间包括了硬币翻转算法$\mathcal{M}$的概率空间。
 
-（*个人理解：$\mathcal{M}$ 是种映射算法（机制），将原始域数据成为q其他离散形式（比如直方图）。上文的翻转硬币机制就是该定义中的 $\mathcal{M}$  。此处的$\mathcal{M}$与映射 $M:A \to \Delta(B)$有联系但不相同，$\mathcal{M}$指将原始数据变成其他数据的方法，$M:A \to \Delta(B)$是指从$A \to B$的各个映射的概率。）*）
+（*个人理解：$\mathcal{M}$ 是种映射算法（机制），将原始域数据成为其他离散形式（比如直方图）。上文的翻转硬币机制就是该定义中的 $\mathcal{M}$  。此处的$\mathcal{M}$与映射 $M:A \to \Delta(B)$有联系但不相同，$\mathcal{M}$指将原始数据变成其他数据的方法，$M:A \to \Delta(B)$是指从$A \to B$的各个映射的概率。）*）
 
 我们将数据库 $x$ 视为来自全集 $\chi$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\chi|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中元素的数量。 类型 $i\in\chi$（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的     $\ell_1$ 距离：
 
@@ -81,3 +81,16 @@ $$
 
 现在，我们可以正式定义差分隐私了，这将直观地保证随机算法在相似输入数据库上的行为类似。 
 
+**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\chi|}$ 有 $||x-y||_1 \leq 1$，如果满足下列关系：
+
+$$
+Pr[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\epsilon)Pr[\mathcal{M}(y) \in \mathcal{S}] + \delta
+$$
+
+则将这个域在 $\mathbb{N}^{|\chi|}$ 的随机算法 $\mathcal{M}$ 称为 $(\epsilon,\delta)$ 差分隐私(即 $(\epsilon,\delta) \text{--} Differentially \ private$)。  
+
+特别的，如果 $\delta=0$ ，则将 $\mathcal{M}$ 称为 $\epsilon$ 差分隐私(即 $\epsilon \text{--} Differentially \ private$)。
+
+通常，我们对 $\delta$ 的值感兴趣，该值小于多项式数据库大小的倒数。 特别是，$\delta$  值接近 $1/||x||_1$ 是非常危险（因为在第1节中讨论“少数人”原则）：这种做法通过发布少量数据库参与者的完整记录来“保护隐私”（以获得可用性）。 
+
+但是，即使 $\delta$ 可以忽略不计，$\epsilon$ 和 $(\epsilon,\delta)$-  差分隐私之间也存在理论上的区别。 其中最主要的是量化顺序的转换。 $\epsilon$- 差分隐私可确保对于机制 $\mathcal{M}(x)$ 的每次运行，（几乎）在每个相邻数据库上同时观察到的输出的可能性几乎相同。 相反，从事后观察值得出结论， $(\epsilon,\delta)$-  差分隐私对于每对相邻数据库$x, \ y$，当数据库是$x$，而不是$y$时，机制  $\mathcal{M}$ 或更大概率生成或小概率生成值 $\mathcal{M}(x)$ 。 但是，给定输出$\xi \backsim \mathcal{M}(x)$，可能会找到一个数据库$y$，使得 $\xi$ 在 $y$ 上产生的可能性比数据库为 $x$ 时的可能性大得多。 即，分布 $\mathcal{M}(y)$ 中的 $\xi$ 的质量可以实质上大于分布 $\mathcal{M}(x)$ 中的 $\xi$ 的质量。
