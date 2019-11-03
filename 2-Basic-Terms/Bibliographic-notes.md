@@ -1,0 +1,4 @@
+# 参考文献
+
+The definition of differential privacy is due to Dwork et al. [23]; the precise formulation used here and in the literature first appears in [20] and is due to Dwork and McSherry. The term “differential privacy” was coined by Michael Schroeder. The impossibility of semantic secu- rity is due to Dwork and Naor [25]. Composition and group privacy for (ε,0)-differentially private mechanisms is first addressed in [23].  
+Composition for (ε,δ)-differential privacy was first addressed in [21] (but see the corrected proof in Appendix B, due to Dwork and Lei [22]). The vulnerability of differential privacy to inappropriate implementa- tions of floating point numbers was observed by Mironov, who proposed a mitigation [63].

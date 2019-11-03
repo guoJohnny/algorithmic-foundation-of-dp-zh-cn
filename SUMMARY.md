@@ -14,7 +14,7 @@
 	* 形式化差分隐私
 		* [形式化差分隐私_part1](2-Basic-Terms/Formalizing-differential-privacy_1.md)
 		* [形式化差分隐私_part2](2-Basic-Terms/Formalizing-differential-privacy_2.md)
-	* [参考文献]()
+	* [参考文献](2-Basic-Terms/Bibliographic-notes.md)
 
 * [三、基本技术与组成定理](3-Basic-Techniques-and-Composition-Theorems/Overview.md)
 	* [可用的概率工具]()
