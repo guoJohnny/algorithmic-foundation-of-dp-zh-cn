@@ -6,16 +6,16 @@
 **定理3.1**（加法形式的切尔诺夫界限、又称切尔诺夫不等式）定义 $X_1,X_2 ,...,X_m$ 为独立随机变量，对任意,$i$ 有 $0\leq X_i \leq 1$ 。定义 $S = \frac{1}{m}\sum_{i=1}^{m}X_i$ 为随机变量的均值，定义 $\mu = \mathbb{E}[S]$ 为他们的期望均值。则可以得到如下不等式：
 $$
 \begin{aligned}
-    Pr[S > \mu + \epsilon] &\leq e^{-2m\epsilon^{2}}\\
-    Pr[S < \mu - \epsilon] &\leq e^{-2m\epsilon^{2}}   
+    Pr[S > \mu + \varepsilon] &\leq e^{-2m\varepsilon^{2}}\\
+    Pr[S < \mu - \varepsilon] &\leq e^{-2m\varepsilon^{2}}   
 \end{aligned}
 $$
 
 **定理3.2**（乘法形式的切尔诺夫不等式）定义 $X_1,X_2 ,...,X_m$ 为独立随机变量，对任意,$i$ 有 $0\leq X_i \leq 1$ 。定义 $S = \frac{1}{m}\sum_{i=1}^{m}X_i$ 为随机变量的均值，定义 $\mu = \mathbb{E}[S]$ 为他们的期望均值。则可以得到如下不等式：
 $$
 \begin{aligned}
-    Pr[S > (1 + \epsilon)\mu] &\leq e^{-m\mu\epsilon^{2}/3}\\
-    Pr[S < (1 - \epsilon)\mu] &\leq e^{-m\mu\epsilon^{2}/2}  
+    Pr[S > (1 + \varepsilon)\mu] &\leq e^{-m\mu\varepsilon^{2}/3}\\
+    Pr[S < (1 - \varepsilon)\mu] &\leq e^{-m\mu\varepsilon^{2}/2}  
 \end{aligned}
 $$
 
