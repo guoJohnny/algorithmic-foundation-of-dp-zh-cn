@@ -17,8 +17,8 @@
 	* [参考文献](2-Basic-Terms/Bibliographic-notes.md)
 
 * [三、基本技术与组成定理](3-Basic-Techniques-and-Composition-Theorems/Overview.md)
-	* [概率工具]()
-	* [随机相应]()
+	* [概率工具](3-Basic-Techniques-and-Composition-Theorems/Useful-probabilistic-tools.md)
+	* [随机响应]()
 	* [Laplace机制]()
 	* [Exponential机制]()
 	* [组成定理]()
