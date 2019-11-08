@@ -79,10 +79,27 @@ $$
 Pr[|Y| \geq t \cdot b] = exp(-t)
 $$
 
-这个事实与布尔不等式（译者注：Union Bound，又称 Boole’s Inequality）一起为我们提供了一个
+这个事实与布尔不等式（译者注：Union Bound，又称 Boole’s Inequality$^{<1>}$）一起为我们提供了一个
 关于拉普拉斯机制准确性的简单不等式：  
 
 **定理 3.8** ：设 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^k,y=\mathcal{M}_L(x,f(\cdot),\varepsilon)$。则： $\forall\delta \in (0,1]$：
 $$
 Pr\Big[||f(x)-y||_\infty \geq ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
 $$
+
+**【证明】** 我们有：
+
+$$
+\begin{aligned}
+   Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] &= Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]\\
+  & \leq k\cdot Pr\Big[|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \\
+  &= k\cdot(\frac{\delta}{k})\\
+  &= \delta
+\end{aligned}
+$$
+
+（**译者注<1> 布尔不等式**：指对于全部事件的概率不大于单个事件的概率总和，对于事件 $A_1,A_2,A_3...: P(\bigcup_{i}A_i)\leq \sum_iP(A_i)$）
+
+【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$||x||$为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：$||x||_{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|$】
+
+【补充4: 】
