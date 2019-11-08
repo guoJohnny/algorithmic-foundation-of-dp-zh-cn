@@ -98,13 +98,21 @@ $$
 \end{aligned}
 $$
 
+在证明中，第二个和最后的不等式是从拉普拉斯分布和**事实3.7**中推导得到的。
+
 （**译者注<1> 布尔不等式**：指对于全部事件的概率不大于单个事件的概率总和，对于事件 $A_1,A_2,A_3...: P(\bigcup_{i}A_i)\leq \sum_iP(A_i)$）
 
-【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$||x||$为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：$||x||_{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|$】
+【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$||x||$为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：
+
+$$
+||x||_{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|
+$$
+
+】
 
 【补充4: （定理3.8补充证明） 由 Laplace 机制可知 $Y_i \backsim Lap(\Delta f/\varepsilon)$ 和 $y=\mathcal{M}_L(x,f(\cdot\varepsilon)=f(x) + (Y_1,\dots,Y_k)$，则: $|f(x) - y|= |(Y_1,...Y_k)|$。
 
-又因切比雪夫距离定义 
+又因切比雪夫距离定义：
 
 $||f(x)-y||_\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
 
