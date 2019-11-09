@@ -45,7 +45,7 @@ $$
 
 第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$||x-y||_1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq exp(-\varepsilon)$。
 
-【补充1: $\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Bigg(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Bigg)$ 表示形式是拉普拉斯分布的分量形式，即：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}exp\Big(\frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f}\Big)$ 
+【补充1: $\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Big(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Big)$ 表示形式是拉普拉斯分布的分量形式，即：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}exp\Big(\frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f}\Big)$ 
 
 亦即：$p_x(\overrightarrow{z})= \frac{\varepsilon}{2\Delta f}exp\Big(\frac{\varepsilon(|f(y)-\overrightarrow{z}|-|f(x)-\overrightarrow{z}|)}{\Delta f}\Big)$ 】
 
@@ -54,7 +54,7 @@ $$
 $$
 ||x-y||_1 = \sum_{i=1}^{|\chi|}|x_i-y_i|
 $$
-故：上述证明中的 $\prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg)=exp\Bigg(\frac{\varepsilon||f(x)-f(y)||_1}{\Delta f} \Bigg)$ 可由如下步骤得到：
+故：上述证明中的 $\prod_{i=1}^{k}exp\Big(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Big)=exp\Big(\frac{\varepsilon||f(x)-f(y)||_1}{\Delta f} \Big)$ 可由如下步骤得到：
 $$
 \begin{aligned}
     \prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg) &= exp\Bigg(\frac{\varepsilon\sum_{i=1}^{k}|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
@@ -69,7 +69,7 @@ $$
 
 有时我们将响应大量（可能是任意的）查询的问题称为查询发布问题。
 
-例3.2（直方图查询）在查询在结构上不相交的特殊（但很常见）情况下，我们可以做得更好——我们不必让噪声随查询的数量而变化。直方图查询就是一个例子。在这种类型的查询中，数据整体（ $\mathbb{N}^{|\chi|}$ ）被划分为多个单元格，查询询问每个单元格中有多少数据库元素。由于单元格是不相交的，单个数据库元素的添加或删除会影响一个单元格中的计数，并且与该单元格的差异是 1，因此直方图查询的敏感度为1，可以对每个单元格中的真实计数增加源自 $Lap(1/\varepsilon)$ 分布的噪声来回答查询。
+**例3.2 直方图查询**：在查询在结构上不相交的特殊（但很常见）情况下，我们可以做得更好——我们不必让噪声随查询的数量而变化。直方图查询就是一个例子。在这种类型的查询中，数据整体（ $\mathbb{N}^{|\chi|}$ ）被划分为多个单元格，查询询问每个单元格中有多少数据库元素。由于单元格是不相交的，单个数据库元素的添加或删除会影响一个单元格中的计数，并且与该单元格的差异是 1，因此直方图查询的敏感度为1，可以对每个单元格中的真实计数增加源自 $Lap(1/\varepsilon)$ 分布的噪声来回答查询。
 
 为了了解一般查询的 Laplace 机制的准确性，我们使用以下有用的事实：
 
@@ -84,7 +84,7 @@ $$
 
 **定理 3.8** ：设 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^k,y=\mathcal{M}_L(x,f(\cdot),\varepsilon)$。则： $\forall\delta \in (0,1]$：
 $$
-Pr\Big[||f(x)-y||_\infty \geq ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
+Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
 $$
 
 **【证明】** 我们有：
@@ -134,4 +134,16 @@ $$
 
 】
 
-**例3.3 名字频度**  假设我们希望从10,000个潜在名字的列表中计算出在2010年人口普查参与者中最常用的名字。 这个问题可以用查询 $f:\mathbb{N}^{|\chi|\to \mathbb{R}^10000}$ 表示。 这是一个直方图查询，因此灵敏度$\Delta f = 1$ ，因为每个人最多只能有一个名字。当频度查询是 $(1,0)$- 差分隐私的，并且概率为 95％ 我们使用上面的定理可以计算所有10，000名字的频度，其估计的相加误差不会超过 $\ln (10000/0.05) \thickapprox 12.2$。 对于一个人口超过 300,000,000 的国家来说，这是非常低的错误！
+**例3.3 名字频度**： 假设我们希望从10,000个潜在名字的列表中计算出在2010年人口普查参与者中最常用的名字。 这个问题可以用查询 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^{10000}$ 表示。 这是一个直方图查询，因此灵敏度$\Delta f = 1$ ，因为每个人最多只能有一个名字。当频度查询是 $(1,0)$- 差分隐私的，并且概率为 95％ 我们使用上面的定理可以计算所有10，000名字的频度，其估计的相加误差不会超过 $\ln (10000/0.05) \thickapprox 12.2$。 对于一个人口超过 300,000,000 的国家来说，这是非常低的错误！
+
+【补充5: 由例3.3可知：$k=10000,\Delta f = 1,\varepsilon=1,\delta = 1 - 0.95 = 0.05$，并由定理3.8可以推得上述结论：
+
+$$
+\begin{aligned}
+  Pr\Big[\max_{i \in [10000]}|Y_i|\geq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\leq 0.05\\
+  then \ \ \   Pr\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\geq 1 - 0.05\\
+  Pr\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\Big] &\geq 0.95
+\end{aligned}
+$$
+
+】
