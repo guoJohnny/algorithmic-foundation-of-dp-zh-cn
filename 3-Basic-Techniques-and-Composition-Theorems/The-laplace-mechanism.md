@@ -120,11 +120,11 @@ $||f(x)-y||_\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
 
 $Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
 
-证明第二步是因为 $\max_{i \in [k]}|Y_i|$ 的概率必然小于等于 $\bigcup_{i}|Y_i|$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：
+证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：
 
 $$
 \begin{aligned}
-  Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] & \leq Pr\Big[ \bigcup_{i}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big]\\
+  Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] & \leq Pr\Big[ \bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \}\Big]\\
   &\leq \sum_i^k \cdot Pr\Big[|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big]\\
   &= \sum_i^k \cdot exp\big(-ln(\frac{k}{\delta})\big)\\
   &= k\cdot(\frac{\delta}{k})\\
@@ -167,3 +167,11 @@ $$
 定义任意 $i \in [m]$，我们将限制 i 分别从 $D$ 或 $D'$ 提取比率的上下界。
 
 定义 $r_{-i}$，从 $Lap(1/\varepsilon)^{m-1}$ 用于除第 i 个计数外的所有噪声计数。我们会单独讨论每个 $r_{-i}$。我们使用符号 $Pr[i|\xi]$ 表示 **Report Noisy Max** 算法在以 $\xi$ 的条件下，输出为 i 的概率。
+
+我们首先讨论 $Pr[i|D,r_{-i}] \leq e^{\varepsilon}Pr[i|D',r_{-i}]$ 的情况。 定义：
+
+$$
+r^* = \min_{r_i}:c_i + r_i > c_j + r_j \  \forall j \neq i
+$$
+
+注意，上面已经定义了 $r_{-i}$ 的情况。当且仅当 $r_i \geq r^*$ 时， i 为数据库 $D$ 的最大统计噪声输出，
