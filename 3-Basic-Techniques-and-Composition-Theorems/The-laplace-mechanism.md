@@ -134,7 +134,7 @@ $$
 
 】
 
-**例3.3 名字频度**： 假设我们要使用 2010 年人口普查参与者数据，并从数据中统计出给定的 10,000 个名字里各个名字的频度。 这个问题可以用查询 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^{10000}$ 表示。 这是一个直方图查询，因此灵敏度$\Delta f = 1$ ，因为每个人最多只能有一个名字。当频度查询是 $(1,0)$- 差分隐私的，并且概率为 95％ 我们使用上面的定理可以计算所有10,000名字的频度，其估计的相加误差不会超过 $\ln (10000/0.05) \thickapprox 12.2$。 对于一个人口超过 300,000,000 的国家来说，这是非常低的错误！
+**例3.3 名字频度**： 假设我们要使用 2010 年人口普查参与者数据，并从数据中统计出给定的 10,000 个名字里各个名字的频度。 这个问题可以用查询 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^{10000}$ 表示。 这是一个直方图查询，因此灵敏度$\Delta f = 1$ ，因为每个人最多只能有一个名字。当频度查询是 $(1,0)$- 差分隐私的，并且概率要为 95％ ，我们使用上面的定理可以计算所有10,000名字的频度，其估计的相加误差不会超过 $\ln (10000/0.05) \thickapprox 12.2$。 对于一个人口超过 300,000,000 的国家来说，这是非常低的错误！
 
 【补充5: 由例3.3可知：$k=10000,\Delta f = 1,\varepsilon=1,\delta = 1 - 0.95 = 0.05$，并由定理3.8可以推得上述结论：
 
@@ -174,4 +174,54 @@ $$
 r^* = \min_{r_i}:c_i + r_i > c_j + r_j \  \forall j \neq i
 $$
 
-注意，上面已经定义了 $r_{-i}$ 的情况。当且仅当 $r_i \geq r^*$ 时， i 为数据库 $D$ 的最大统计噪声输出，
+注意，上面已经定义了 $r_{-i}$ 的情况。当且仅当 $r_i \geq r^*$ 时， i 为数据库 $D$ 的最大统计噪声输出。
+
+对于所有 $1 \leq j \not ={i} \leq m$：
+
+$$
+\begin{aligned}
+  c_i + r^* &> c_j + r_j\\
+  \implies (1 + c'_i) + r^* \geq c_i + r^* &>  c_j + r_j \geq c'_j + r_j\\
+  \implies c'_i + (r^* + 1) &> c'_j + r_j
+\end{aligned}
+$$
+
+因此，如果 $r_i \geq r^* + 1$ ，则当数据库为 D' 时，第 i 个统计计数是最大的，且噪声向量为 $(r_i,r_{-i})$。下面的概率取决于 $r_i \backsim Lap(1/\varepsilon)$ 的选择。
+
+$$
+\begin{aligned}
+  Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]\\
+  \implies Pr[i|D',r_{-i}] Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]
+\end{aligned}
+$$
+
+上面等式两边乘上 $e^{\varepsilon}$ 第一种情况证明完毕。
+
+证明第二种情况，即 $Pr[i|D',r_{-i}] \leq e^{\varepsilon}Pr[i|D,r_{-i}]$ 定义：
+
+$$
+r^* = \min_{r_i}:c'_i + r_i > c'_j + r_j \  \forall j \neq i
+$$
+
+注意，上面已经定义了 $r_{-i}$ 的情况。当且仅当 $r_i \geq r^*$ 时， i 为数据库 $D$ 的最大统计噪声输出。
+
+对于所有 $1 \leq j \not ={i} \leq m$：
+
+$$
+\begin{aligned}
+  c'_i + r^* &> c_j + r_j\\
+  \implies 1 + c'_i + r^* &> 1 + c'_j + r_j\\
+  \implies c'_i + (r^* + 1) &> (1 + c'_j) + r_j\\
+  \implies c_i + (r^* + 1) \geq c'_i + (r^* + 1) &> (1 + c'_j) + r_j \geq c_j + r_j\\
+\end{aligned}
+$$
+
+因此，如果 $r_i \geq r^* + 1$ ，则当数据库为 D 时，第 i 个统计计数是最大的，且噪声向量为 $(r_i,r_{-i})$。下面的概率取决于 $r_i \backsim Lap(1/\varepsilon)$ 的选择。
+
+$$
+\begin{aligned}
+   Pr[i|D,r_{-i}] \geq Pr[r_i \geq r^* + 1 ] \geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D',r_{-i}]
+\end{aligned}
+$$
+
+上面等式两边乘上 $e^{\varepsilon}$ 第二种情况证明完毕。
