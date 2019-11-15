@@ -191,7 +191,7 @@ $$
 $$
 \begin{aligned}
   Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]\\
-  \implies Pr[i|D',r_{-i}] Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]
+  \implies Pr[i|D',r_{-i}] \geq Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]
 \end{aligned}
 $$
 

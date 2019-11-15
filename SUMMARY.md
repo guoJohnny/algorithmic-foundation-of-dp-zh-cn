@@ -20,7 +20,7 @@
 	* [概率工具](3-Basic-Techniques-and-Composition-Theorems/Useful-probabilistic-tools.md)
 	* [随机响应](3-Basic-Techniques-and-Composition-Theorems/Randomized-response.md)
 	* [Laplace机制](3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.md)
-	* [Exponential机制]()
+	* [Exponential机制](3-Basic-Techniques-and-Composition-Theorems/The-exponential-mechanism.md)
 	* [组成定理]()
 	* [稀疏向量技术]()
 	* [参考文献]()
