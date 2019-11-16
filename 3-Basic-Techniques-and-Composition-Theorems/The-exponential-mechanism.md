@@ -6,8 +6,16 @@
 
 **例 3.5（南瓜竞拍）** 假设我们有大量的南瓜和四个竞标者：A，F，I，K，其中A，F，I分别出价1.00美元和K出价3.01美元。最优价格是多少？在 3.01美元时，收入为 3.01美元；在 3.00美元 和 1.00美元 时候，收入为 3.00美元；但在 3.02美元时，收入为零！
 
-指数机制是使用任意实用工具（和任意非数字范围）回答查询的自然构建块，同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 x，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ 的敏感性时，我们只关心 $u$ 相对于其数据库参数的敏感性；它的 range 参数可以是任意敏感的：
+指数机制是使用任意实用工具（和任意非数字范围）回答查询的自然构建块，同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 x，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；它的 range 参数可以是任意敏感的：
 
 $$
 \Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|
 $$
+
+指数机制输出每个可能的 $r \in \mathcal{R}$ ，其概率与 $\exp(\varepsilon u(x,r)/\Delta u)$ 成正比，因此隐私损失约为：
+
+$$
+\ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)=\varepsilon[u(x,r)-u(y,r)]/\Delta u \leq \varepsilon
+$$
+
+（*注：此处原文公式有误，翻译为更正后的公式*）
