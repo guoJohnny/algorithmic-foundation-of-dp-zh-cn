@@ -43,3 +43,4 @@ $$
 $$
 
 同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
+
