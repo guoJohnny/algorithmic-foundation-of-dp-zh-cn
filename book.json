@@ -1,8 +1,9 @@
 {
-    "title" : "The Algorithmic Foundation of Differential Pivacy-zh-CN",
+    "title" : "The Algorithmic Foundations of Differential Pivacy-zh-CN",
     "description": "差分隐私算法基础-中文翻译",
     "author" : "guoJohnny",
     "language" : "zh-hans",
+    "gitbook" : "3.2.3",
     "plugins": [
         "katex-plus",
         "chapter-fold",
