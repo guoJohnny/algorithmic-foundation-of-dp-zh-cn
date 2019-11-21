@@ -56,7 +56,7 @@ $$
 
 $$
 \begin{aligned}
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = \xi \rbrack}{Pr\lbrack \mathcal{M}(y) = \xi \rbrack}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
 &=\varepsilon[u(x,r)-u(y,r)]/\Delta 2u \leq \varepsilon/2\\
 \implies \exp(\varepsilon u(x,r)/\Delta 2u) &\leq e^{\varepsilon/2} \cdot \exp(\varepsilon u(y,r)/\Delta 2u)\\
 \implies \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u}) &\leq e^{\varepsilon/2} \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})
