@@ -54,7 +54,7 @@ $$
 
 同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
 
-（**补充**：*原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
+【**补充**：*原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
 
 $$
 \begin{aligned}
@@ -77,7 +77,9 @@ $$
 \end{aligned}
 $$
 
-*此处也解释了为什么要用 $2\Delta u$ ，其目的是为了弥补归一化项对机制造成的影响，如若不使用 $2\Delta u$ ，易推知机制的隐私损失为 $2\varepsilon$*）
+*此处也解释了为什么要用 $2\Delta u$ ，其目的是为了弥补归一化项对机制造成的影响，如若不使用 $2\Delta u$ ，易推知机制的隐私损失为 $2\varepsilon$*
+
+】
 
 指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
 
@@ -96,16 +98,25 @@ $$
 \end{aligned}
 $$
 
-这个不等式是由这样一个观察结果得出的：每一个 $r\in \mathcal{R},u(x,r)\leq c$ 所具有最大的未归一化概率质量为 $\exp(\varepsilon c/2\Delta u)$ $^{<1>}$，因此这类“坏”元素 $r$ 的整个集合的未归一化概率质量总和最大为 $\exp(\varepsilon c/2\Delta u)$ 。与此相反，我们知道至少存在 $|\mathcal{R}_{\text{OPT}}|\geq 1$ 个元素具有 $u(x,r)=\text{OPT}_u(x)$ ，并且因此未归一化概率质量为 $\exp(\varepsilon \text{OPT}_u(x))$ ，因此这是正规化项的下界。
+这个不等式是由这样一个观察结果得出的：每一个 $r\in \mathcal{R},u(x,r)\leq c$ 所具有最大的未归一化概率质量为 $\exp(\varepsilon c/2\Delta u)$ $^{<1>}$，因此这类“坏”元素 $r$ 的整个集合的未归一化概率质量总和最大为 $|\mathcal{R}|\exp(\varepsilon c/2\Delta u)$ 。与此相反，我们知道至少存在 $|\mathcal{R}_{\text{OPT}}|\geq 1$ 个元素具有 $u(x,r)=\text{OPT}_u(x)$ ，并且因此未归一化概率质量为 $\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)$ ，因此这是正规化项的下界。
 
 这个定理是通过插入c的适当值得出的。  
 
-（***注<1>**：概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:*
+（**注<1>**：*概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:*
 
 $$
 f_{X}(x)={\begin{cases}\Pr(X=x),&x\in S,\\0,&x\in {\mathbb  {R}}\backslash S.\end{cases}}
 $$
+
 ）
+
+【**补充** *根据定义，每一个 $r\in \mathcal{R}$，且其效用得分是 $u(x,r)\leq c$ ，所有这些 $r$ 的未归一化概率质量最大不超过 $\exp(\varepsilon c/2\Delta u)$。那么这些 $r$ 的概率总和为：$|\mathcal{R}|\exp(\varepsilon c/2\Delta u)$。我们又知道，$\mathcal{R}_{\text{OPT}} \subseteq \mathcal{R}$，所以 $|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u) \leq \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})$。分子增大，分母减少，故下面不等式成立：*
+
+$$
+Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] \leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}
+$$
+
+】
 
 由于我们总是有 $|\mathcal{R}_{\text{OPT}}|\geq 1$，我们可以更普遍地使用以下简单的推论：
 
