@@ -20,7 +20,7 @@ $$
 
 （*注：此处原文公式有误，翻译为更正后的公式*）
 
-(* **个人理解**：根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
+(**个人理解**：*根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
 \mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = r \rbrack}{Pr\lbrack \mathcal{M}(y) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
@@ -30,7 +30,7 @@ $$
 
 这种直观的观点忽略了归一化项的某些影响，该归一化项出现的原因是，当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大。接下来定义的实际机制将一半的隐私预算用于归一化项的更改。
 
-（* **个人理解**：上述公式仅仅表明，当只有一个的回答 $r$ 时，其隐私损失是符合差分隐私定义中的 $\varepsilon$。 但当可能有很多个回答时，我们就需要考虑到一个回答占总体回答概率的多少，即上段中提到的 “***当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大***” 。此处的归一化项（Normalization Term）指的是所有可能出现回答 $r' \in \mathcal{R}$ 的概率总和，类比离散变量的概率公式，$Pr[\mathcal{M}_E(x,u,\mathcal{R})=r] = \frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}$ 。这也解释了后文指数分布证明中的概率。*）
+（**个人理解**：*上述公式仅仅表明，当只有一个的回答 $r$ 时，其隐私损失是符合差分隐私定义中的 $\varepsilon$。 但当可能有很多个回答时，我们就需要考虑到一个回答占总体回答概率的多少，即上段中提到的 “* **当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大** *” 。此处的归一化项（Normalization Term）指的是所有可能出现回答 $r' \in \mathcal{R}$ 的概率总和，类比离散变量的概率公式，$Pr[\mathcal{M}_E(x,u,\mathcal{R})=r] = \frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}$ 。这也解释了后文指数分布证明中的概率。*）
 
 **定义3.4（指数机制）** 指数机制 $\mathcal{M}_E(x,u,\mathcal{R})$ 选择并输出元素 $r \in \mathcal{R}$ 的概率与 $\exp\big(\frac{\varepsilon u(x,r)}{2\Delta u}\big)$ 成正比。
 
@@ -54,7 +54,7 @@ $$
 
 同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
 
-（* **补充**：原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
+（**补充**：*原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
 
 $$
 \begin{aligned}
