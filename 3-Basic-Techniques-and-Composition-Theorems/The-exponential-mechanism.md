@@ -6,19 +6,27 @@
 
 **例 3.5（南瓜竞拍）** 假设我们有大量的南瓜和四个竞标者：A，F，I，K，其中A，F，I分别出价1.00美元和K出价3.01美元，最优价格是多少？在 3.01美元时，收入为 3.01美元（只符合K的价格，故只有K买，收入3.01美元）；在 3.00美元 和 1.00美元 时候，收入为 3.00美元（只有A、F、I符合价格，收入共3美元）；但在 3.02美元时，收入为零（无人符合价格）！
 
-指数机制是使用任意实用工具（和任意非数字范围）回答查询的自然构建块，同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 x，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；它的 range 参数（$\mathcal{R}$）可以是任意敏感的：
+指数机制是使用任意效用函数（任意非数字范围）回答查询的自然构建块，同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 $x$，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；效用函数 $u$ 可以是任意敏感的：
 
 $$
 \Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|
 $$
 
-指数机制输出每个可能的 $r \in \mathcal{R}$ ，其概率与 $\exp(\varepsilon u(x,r)/\Delta u)$ 成正比，因此隐私损失约为：
+从直观上来看指数机制，其思想是输出每个可能的 $r \in \mathcal{R}$ ，其概率与 $\exp(\varepsilon u(x,r)/\Delta u)$ 成正比，这样隐私损失才能约为：
 
 $$
 \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)=\varepsilon[u(x,r)-u(y,r)]/\Delta u \leq \varepsilon
 $$
 
 （*注：此处原文公式有误，翻译为更正后的公式*）
+
+(个人理解：根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$
+
+$$
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = \xi \rbrack}{Pr\lbrack \mathcal{M}(y) = \xi \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
+$$
+
+)
 
 这种直观的观点忽略了归一化项的某些影响，该归一化项出现的原因是，当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大。接下来定义的实际机制将一半的隐私预算用于归一化项的更改。
 
@@ -42,7 +50,33 @@ $$
 \end{aligned}
 $$
 
-同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
+同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
+
+（**补充**：原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：
+
+$$
+\begin{aligned}
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = \xi \rbrack}{Pr\lbrack \mathcal{M}(y) = \xi \rbrack}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
+&=\varepsilon[u(x,r)-u(y,r)]/\Delta 2u \leq \varepsilon/2\\
+\implies \exp(\varepsilon u(x,r)/\Delta 2u) &\leq e^{\varepsilon/2} \cdot \exp(\varepsilon u(y,r)/\Delta 2u)\\
+\implies \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u}) &\leq e^{\varepsilon/2} \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})
+\end{aligned}
+
+$$
+
+很自然的我们由 $\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|$ 可以推知 $u(x,r)-u(y,r) \leq \Delta u$ ，经过放缩之后得到结论。具体如下：
+
+$$
+\begin{aligned}
+    \frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]} &= \frac{\Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)}{\Big(\frac{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}\Big)}\\
+    &= \Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}\Big) \cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})} \Big)\\
+    &= \exp\Big(\frac{\varepsilon(u(x,r)-u(y,r))}{2\Delta u} \Big)\cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
+    &\leq \exp(\frac{\varepsilon}{2})\cdot\Big(\frac{\exp(\frac{\varepsilon}{2}) \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
+    &= \exp(\varepsilon)
+\end{aligned}
+$$
+
+）
 
 指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
 
@@ -65,7 +99,7 @@ $$
 
 这个定理是通过插入c的适当值得出的。  
 
-（注<1>：概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:
+（**注<1>**：概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:
 
 $$
 f_{X}(x)={\begin{cases}\Pr(X=x),&x\in S,\\0,&x\in {\mathbb  {R}}\backslash S.\end{cases}}
