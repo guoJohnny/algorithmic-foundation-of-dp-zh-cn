@@ -20,15 +20,17 @@ $$
 
 （*注：此处原文公式有误，翻译为更正后的公式*）
 
-(个人理解：根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$
+(* **个人理解**：根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = \xi \rbrack}{Pr\lbrack \mathcal{M}(y) = \xi \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = r \rbrack}{Pr\lbrack \mathcal{M}(y) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
 $$
 
 )
 
 这种直观的观点忽略了归一化项的某些影响，该归一化项出现的原因是，当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大。接下来定义的实际机制将一半的隐私预算用于归一化项的更改。
+
+（* **个人理解**：上述公式仅仅表明，当只有一个的回答 $r$ 时，其隐私损失是符合差分隐私定义中的 $\varepsilon$。 但当可能有很多个回答时，我们就需要考虑到一个回答占总体回答概率的多少，即上段中提到的 “***当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大***” 。此处的归一化项（Normalization Term）指的是所有可能出现回答 $r' \in \mathcal{R}$ 的概率总和，类比离散变量的概率公式，$Pr[\mathcal{M}_E(x,u,\mathcal{R})=r] = \frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}$ 。这也解释了后文指数分布证明中的概率。*）
 
 **定义3.4（指数机制）** 指数机制 $\mathcal{M}_E(x,u,\mathcal{R})$ 选择并输出元素 $r \in \mathcal{R}$ 的概率与 $\exp\big(\frac{\varepsilon u(x,r)}{2\Delta u}\big)$ 成正比。
 
@@ -52,7 +54,7 @@ $$
 
 同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
 
-（**补充**：原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：
+（* **补充**：原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
 
 $$
 \begin{aligned}
@@ -61,10 +63,9 @@ $$
 \implies \exp(\varepsilon u(x,r)/\Delta 2u) &\leq e^{\varepsilon/2} \cdot \exp(\varepsilon u(y,r)/\Delta 2u)\\
 \implies \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u}) &\leq e^{\varepsilon/2} \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})
 \end{aligned}
-
 $$
 
-很自然的我们由 $\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|$ 可以推知 $u(x,r)-u(y,r) \leq \Delta u$ ，经过放缩之后得到结论。具体如下：
+*很自然的我们由 $\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|$ 可以推知 $u(x,r)-u(y,r) \leq \Delta u$ ，经过放缩之后得到结论。具体如下：*
 
 $$
 \begin{aligned}
@@ -76,7 +77,7 @@ $$
 \end{aligned}
 $$
 
-）
+*此处也解释了为什么要用 $2\Delta u$ ，其目的是为了弥补归一化项对机制造成的影响，如若不使用 $2\Delta u$ ，易推知机制的隐私损失为 $2\varepsilon$*）
 
 指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
 
@@ -99,7 +100,7 @@ $$
 
 这个定理是通过插入c的适当值得出的。  
 
-（**注<1>**：概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:
+（***注<1>**：概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:*
 
 $$
 f_{X}(x)={\begin{cases}\Pr(X=x),&x\in S,\\0,&x\in {\mathbb  {R}}\backslash S.\end{cases}}
