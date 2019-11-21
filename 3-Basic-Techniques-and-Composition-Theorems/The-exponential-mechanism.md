@@ -23,7 +23,7 @@ $$
 (**个人理解**：*根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = r \rbrack}{Pr\lbrack \mathcal{M}(y) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x,u) = r \rbrack}{Pr\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
 $$
 
 )
@@ -96,7 +96,7 @@ $$
 \end{aligned}
 $$
 
-这个不等式是由这样一个观察结果得出的：每一个 $r\in \mathcal{R},u(x,r)\leq c$ ，在最大 $\exp(\varepsilon c/2\Delta u)$ 处具有非正态的概率质量 $^{<1>}$，因此这类“坏”元素 $r$ 的整个集合在最大 $\exp(\varepsilon c/2\Delta u)$ 处都具有非正态概率质量。与此相反，我们知道至少存在 $|\mathcal{R}_{\text{OPT}}|\geq 1$ 个元素具有 $u(x,r)=\text{OPT}_u(x)$ ，并且因此非正态概率质量函数为 $\exp(\varepsilon \text{OPT}_u(x))$ ，因此这是正规化项的下界。
+这个不等式是由这样一个观察结果得出的：每一个 $r\in \mathcal{R},u(x,r)\leq c$ 所具有最大的未归一化概率质量为 $\exp(\varepsilon c/2\Delta u)$ $^{<1>}$，因此这类“坏”元素 $r$ 的整个集合的未归一化概率质量总和最大为 $\exp(\varepsilon c/2\Delta u)$ 。与此相反，我们知道至少存在 $|\mathcal{R}_{\text{OPT}}|\geq 1$ 个元素具有 $u(x,r)=\text{OPT}_u(x)$ ，并且因此未归一化概率质量为 $\exp(\varepsilon \text{OPT}_u(x))$ ，因此这是正规化项的下界。
 
 这个定理是通过插入c的适当值得出的。  
 
