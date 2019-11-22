@@ -21,7 +21,11 @@
 	* [随机响应](3-Basic-Techniques-and-Composition-Theorems/Randomized-response.md)
 	* [Laplace机制](3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.md)
 	* [Exponential机制](3-Basic-Techniques-and-Composition-Theorems/The-exponential-mechanism.md)
-	* [组成定理]()
+	* [组成定理](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.md)
+        * [3.5.1 组成：一些技术]()
+    	* [3.5.2 高级组成技术]()
+    	* [3.5.3 拉普拉斯vs高斯]()
+    	* [3.5.4 组成定理注释]()
 	* [稀疏向量技术]()
 	* [参考文献]()
 
