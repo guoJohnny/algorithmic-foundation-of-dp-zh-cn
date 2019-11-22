@@ -105,12 +105,12 @@
             "wechatText": "微信打赏"
         },
         "favicon":{
-            "shortcut": "https://differential-privacy.cn/assets/images/favicon/favicon.ico",
-            "bookmark": "https://differential-privacy.cn/assets/images/favicon/favicon.ico",
-            "appleTouch": "https://differential-privacy.cn/assets/images/favicon/apple-touch-icon.png",
+            "shortcut": "../assets/images/favicon/favicon.ico",
+            "bookmark": "../assets/images/favicon/favicon.ico",
+            "appleTouch": "../assets/images/favicon/apple-touch-icon.png",
             "appleTouchMore": {
-                "120x120": "https://differential-privacy.cn/assets/images/favicon/apple-touch-icon-120x120.png",
-                "180x180": "https://differential-privacy.cn/assets/images/favicon/apple-touch-icon-180x180.png"
+                "120x120": "../assets/images/favicon/apple-touch-icon-120x120.png",
+                "180x180": "../assets/images/favicon/apple-touch-icon-180x180.png"
             }
         }
     },
