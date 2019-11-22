@@ -5,19 +5,8 @@
 
 **群隐私**：$(\varepsilon,0)$- 差分隐私机制的群隐私也遵循从定义2.4，隐私保证的强度随群的大小线性下降。
 
-（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。下面试推导差分隐私合成增加:*
-
-*定义 $z$ 是 $x$ 的相邻数据库，定义 $y$ 是 $z$ 的相邻数据库，且有两个差分隐私机制 $\mathcal{M}_1,\mathcal{M}_2$，将这两个满足$(\varepsilon,0)$- 差分隐私机制合成：*
-
-*根据定义2.4可得：*
-
-$$
-\begin{aligned}
-Pr[\mathcal{M}_2(\mathcal{M}_1(x)) \in \mathcal{S}] &\leq exp(\varepsilon)Pr[\mathcal{M}_2(\mathcal{M}_1(z)) \in \mathcal{S}] \\
-&\leq \lbrack exp(\varepsilon) \rbrack^2 Pr[\mathcal{M}_2(\mathcal{M}_1(y)) \in \mathcal{S}]
-\end{aligned}
-$$
-*由上可得两者合成得 $(2\varepsilon,0)$- 差分隐私*）
+（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](../3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html) *
+）
 
 **定理2.2** 对于大小为 $k$ 的群，任何 $(\varepsilon,0)$- 差分隐私机制$\mathcal{M}$ 是 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $||x-y||_1 \leq 1$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ :
 $$
