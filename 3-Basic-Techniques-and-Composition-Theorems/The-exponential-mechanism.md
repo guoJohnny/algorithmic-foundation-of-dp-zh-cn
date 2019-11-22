@@ -20,7 +20,7 @@ $$
 
 （*注：此处原文公式有误，翻译为更正后的公式*）
 
-(**个人理解**：*根据效用函数 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
+(**个人理解**：*根据效用函数敏感度 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
 \mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x,u) = r \rbrack}{Pr\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
@@ -116,6 +116,17 @@ $$
 Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] \leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}
 $$
 
+*我们将不等式右边变形推导得到：*
+
+$$
+\begin{aligned}
+    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] &\leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}\\
+    &= \exp\Big(\ln\big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\big) + \frac{\varepsilon(c-\text{OPT}_u(x))}{2\Delta u} \Big)\\
+\end{aligned}
+$$
+
+*令 $-t = \ln\big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\big) + \frac{\varepsilon(c-\text{OPT}_u(x))}{2\Delta u}$ 求得 $c=\text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}\Big(\ln \Big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\Big)+t\Big)$ 将 $c$ 带入不等式即为 **定理3.11** 所示。*
+
 】
 
 由于我们总是有 $|\mathcal{R}_{\text{OPT}}|\geq 1$，我们可以更普遍地使用以下简单的推论：
@@ -123,12 +134,24 @@ $$
 **推论 3.12** 定义一个数据库 $x$，我们有：
 
 $$
-Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t)] \leq e^{-t}
+Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t)\Big] \leq e^{-t}
 $$
 
 从定理3.11和推论3.12的证明中可以看出，指数机制特别容易分析。  
 
-**例3.6（二选一）** 考虑一个简单的问题，即确定A和B两种疾病中哪一种更常见。假设疾病A的真实计数为0，疾病B的真实计数为 c>0。我们的效用概念将与实际计数联系起来，这样计数越大的疾病种类将具有更高的效用，且$\Delta u=1$。因此，A 的效用为 0，B 的效用为 c。使用指数机制，我们可以立即应用推论3.12，输出错误结果 A 概率至多为 $2e^{-c(\varepsilon / (2\Delta u))}=2e^{-c\varepsilon/2}$ 。
+**例3.6（二选一）** 考虑一个简单的问题，即确定 A 和 B 两种疾病中哪一种更常见。假设疾病A的真实计数为 0，疾病B的真实计数为 $c>0$。我们的效用概念将与实际计数联系起来，这样计数越大的疾病种类将具有更高的效用，且$\Delta u=1$。因此，A 的效用为 0，B 的效用为 c。使用指数机制，我们可以立即应用推论3.12，输出错误结果 A 概率至多为 $2e^{-c(\varepsilon / (2\Delta u))}=2e^{-c\varepsilon/2}$ 。
+
+【**补充**：*此处 A 的效用为 0 ，则 $Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R}))\leq 0\Big]$ 由 **推论3.12**，令 $\text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t) = 0$，由于 $|\mathcal{R}|=2,\Delta u=1,\text{OPT}_u(x)=c$ 可以推得 $t = c\varepsilon/2-\ln2$，即：*
+
+$$
+\begin{aligned}
+    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2}{\varepsilon}(\ln2+t)\Big] &\leq e^{-t}\\
+    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq e^{-(c\varepsilon/2-\ln2)}\\
+    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq 2e^{-c\varepsilon/2}\\
+\end{aligned}
+$$
+
+】
 
 分析 **Report Noisy Max** 似乎更为复杂，因为它需要了解当添加到 A 的计数中的噪声为正而添加到 B 的计数中的噪声为负时（概率为1/4）情况下会发生什么。
 
