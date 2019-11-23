@@ -46,8 +46,8 @@ $$
 
 **引理 3.17**
 
-- 1.当且仅当存在一个随机变量 $Y'$ 满足 $\Delta(Y,Y')\leq \delta,\enspace D_{\infty}(Y'||Z)\leq \varepsilon$ 时，$D_{\infty}^{\delta}(Y||Z)$ 成立
-- 2.当且仅当存在随机变量 $Y',Z'$ 满足 $\Delta(Y,Y')\leq \delta/(e^{\varepsilon}+1),\enspace\Delta(Z,Z')\leq \delta/(e^{\varepsilon}+1),\enspace D_{\infty}(Y'||Z')\leq \varepsilon$
+- 1.当且仅当存在一个随机变量 $Y'$ 满足 $\Delta(Y,Y')\leq \delta,\enspace D_{\infty}(Y'||Z)\leq \varepsilon$ 时，$D_{\infty}^{\delta}(Y||Z)\leq \varepsilon$ 成立
+- 2.当且仅当存在随机变量 $Y',Z'$ 满足 $\Delta(Y,Y')\leq \delta/(e^{\varepsilon}+1),\enspace\Delta(Z,Z')\leq \delta/(e^{\varepsilon}+1),\enspace D_{\infty}(Y'||Z')\leq \varepsilon$ 时，$D_{\infty}^{\delta}(Y||Z)\leq \varepsilon,\enspace D_{\infty}^{\delta}(Z||Y)\leq \varepsilon$ 成立。
 
 【证明】略
 
