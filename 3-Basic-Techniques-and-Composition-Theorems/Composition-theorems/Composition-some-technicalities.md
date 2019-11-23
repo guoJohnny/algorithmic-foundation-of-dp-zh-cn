@@ -20,22 +20,62 @@ $$
 **定义3.6（最大散度）** 取自同一域的两个随机变量 $Y$ 和 $Z$ 之间的最大散度定义为：
 
 $$
-D(Y||Z)_{\infty} = \max_{S \subseteq \text{Supp}(Y)}\Big[\ln\frac{\text{Pr}[Y\in S]}{\text{Pr}[Z \in S]}\Big]
+D_{\infty}(Y||Z) = \max_{S \subseteq \text{Supp}(Y)}\Big[\ln\frac{\text{Pr}[Y\in S]}{\text{Pr}[Z \in S]}\Big]
 $$
 
 $Y$ 和 $Z$ 之间的 $\delta$-近似最大散度定义为：
 
 $$
-D(Y||Z)_{\infty}^{\delta} = \max_{S \subseteq \text{Supp}(Y):\text{Pr}[Y \in S] \geq \delta}\Big[\ln\frac{\text{Pr}[Y\in S]-\delta}{\text{Pr}[Z \in S]}\Big]
+D_{\infty}^{\delta}(Y||Z) = \max_{S \subseteq \text{Supp}(Y):\text{Pr}[Y \in S] \geq \delta}\Big[\ln\frac{\text{Pr}[Y\in S]-\delta}{\text{Pr}[Z \in S]}\Big]
 $$
 
 **备注3.1** 请注意，机制 $\mathcal{M}$ 为：
 
-- 1.当且仅当在每对相邻数据库 $x,\enspace y,\enspace D(\mathcal{M}(x)||\mathcal{M}(y))_{\infty} \leq \varepsilon, \enspace D(\mathcal{M}(y)||\mathcal{M}(x))_{\infty} \leq \varepsilon$时，机制为 $\varepsilon$ -差分隐私。
-- 2.当且仅当在每两个相邻的数据库 $x,\enspace y \enspace D(\mathcal{M}(x)||\mathcal{M}(y))_{\infty}^{\delta} \leq \varepsilon \enspace D(\mathcal{M}(y)||\mathcal{M}(x))_{\infty}^{\delta} \leq \varepsilon$ 时，机制为 $(\varepsilon,\delta)$ -差分隐私。
+- 1.当且仅当在每对相邻数据库 $x,\enspace y,\enspace D_{\infty}(\mathcal{M}(x)||\mathcal{M}(y)) \leq \varepsilon, \enspace D_{\infty}(\mathcal{M}(y)||\mathcal{M}(x)) \leq \varepsilon$时，机制为 $\varepsilon$ -差分隐私。
+- 2.当且仅当在每两个相邻的数据库 $x,\enspace y \enspace D_{\infty}^{\delta}(\mathcal{M}(x)||\mathcal{M}(y)) \leq \varepsilon \enspace D_{\infty}^{\delta}(\mathcal{M}(y)||\mathcal{M}(x)) \leq \varepsilon$ 时，机制为 $(\varepsilon,\delta)$ -差分隐私。
 
 另一个有用的距离度量是两个随机变量 $Y$ 和 $Z$ 之间的统计距离，定义为:
 
 $$
 \Delta(Y,Z) \overset{\text{def}}{=} \max_{S}|\text{Pr}[Y \in S]-\text{Pr}[Z \in S]|
+$$
+
+如果 $\Delta(Y,Z)\leq \delta$,我们说 $Y,Z$ 是δ-接近（原文“δ-close”）的，
+
+我们将根据确切的最大散度和统计距离重新制定最大散度公式：
+
+**引理 3.17**
+
+- 1.当且仅当存在一个随机变量 $Y'$ 满足 $\Delta(Y,Y')\leq \delta,\enspace D_{\infty}(Y'||Z)\leq \varepsilon$ 时，$D_{\infty}^{\delta}(Y||Z)$ 成立
+- 2.当且仅当存在随机变量 $Y',Z'$ 满足 $\Delta(Y,Y')\leq \delta/(e^{\varepsilon}+1),\enspace\Delta(Z,Z')\leq \delta/(e^{\varepsilon}+1),\enspace D_{\infty}(Y'||Z')\leq \varepsilon$
+
+【证明】略
+
+**引理 3.18** 假设随机变量 $Y,\enspace Z$ 满足 $D_{\infty}(Y||Z)\leq \varepsilon \enspace D_{\infty}(Z||Y)\leq \varepsilon$，则 $D(Y||Z)\leq \varepsilon\cdot(e^{\varepsilon}-1)$。
+
+【证明】由KL散度性质可知：任意 $Y,\enspace Z$ 有 $D(Y||Z)\geq0$，所以 $D(Y||Z)$ 可以被 $D(Y||Z) + D(Z||Y)$ 约束：
+
+$$
+\begin{aligned}
+    D(Y||Z) &\leq D(Y||Z) + D(Z||Y)\\
+    &= \sum_y \text{Pr}[Y=y]\cdot\Big(\ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]}+\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\Big)\\
+    &\enspace \enspace + (\text{Pr}[Z=y]-\text{Pr}[Y=y])\cdot \Big(\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\Big)\\
+    &\leq \sum_y[0+|\text{Pr}[Z=y]-\text{Pr}[Y=y]|\cdot\varepsilon]\\
+    &= \varepsilon\cdot\sum_y[\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}\\
+    &\enspace \enspace -\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}]\\
+    &\leq \varepsilon\cdot\sum_y[(e^\varepsilon-1)\cdot\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}]\\
+    &\leq \varepsilon(e^\varepsilon-1)
+\end{aligned}
+$$
+
+**引理3.19（Azuma不等式）** 令 $C_1,...C_k$ 为实值变量满足任意一个 $i\in[k],\text{Pr}[|C_i|\leq \alpha]=1$，且对于每一个 $(c_1,...,c_{i-1})\in \text{Supp}(C_1,...C_{i-1})$ 我们有：
+
+$$
+\mathbb{E}[C_i|C_1=c_1,...,C_{i-1}=c_{i-1}]\leq\beta
+$$
+
+对于任一 $z > 0$，我们有：
+
+$$
+\text{Pr}\Big[\sum_{i=1}^kC_i>k\beta + z\sqrt{k}\cdot\alpha\Big] \leq e^{-z^2/2}
 $$
