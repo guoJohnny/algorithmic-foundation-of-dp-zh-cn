@@ -20,17 +20,17 @@ $$
 
 （*注：此处原文公式有误，翻译为更正后的公式*）
 
-(**个人理解**：*根据效用函数敏感度 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(Pr\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
+(**个人理解**：*根据效用函数敏感度 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x,u) = r \rbrack}{Pr\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x,u) = r \rbrack}{\text{Pr}\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
 $$
 
 )
 
 这种直观的观点忽略了归一化项的某些影响，该归一化项出现的原因是，当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大。接下来定义的实际机制将一半的隐私预算用于归一化项的更改。
 
-（**个人理解**：*上述公式仅仅表明，当只有一个的回答 $r$ 时，其隐私损失是符合差分隐私定义中的 $\varepsilon$。 但当可能有很多个回答时，我们就需要考虑到一个回答占总体回答概率的多少，即上段中提到的 “* **当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大** *” 。此处的归一化项（Normalization Term）指的是所有可能出现回答 $r' \in \mathcal{R}$ 的概率总和，类比离散变量的概率公式，$Pr[\mathcal{M}_E(x,u,\mathcal{R})=r] = \frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}$ 。这也解释了后文指数分布证明中的概率。*）
+（**个人理解**：*上述公式仅仅表明，当只有一个的回答 $r$ 时，其隐私损失是符合差分隐私定义中的 $\varepsilon$。 但当可能有很多个回答时，我们就需要考虑到一个回答占总体回答概率的多少，即上段中提到的 “* **当有额外的人出现在数据库中，导致某些元素 $r \in \mathcal{R}$ 的效用减小而其他元素的效用增大** *” 。此处的归一化项（Normalization Term）指的是所有可能出现回答 $r' \in \mathcal{R}$ 的概率总和，类比离散变量的概率公式，$\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r] = \frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}$ 。这也解释了后文指数分布证明中的概率。*）
 
 **定义3.4（指数机制）** 指数机制 $\mathcal{M}_E(x,u,\mathcal{R})$ 选择并输出元素 $r \in \mathcal{R}$ 的概率与 $\exp\big(\frac{\varepsilon u(x,r)}{2\Delta u}\big)$ 成正比。
 
@@ -44,7 +44,7 @@ $$
 
 $$
 \begin{aligned}
-    \frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]} &= \frac{\Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)}{\Big(\frac{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}\Big)}\\
+    \frac{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]} &= \frac{\Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)}{\Big(\frac{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}\Big)}\\
     &= \Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}\Big) \cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})} \Big)\\
     &= \exp\Big(\frac{\varepsilon(u(x,r')-u(y,r'))}{2\Delta u} \Big)\cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
     &\leq \exp(\frac{\varepsilon}{2})\cdot\exp(\frac{\varepsilon}{2})\cdot\Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
@@ -52,13 +52,13 @@ $$
 \end{aligned}
 $$
 
-同样，对称情况也成立 $\frac{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
+同样，对称情况也成立 $\frac{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
 
 【**补充**：*原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
 
 $$
 \begin{aligned}
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
 &=\varepsilon[u(x,r)-u(y,r)]/\Delta 2u \leq \varepsilon/2\\
 \implies \exp(\varepsilon u(x,r)/\Delta 2u) &\leq e^{\varepsilon/2} \cdot \exp(\varepsilon u(y,r)/\Delta 2u)\\
 \implies \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u}) &\leq e^{\varepsilon/2} \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})
@@ -69,7 +69,7 @@ $$
 
 $$
 \begin{aligned}
-    \frac{Pr[\mathcal{M}_E(x,u,\mathcal{R})=r]}{Pr[\mathcal{M}_E(y,u,\mathcal{R})=r]} &= \frac{\Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)}{\Big(\frac{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}\Big)}\\
+    \frac{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]} &= \frac{\Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)}{\Big(\frac{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}\Big)}\\
     &= \Big(\frac{\exp(\frac{\varepsilon u(x,r)}{2\Delta u})}{\exp(\frac{\varepsilon u(y,r)}{2\Delta u})}\Big) \cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})} \Big)\\
     &= \exp\Big(\frac{\varepsilon(u(x,r)-u(y,r))}{2\Delta u} \Big)\cdot \Big(\frac{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
     &\leq \exp(\frac{\varepsilon}{2})\cdot\Big(\frac{\exp(\frac{\varepsilon}{2}) \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}{\sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})}\Big)\\
@@ -86,14 +86,14 @@ $$
 **定理3.11** 固定数据库 $x$，令 $\mathcal{R}_{\text{OPT}}={r \in \mathcal{R}:u(x,r)=\text{OPT}_u(x)}$ 表示 $\mathcal{R}$ 中获得效用分数 $\text{OPT}_u(x)$ 的元素集合。则：
 
 $$
-Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}\Big(\ln \Big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\Big)+t\Big)\Big] \leq e^{-t}
+\text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}\Big(\ln \Big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\Big)+t\Big)\Big] \leq e^{-t}
 $$
 
 **【证明】** 
 
 $$
 \begin{aligned}
-    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] &\leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}\\
+    \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] &\leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}\\
     &= \frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\exp\Big(\frac{\varepsilon(c-\text{OPT}_u(x))}{2\Delta u} \Big)
 \end{aligned}
 $$
@@ -105,7 +105,7 @@ $$
 （**注<1>**：*概率质量（probability mass）：离散随机变量在各特定取值上的概率，概率质量函数是对离散随机变量定义的，本身代表该值的概率；概率密度函数是对连续随机变量定义的，本身不是概率，只有对连续随机变量的概率密度函数在某区间内进行积分后才是概率。其定义为：假设 $X$ 是一个定义在可数样本空间 $S$ 上的离散随机变量 $S \subseteq \mathbb{R}$，则其概率质量函数 $f_{X}(x)$ 为:*
 
 $$
-f_{X}(x)={\begin{cases}\Pr(X=x),&x\in S,\\0,&x\in {\mathbb  {R}}\backslash S.\end{cases}}
+f_{X}(x)={\begin{cases}\\text{Pr}(X=x),&x\in S,\\0,&x\in {\mathbb  {R}}\backslash S.\end{cases}}
 $$
 
 ）
@@ -113,14 +113,14 @@ $$
 【**补充** *根据定义，每一个 $r\in \mathcal{R}$，且其效用得分是 $u(x,r)\leq c$ ，所有这些 $r$ 的未归一化概率质量最大不超过 $\exp(\varepsilon c/2\Delta u)$。那么这些 $r$ 的概率总和为：$|\mathcal{R}|\exp(\varepsilon c/2\Delta u)$。我们又知道，$\mathcal{R}_{\text{OPT}} \subseteq \mathcal{R}$，所以 $|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u) \leq \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u})$。分子增大，分母减少，故下面不等式成立：*
 
 $$
-Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] \leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}
+\text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] \leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}
 $$
 
 *我们将不等式右边变形推导得到：*
 
 $$
 \begin{aligned}
-    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] &\leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}\\
+    \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq c\Big] &\leq \frac{|\mathcal{R}|\exp(\varepsilon c / 2\Delta u)}{|\mathcal{R}_{\text{OPT}}|\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)}\\
     &= \exp\Big(\ln\big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\big) + \frac{\varepsilon(c-\text{OPT}_u(x))}{2\Delta u} \Big)\\
 \end{aligned}
 $$
@@ -134,20 +134,20 @@ $$
 **推论 3.12** 定义一个数据库 $x$，我们有：
 
 $$
-Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t)\Big] \leq e^{-t}
+\text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t)\Big] \leq e^{-t}
 $$
 
 从定理3.11和推论3.12的证明中可以看出，指数机制特别容易分析。  
 
 **例3.6（二选一）** 考虑一个简单的问题，即确定 A 和 B 两种疾病中哪一种更常见。假设疾病A的真实计数为 0，疾病B的真实计数为 $c>0$。我们的效用概念将与实际计数联系起来，这样计数越大的疾病种类将具有更高的效用，且$\Delta u=1$。因此，A 的效用为 0，B 的效用为 c。使用指数机制，我们可以立即应用推论3.12，输出错误结果 A 概率至多为 $2e^{-c(\varepsilon / (2\Delta u))}=2e^{-c\varepsilon/2}$ 。
 
-【**补充**：*此处 A 的效用为 0 ，则 $Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R}))\leq 0\Big]$ 由 **推论3.12**，令 $\text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t) = 0$，由于 $|\mathcal{R}|=2,\Delta u=1,\text{OPT}_u(x)=c$ 可以推得 $t = c\varepsilon/2-\ln2$，即：*
+【**补充**：*此处 A 的效用为 0 ，则 $\text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R}))\leq 0\Big]$ 由 **推论3.12**，令 $\text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}(\ln (|\mathcal{R}|)+t) = 0$，由于 $|\mathcal{R}|=2,\Delta u=1,\text{OPT}_u(x)=c$ 可以推得 $t = c\varepsilon/2-\ln2$，即：*
 
 $$
 \begin{aligned}
-    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2}{\varepsilon}(\ln2+t)\Big] &\leq e^{-t}\\
-    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq e^{-(c\varepsilon/2-\ln2)}\\
-    Pr\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq 2e^{-c\varepsilon/2}\\
+    \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2}{\varepsilon}(\ln2+t)\Big] &\leq e^{-t}\\
+    \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq e^{-(c\varepsilon/2-\ln2)}\\
+    \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq 0\Big] &\leq 2e^{-c\varepsilon/2}\\
 \end{aligned}
 $$
 

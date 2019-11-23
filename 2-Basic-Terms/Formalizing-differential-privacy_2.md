@@ -10,7 +10,7 @@
 
 **定理2.2** 对于大小为 $k$ 的群，任何 $(\varepsilon,0)$- 差分隐私机制$\mathcal{M}$ 是 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $||x-y||_1 \leq 1$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ :
 $$
-Pr[\mathcal{M}(x) \in \mathcal{S}] \leq exp(k\varepsilon)Pr[\mathcal{M}(y) \in \mathcal{S}] 
+\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] 
 $$
 概率空间在机$\mathcal{M}$的硬币翻转上。
 
@@ -28,8 +28,8 @@ $$
 考虑一个对所有可能的未来事件集合有任意偏好的个体 $i$ ，我们用 $\mathcal{A}$ 来表示。这些偏好由一个效用函数 $u_i$ 来表示 $u_i:\mathcal{A} \to \mathbb{R}_{\geqslant0}$ ，我们说个体$i$在 $a \in \mathcal{A}$ 的情况下,其效用为 $u_i(a)$。假设 $x \in \mathbb{N}^{|\chi|}$ 是一个包含个体 $i$ 的私有数据的数据集，$\mathcal{M}$ 是一个 $\varepsilon$- 差分隐私算法。设$y$为与$x$ 相邻的数据集，它不包括个体 $i$ 的数据（$||x-y||_1 \leq 1$）。并设 $f:Range(\mathcal{M} ) \to \Delta(\mathcal{A})$ 为（任意）函数，该函数决定未来事件 $\mathcal{A}$ 的分布，以机制M的输出为条件（*注：此处$\Delta(\mathcal{A})$函数为定义2.1（概率单纯形）函数*）。通过差分隐私的保证以及命题2.1保证的任意后处理的弹性，我们可以有：
 $$
 \begin{aligned}
-    \mathbb{E}_{a \backsim f(\mathcal{M}(x))}[u_i(a)] &= \sum_{a \in \mathcal{A}}u_i(a) \cdotp \underset{f(\mathcal{M}(x))}{Pr}[a] \\
-    &\leq \sum_{a \in \mathcal{A}} u_i(a) \cdotp exp(\varepsilon) \underset{f(\mathcal{M}(y))}{Pr}[a] \\
+    \mathbb{E}_{a \backsim f(\mathcal{M}(x))}[u_i(a)] &= \sum_{a \in \mathcal{A}}u_i(a) \cdotp \underset{f(\mathcal{M}(x))}{\text{Pr}}[a] \\
+    &\leq \sum_{a \in \mathcal{A}} u_i(a) \cdotp exp(\varepsilon) \underset{f(\mathcal{M}(y))}{\text{Pr}}[a] \\
     &= exp(\varepsilon)\mathbb{E}_{a \backsim f(\mathcal{M}(y))}[u_i(a)]
 \end{aligned}
 $$

@@ -10,14 +10,14 @@
 
 $$
 \begin{aligned}
-    \frac{Pr[\mathcal{M}_{1,2}(x)=(r_1,r_2)]}{Pr[\mathcal{M}_{1,2}(y)=(r_1,r_2)]} &= \frac{Pr[\mathcal{M}_{1}(x)=r_1]Pr[\mathcal{M}_{2}(x)=r_2]}{Pr[\mathcal{M}_{1}(y)=r_1]Pr[\mathcal{M}_{2}(x)=r_2]}\\
-    &= \Big(\frac{Pr[\mathcal{M}_{1}(x)=r_1]}{Pr[\mathcal{M}_{1}(y)=r_1]}\Big)\Big(\frac{Pr[\mathcal{M}_{2}(x)=r_2]}{Pr[\mathcal{M}_{2}(x)=r_2]}\Big)\\
+    \frac{\text{Pr}[\mathcal{M}_{1,2}(x)=(r_1,r_2)]}{\text{Pr}[\mathcal{M}_{1,2}(y)=(r_1,r_2)]} &= \frac{\text{Pr}[\mathcal{M}_{1}(x)=r_1]\text{Pr}[\mathcal{M}_{2}(x)=r_2]}{\text{Pr}[\mathcal{M}_{1}(y)=r_1]\text{Pr}[\mathcal{M}_{2}(x)=r_2]}\\
+    &= \Big(\frac{\text{Pr}[\mathcal{M}_{1}(x)=r_1]}{\text{Pr}[\mathcal{M}_{1}(y)=r_1]}\Big)\Big(\frac{\text{Pr}[\mathcal{M}_{2}(x)=r_2]}{\text{Pr}[\mathcal{M}_{2}(x)=r_2]}\Big)\\
     &\leq \exp(\varepsilon_1)\exp(\varepsilon_2)\\
     &= \exp(\varepsilon_1+\varepsilon_2)
 \end{aligned}
 $$
 
-由对称性，$\frac{Pr[\mathcal{M}_{1,2}(y)=(r_1,r_2)]}{Pr[\mathcal{M}_{1,2}(x)=(r_1,r_2)]} \geq \exp(-(\varepsilon_1+\varepsilon_2))$ 也成立。
+由对称性，$\frac{\text{Pr}[\mathcal{M}_{1,2}(y)=(r_1,r_2)]}{\text{Pr}[\mathcal{M}_{1,2}(x)=(r_1,r_2)]} \geq \exp(-(\varepsilon_1+\varepsilon_2))$ 也成立。
 
 组合定理能反复应用以获得以下推论：
 

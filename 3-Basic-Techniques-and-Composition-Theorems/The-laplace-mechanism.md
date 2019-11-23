@@ -76,7 +76,7 @@ $$
 **事实 3.7**： 如果 $Y \backsim Lap(b)$，则：
 
 $$
-Pr[|Y| \geq t \cdot b] = exp(-t)
+\text{Pr}[|Y| \geq t \cdot b] = exp(-t)
 $$
 
 这个事实与布尔不等式（译者注：Union Bound，又称 Boole’s Inequality$^{<1>}$）一起为我们提供了一个
@@ -84,15 +84,15 @@ $$
 
 **定理 3.8** ：设 $f:\mathbb{N}^{|\chi|} \to \mathbb{R}^k,y=\mathcal{M}_L(x,f(\cdot),\varepsilon)$。则 $\forall\delta \in (0,1]$：
 $$
-Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
+\text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
 $$
 
 **【证明】** 我们有：
 
 $$
 \begin{aligned}
-   Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] &= Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]\\
-  & \leq k\cdot Pr\Big[|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \\
+   \text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] &= \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]\\
+  & \leq k\cdot \text{Pr}\Big[|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \\
   &= k\cdot(\frac{\delta}{k})\\
   &= \delta
 \end{aligned}
@@ -118,14 +118,14 @@ $||f(x)-y||_\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
 
 故证明的第一步可以由此推导出： 
 
-$Pr\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
+$\text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
 
 证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：
 
 $$
 \begin{aligned}
-  Pr\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] & \leq Pr\Big[ \bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \}\Big]\\
-  &\leq \sum_i^k \cdot Pr\Big[|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big]\\
+  \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] & \leq \text{Pr}\Big[ \bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \}\Big]\\
+  &\leq \sum_i^k \cdot \text{Pr}\Big[|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big]\\
   &= \sum_i^k \cdot exp\big(-ln(\frac{k}{\delta})\big)\\
   &= k\cdot(\frac{\delta}{k})\\
   &= \delta
@@ -140,9 +140,9 @@ $$
 
 $$
 \begin{aligned}
-  Pr\Big[\max_{i \in [10000]}|Y_i|\geq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\leq 0.05\\
-  then \ \ \   Pr\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\geq 1 - 0.05\\
-  Pr\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\Big] &\geq 0.95
+  \text{Pr}\Big[\max_{i \in [10000]}|Y_i|\geq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\leq 0.05\\
+  then \ \ \   \text{Pr}\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\cdot(\frac{1}{1})\Big] &\geq 1 - 0.05\\
+  \text{Pr}\Big[\max_{i \in [10000]}|Y_i| \leq \ln(\frac{10000}{0.05})\Big] &\geq 0.95
 \end{aligned}
 $$
 
@@ -166,9 +166,9 @@ $$
 
 定义任意 $i \in [m]$，我们将限制 i 分别从 $D$ 或 $D'$ 提取比率的上下界。
 
-定义 $r_{-i}$，从 $Lap(1/\varepsilon)^{m-1}$ 用于除第 i 个计数外的所有噪声计数。我们会单独讨论每个 $r_{-i}$。我们使用符号 $Pr[i|\xi]$ 表示 **Report Noisy Max** 算法在以 $\xi$ 的条件下，输出为 i 的概率。
+定义 $r_{-i}$，从 $Lap(1/\varepsilon)^{m-1}$ 用于除第 i 个计数外的所有噪声计数。我们会单独讨论每个 $r_{-i}$。我们使用符号 $\text{Pr}[i|\xi]$ 表示 **Report Noisy Max** 算法在以 $\xi$ 的条件下，输出为 i 的概率。
 
-我们首先讨论 $Pr[i|D,r_{-i}] \leq e^{\varepsilon}Pr[i|D',r_{-i}]$ 的情况。 定义：
+我们首先讨论 $\text{Pr}[i|D,r_{-i}] \leq e^{\varepsilon}\text{Pr}[i|D',r_{-i}]$ 的情况。 定义：
 
 $$
 r^* = \min_{r_i}:c_i + r_i > c_j + r_j \  \forall j \neq i
@@ -190,14 +190,14 @@ $$
 
 $$
 \begin{aligned}
-  Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]\\
-  \implies Pr[i|D',r_{-i}] \geq Pr[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D,r_{-i}]
+  \text{Pr}[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}\text{Pr}[r_i \geq r^*] = e^{-\varepsilon}\text{Pr}[i|D,r_{-i}]\\
+  \implies \text{Pr}[i|D',r_{-i}] \geq \text{Pr}[r_i \geq 1 + r^*] &\geq e^{-\varepsilon}\text{Pr}[r_i \geq r^*] = e^{-\varepsilon}\text{Pr}[i|D,r_{-i}]
 \end{aligned}
 $$
 
 上面等式两边乘上 $e^{\varepsilon}$ 第一种情况证明完毕。
 
-证明第二种情况，即 $Pr[i|D',r_{-i}] \leq e^{\varepsilon}Pr[i|D,r_{-i}]$ 定义：
+证明第二种情况，即 $\text{Pr}[i|D',r_{-i}] \leq e^{\varepsilon}\text{Pr}[i|D,r_{-i}]$ 定义：
 
 $$
 r^* = \min_{r_i}:c'_i + r_i > c'_j + r_j \  \forall j \neq i
@@ -220,7 +220,7 @@ $$
 
 $$
 \begin{aligned}
-   Pr[i|D,r_{-i}] \geq Pr[r_i \geq r^* + 1 ] \geq e^{-\varepsilon}Pr[r_i \geq r^*] = e^{-\varepsilon}Pr[i|D',r_{-i}]
+   \text{Pr}[i|D,r_{-i}] \geq \text{Pr}[r_i \geq r^* + 1 ] \geq e^{-\varepsilon}\text{Pr}[r_i \geq r^*] = e^{-\varepsilon}\text{Pr}[i|D',r_{-i}]
 \end{aligned}
 $$
 

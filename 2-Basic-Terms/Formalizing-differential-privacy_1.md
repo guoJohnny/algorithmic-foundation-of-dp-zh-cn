@@ -84,7 +84,7 @@ $$
 **定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\chi|}$ 有 $||x-y||_1 \leq 1$，如果满足下列关系：
 
 $$
-Pr[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\varepsilon)Pr[\mathcal{M}(y) \in \mathcal{S}] + \delta
+\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
 $$
 
 则将这个域在 $\mathbb{N}^{|\chi|}$ 的随机算法 $\mathcal{M}$ 称为 $(\varepsilon,\delta)$ 差分隐私(即 $(\varepsilon,\delta) \text{--} Differentially \ private$)。  
@@ -98,7 +98,7 @@ $$
 所以，机制质量：
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{Pr\lbrack \mathcal{M}(x) = \xi \rbrack}{Pr\lbrack \mathcal{M}(y) = \xi \rbrack})
+\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack}{\text{Pr}\lbrack \mathcal{M}(y) = \xi \rbrack})
 $$
 对我们至关重要。我们将其称为观察 $\xi$ 导致的**隐私损失**。 这种损失可能是正的（当事件在$x$之下比在$y$之下更有可能发生），也可能是负的（当事件在$y$之下比$x$之下更有可能）。正如我们将在**引理3.17**看到，$(\varepsilon,\delta)$-  差分隐私确保对于所有相邻的$x$、$y$，隐私损失的绝对值被$\varepsilon$界定的概率至少为$1-\delta$。 与往常一样，概率空间位于机制$\mathcal{M}$的硬币上。（*over the coins of machanism $\mathcal{M}$?这句话原文无法理解。*）
 
@@ -112,9 +112,9 @@ $$
 
 $$
 \begin{aligned}
-   Pr\lbrack f(\mathcal{M}(x) \in S) \rbrack &= Pr[\mathcal{M}(x) \in T]\\
-   & \leq exp(\varepsilon)Pr[\mathcal{M}(y) \in T] + \delta\\
-   &= exp(\varepsilon)Pr[f(\mathcal{M}(y)) \in S] + \delta
+   \text{Pr}\lbrack f(\mathcal{M}(x) \in S) \rbrack &= \text{Pr}[\mathcal{M}(x) \in T]\\
+   & \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in T] + \delta\\
+   &= exp(\varepsilon)\text{Pr}[f(\mathcal{M}(y)) \in S] + \delta
 \end{aligned}
 $$
 即证。

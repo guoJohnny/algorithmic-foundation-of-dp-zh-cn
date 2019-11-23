@@ -9,12 +9,12 @@
 
 **声明3.5** 上述随机响应方法是 $(ln3,0)$- 差分隐私的。  
 
-**【证明】：** 假设固定随机响应者为同一人。上述分析表明 $Pr[Response=Yes|Truth=Yes]=3/4$ 。具体来说，当事实是“是”时，如果第一个硬币出现反面（概率1/2）或第一个和第二个出现正面（概率1/4），则结果将是“是”，而 $Pr[Response=Yes|Truth=No]=1/4$ （第一个出现在正面，第二个出现反面；概率为1/4）。同理，将类似的推理应用于事实为“否”的情况，我们获得：
+**【证明】：** 假设固定随机响应者为同一人。上述分析表明 $\text{Pr}[Response=Yes|Truth=Yes]=3/4$ 。具体来说，当事实是“是”时，如果第一个硬币出现反面（概率1/2）或第一个和第二个出现正面（概率1/4），则结果将是“是”，而 $\text{Pr}[Response=Yes|Truth=No]=1/4$ （第一个出现在正面，第二个出现反面；概率为1/4）。同理，将类似的推理应用于事实为“否”的情况，我们获得：
 
 $$
 \begin{aligned}
-   \frac{Pr[Response=Yes|Truth=Yes]}{Pr[Response=Yes|Truth=No]} \\
-    = \frac{Pr[Response=No|Truth=No]}{Pr[Response=No|Truth=Yes]} &= \frac{3/4}{1/4} = 3 = exp(ln3) 
+   \frac{\text{Pr}[Response=Yes|Truth=Yes]}{\text{Pr}[Response=Yes|Truth=No]} \\
+    = \frac{\text{Pr}[Response=No|Truth=No]}{\text{Pr}[Response=No|Truth=Yes]} &= \frac{3/4}{1/4} = 3 = exp(ln3) 
 \end{aligned}
 $$
 
