@@ -68,6 +68,60 @@ $$
 \end{aligned}
 $$
 
+【**补充**：*该证明过程省略许多步骤，会造成迷惑，这边对证明过程加以补充。首先第一步的推导，由定义可得:* 
+
+$$
+\begin{aligned}
+    D(Y||Z) + D(Z||Y) &= \sum_y \text{Pr}[Y=y]\cdot\ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]}+\sum_y \text{Pr}[Z=y]\cdot\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\\
+    &= \sum_y \text{Pr}[Y=y]\cdot\ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]}\\
+    &\enspace \enspace +\sum_y \Big\{\text{Pr}[Z=y]+\text{Pr}[Y=y]-\text{Pr}[Y=y]\Big\}\cdot\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\\
+    &= \sum_y \Big[\text{Pr}[Y=y]\cdot\Big(\ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]}+\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\Big)\\
+    &\enspace \enspace + (\text{Pr}[Z=y]-\text{Pr}[Y=y])\cdot \Big(\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\Big)\Big]\\
+\end{aligned}
+$$
+
+*由于 $D_{\infty}(Z||Y)\leq \varepsilon$ ，由 **最大散度** 的定义可知：*
+
+$$
+\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]} \leq  D_{\infty}(Z||Y) = \max_{S \subseteq \text{Supp}(Y)}\Big[\ln\frac{\text{Pr}[Z=y]}{\text{Pr}[Y=y]}\Big]\leq \varepsilon
+$$
+
+*且由两式相减必小于等于两式相减的绝对值，故：*
+
+$$
+D(Y||Z) \leq \sum_y[0+|\text{Pr}[Z=y]-\text{Pr}[Y=y]|\cdot\varepsilon]
+$$
+
+*又因绝对值公式 $\max\{f(x),g(x)\}-\min\{f(x),g(x)\}=|f(x)-g(x)|$，可以得到：*
+
+$$
+\begin{aligned}
+   \sum_y[0+|\text{Pr}[Z=y]-\text{Pr}[Y=y]|\cdot\varepsilon] &= \varepsilon\cdot\sum_y[\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}\\
+   &\enspace \enspace  -\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}]
+\end{aligned}
+$$
+
+*当 $\text{Pr}[Y=y]>\text{Pr}[Z=y]$ 时，$\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\} = \text{Pr}[Y=y]$，由给定条件和 **最大散度** 定义可知：*
+
+$$
+\begin{aligned}
+    \ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]} &\leq  D_{\infty}(Y||Z) = \max_{S \subseteq \text{Supp}(Y)}\Big[\ln\frac{\text{Pr}[Y=y]}{\text{Pr}[Z=y]}\Big]\leq \varepsilon\\
+    &\implies \text{Pr}[Y=y] \leq e^{\varepsilon}\cdot \text{Pr}[Z=y]\\
+    &\implies \max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\} \leq e^{\varepsilon}\cdot \text{Pr}[Z=y]
+\end{aligned}
+$$
+
+*反之：$\text{Pr}[Y=y]<\text{Pr}[Z=y]$ 亦然，$\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\} \leq e^{\varepsilon}\cdot \text{Pr}[Y=y]$，所以两者中的最大值必然小于等于两者最小值乘上 $e^\varepsilon$，形式化表示为： $\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}\leq e^\varepsilon\cdot\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}$ 故有：*
+
+$$
+\begin{aligned}
+    \varepsilon\cdot\sum_y[\max\{\text{Pr}[Y=y],\text{Pr}[Z=y]\} &-\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}]\\
+    &\leq \varepsilon\cdot\sum_y[(e^\varepsilon-1)\cdot\min\{\text{Pr}[Y=y],\text{Pr}[Z=y]\}]\\
+\end{aligned}
+$$
+
+】
+
 **引理3.19（Azuma不等式）** 令 $C_1,...C_k$ 为实值变量满足任意一个 $i\in[k],\text{Pr}[|C_i|\leq \alpha]=1$，且对于每一个 $(c_1,...,c_{i-1})\in \text{Supp}(C_1,...C_{i-1})$ 我们有：
 
 $$
