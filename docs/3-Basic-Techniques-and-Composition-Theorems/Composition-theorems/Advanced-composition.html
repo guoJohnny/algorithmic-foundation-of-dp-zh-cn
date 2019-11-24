@@ -1,0 +1,1298 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3.5.2 高级组成技术 · The Algorithmic Foundations of Differential Pivacy-zh-CN</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="guoJohnny">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex-plus/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../assets/styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Composition-some-technicalities.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../../assets/images/favicon/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../../assets/images/favicon/favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../../../assets/images/favicon/apple-touch-icon.png'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../../../assets/images/favicon/apple-touch-icon-120x120.png">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/favicon/apple-touch-icon-180x180.png">
+        
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"star","size":"small","count":true},{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"fork","size":"small","count":true},{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"watch","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Preface.html">
+            
+                <a href="../../Preface.html">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../1-The-Promise-of-Differential-Privacy/Overview.html">
+            
+                <a href="../../1-The-Promise-of-Differential-Privacy/Overview.html">
+            
+                    
+                    一、差分隐私的承诺
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../1-The-Promise-of-Differential-Privacy/Privacy-preserving-data-analysis.html">
+            
+                <a href="../../1-The-Promise-of-Differential-Privacy/Privacy-preserving-data-analysis.html">
+            
+                    
+                    隐私保护的数据分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../1-The-Promise-of-Differential-Privacy/Bibliographic-notes.html">
+            
+                <a href="../../1-The-Promise-of-Differential-Privacy/Bibliographic-notes.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../2-Basic-Terms/Overview.html">
+            
+                <a href="../../2-Basic-Terms/Overview.html">
+            
+                    
+                    二、基本术语
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../2-Basic-Terms/The-model-of-computation.html">
+            
+                <a href="../../2-Basic-Terms/The-model-of-computation.html">
+            
+                    
+                    计算模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../2-Basic-Terms/Towards-defining-private-data-analysis.html">
+            
+                <a href="../../2-Basic-Terms/Towards-defining-private-data-analysis.html">
+            
+                    
+                    定义隐私数据分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    形式化差分隐私
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../2-Basic-Terms/Formalizing-differential-privacy_1.html">
+            
+                <a href="../../2-Basic-Terms/Formalizing-differential-privacy_1.html">
+            
+                    
+                    形式化差分隐私（1）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../../2-Basic-Terms/Formalizing-differential-privacy_2.html">
+            
+                <a href="../../2-Basic-Terms/Formalizing-differential-privacy_2.html">
+            
+                    
+                    形式化差分隐私（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../2-Basic-Terms/Bibliographic-notes.html">
+            
+                <a href="../../2-Basic-Terms/Bibliographic-notes.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Overview.html">
+            
+                <a href="../Overview.html">
+            
+                    
+                    三、基本技术与组成定理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Useful-probabilistic-tools.html">
+            
+                <a href="../Useful-probabilistic-tools.html">
+            
+                    
+                    概率工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Randomized-response.html">
+            
+                <a href="../Randomized-response.html">
+            
+                    
+                    随机响应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../The-laplace-mechanism.html">
+            
+                <a href="../The-laplace-mechanism.html">
+            
+                    
+                    Laplace机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../The-exponential-mechanism.html">
+            
+                <a href="../The-exponential-mechanism.html">
+            
+                    
+                    Exponential机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="Composition-theorems.html">
+            
+                <a href="Composition-theorems.html">
+            
+                    
+                    组成定理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="Composition-some-technicalities.html">
+            
+                <a href="Composition-some-technicalities.html">
+            
+                    
+                    3.5.1 组成：一些技术细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.5.2" data-path="Advanced-composition.html">
+            
+                <a href="Advanced-composition.html">
+            
+                    
+                    3.5.2 高级组成技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.3" >
+            
+                <span>
+            
+                    
+                    3.5.3 拉普拉斯vs高斯
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.4" >
+            
+                <span>
+            
+                    
+                    3.5.4 组成定理注释
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" >
+            
+                <span>
+            
+                    
+                    稀疏向量技术
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../4-Releasing-Linear-Quries-with-Correlated-Error/Overview.md">
+            
+                <span>
+            
+                    
+                    四、带相关误差的线性查询
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" >
+            
+                <span>
+            
+                    
+                    SmallDB：离线算法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    隐私可乘权重：在线机制
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../5-Generalizations/Overview.md">
+            
+                <span>
+            
+                    
+                    五、差分隐私泛化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    𝞪-nets网机制
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    迭代构建机制
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    机制关联
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../6-Boosting-for-Queries/Overview.md">
+            
+                <span>
+            
+                    
+                    六、查询增强
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    查询算法增强
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    基本概要生成器
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../7-When-Worst-Case-Sensitivity-is-Atypical/Overview.md">
+            
+                <span>
+            
+                    
+                    七、非典型最坏敏感度
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    子样本与聚合
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    提出、测试、发布
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    稳定性与隐私性
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../8-Lower-Bounds-and-Separation-Result/Overview.md">
+            
+                <span>
+            
+                    
+                    八、差分隐私下界与分离结果
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    重建攻击
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    差分隐私下界
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../9-Differential-/text{Pr}ivacy-and-Computational-Complexity/Overview.md">
+            
+                <span>
+            
+                    
+                    九、差分隐私与计算复杂性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" >
+            
+                <span>
+            
+                    
+                    多项式时间数据提供者
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" >
+            
+                <span>
+            
+                    
+                    难合成分布
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" >
+            
+                <span>
+            
+                    
+                    多项式时间对手
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../10-Differential-/text{Pr}ivacy-and-Mechanism-Design/Overview.md">
+            
+                <span>
+            
+                    
+                    十、差分隐私与机制设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" >
+            
+                <span>
+            
+                    
+                    差分隐私作为解决概念
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" >
+            
+                <span>
+            
+                    
+                    差分隐私作为机制设计的工具
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" >
+            
+                <span>
+            
+                    
+                    设计隐私保护代理机制
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../11-Differential-/text{Pr}ivacy-and-Machine-Learning/Overview.md">
+            
+                <span>
+            
+                    
+                    十一、差分隐私与机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" >
+            
+                <span>
+            
+                    
+                    复杂差分隐私机器学习例子
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" >
+            
+                <span>
+            
+                    
+                    差分隐私在线学习
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" >
+            
+                <span>
+            
+                    
+                    经验风险最小化函数
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../12-Additional-Models/Overview.md">
+            
+                <span>
+            
+                    
+                    十二、其他差分隐私模型
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" >
+            
+                <span>
+            
+                    
+                    本地模型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" >
+            
+                <span>
+            
+                    
+                    Pan-private流模型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" >
+            
+                <span>
+            
+                    
+                    连续观察
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" >
+            
+                <span>
+            
+                    
+                    查询发布的平均案例错误
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" >
+            
+                <span>
+            
+                    
+                    参考文献
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../13-Reflections/Overview.md">
+            
+                <span>
+            
+                    
+                    十三、思考
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" >
+            
+                <span>
+            
+                    
+                    面向隐私保护实践
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" >
+            
+                <span>
+            
+                    
+                    差分隐私展望
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >3.5.2 高级组成技术</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="352-&#x9AD8;&#x7EA7;&#x7EC4;&#x6210;&#x6280;&#x672F;"><a name="352-&#x9AD8;&#x7EA7;&#x7EC4;&#x6210;&#x6280;&#x672F;" class="plugin-anchor" href="#352-&#x9AD8;&#x7EA7;&#x7EC4;&#x6210;&#x6280;&#x672F;"><i class="fa fa-link" aria-hidden="true"></i></a>3.5.2 &#x9AD8;&#x7EA7;&#x7EC4;&#x6210;&#x6280;&#x672F;</h1>
+<p>&#x9664;&#x4E86;&#x5141;&#x8BB8;&#x53C2;&#x6570;&#x964D;&#x7EA7;&#x5F97;&#x66F4;&#x6162;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x7684;&#x5B9A;&#x7406;&#x80FD;&#x591F;&#x5904;&#x7406;&#x66F4;&#x590D;&#x6742;&#x7684;&#x7EC4;&#x6210;&#x5F62;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x8BA8;&#x8BBA;&#x7EC4;&#x6210;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x786E;&#x5207;&#x542B;&#x4E49;&#x3002;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x7684;&#x5B9A;&#x4E49;&#x6DB5;&#x76D6;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>1.&#x5728;&#x540C;&#x4E00;&#x6570;&#x636E;&#x5E93;&#x4E0A;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x5DEE;&#x5206;&#x9690;&#x79C1;&#x7B97;&#x6CD5;&#x3002;&#x8FD9;&#x5141;&#x8BB8;&#x591A;&#x6B21;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x4EE5;&#x53CA;&#x4ECE;&#x4EFB;&#x610F;&#x79C1;&#x6709;&#x6A21;&#x5757;&#x4E2D;&#x6A21;&#x5757;&#x5316;&#x6784;&#x9020;&#x5DEE;&#x5206;&#x79C1;&#x6709;&#x7B97;&#x6CD5;&#x3002;</li>
+<li>2.&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4E0A;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#x5DEE;&#x5206;&#x9690;&#x79C1;&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x4E0E;&#x540C;&#x4E00;&#x4E2A;&#x4EBA;&#x7684;&#x6709;&#x5173;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x4F7F;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x63A8;&#x65AD;&#x51FA;&#x4E00;&#x4E2A;&#x4E2A;&#x4F53;&#x7684;&#x9690;&#x79C1;&#x7D2F;&#x79EF;&#x635F;&#x5931;&#xFF0C;&#x5176;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x5206;&#x5E03;&#x5728;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x96C6;&#x4E0A;&#xFF0C;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5DEE;&#x5206;&#x9690;&#x79C1;&#x7B97;&#x6CD5;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x3002;&#x7531;&#x4E8E;&#x65B0;&#x6570;&#x636E;&#x5E93;&#x4E00;&#x76F4;&#x5728;&#x521B;&#x5EFA;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x624B;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x8FD9;&#x4E9B;&#x65B0;&#x6570;&#x636E;&#x5E93;&#x7684;&#x7EC4;&#x6210;&#xFF0C;&#x56E0;&#x6B64;&#x4E0E;&#x91CD;&#x590D;&#x67E5;&#x8BE2;&#x5355;&#x4E2A;&#x56FA;&#x5B9A;&#x6570;&#x636E;&#x5E93;&#x76F8;&#x6BD4;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6839;&#x672C;&#x4E0D;&#x540C;&#x7684;&#x95EE;&#x9898;&#x3002;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5BF9;&#x7EC4;&#x6210;&#x8FDB;&#x884C;&#x5EFA;&#x6A21;&#xFF0C;&#x5728;&#x8FD9;&#x4E9B;&#x7EC4;&#x6210;&#x4E2D;&#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x9002;&#x5E94;&#x6027;&#x5730;&#x5F71;&#x54CD;&#x672A;&#x6765;&#x673A;&#x5236;&#x8F93;&#x5165;&#x7684;&#x6570;&#x636E;&#x5E93;&#x4EE5;&#x53CA;&#x5BF9;&#x8FD9;&#x4E9B;&#x672A;&#x6765;&#x673A;&#x5236;&#x7684;&#x67E5;&#x8BE2;&#x3002;&#x4EE4; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="script">F</mi></mrow></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathcal" style="margin-right:0.09931em;">F</span></span></span></span></span> &#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x673A;&#x5236;&#x3002;&#xFF08;&#x4F8B;&#x5982; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="script">F</mi></mrow></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathcal" style="margin-right:0.09931em;">F</span></span></span></span></span> &#x53EF;&#x4EE5;&#x662F;&#x6240;&#x6709; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B5;</mi><mo>&#x2212;</mo></mrow><annotation encoding="application/x-tex">\varepsilon-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.58333em;"></span><span class="strut bottom" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord mathit">&#x3B5;</span><span class="mord">&#x2212;</span></span></span></span>&#x5DEE;&#x5206;&#x9690;&#x79C1;&#x673A;&#x5236;&#x7684;&#x96C6;&#x5408;&#xFF09;&#x5BF9;&#x4E8E;&#x6982;&#x7387;&#x5BF9;&#x624B; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span>&#xFF0C;&#x6211;&#x4EEC;&#x8003;&#x8651;&#x4E24;&#x4E2A;&#x5B9E;&#x9A8C;&#xFF0C;&#x5B9E;&#x9A8C;0&#x548C;&#x5B9E;&#x9A8C;1&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x3002;</p>
+<p><strong>&#x7528; Bob &#x7684;&#x6570;&#x636E; b &#x5BF9;&#x673A;&#x5236;&#x96C6;&#x5408; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mi mathvariant="script">F</mi></mrow></mrow><annotation encoding="application/x-tex">\mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord"><span class="mord mathcal" style="margin-right:0.09931em;">F</span></span></span></span></span> &#x8FDB;&#x884C;&#x5B9E;&#x9A8C;&#xFF0C;&#x5BF9;&#x624B;&#x4E3A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span>  &#xFF1A;</strong></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">i=1,...,k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base"><span class="mord mathit">i</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span></p>
+<ul>
+<li><ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span> &#x8F93;&#x51FA;&#x4E24;&#x4E2A;&#x76F8;&#x90BB;&#x6570;&#x636E;&#x96C6; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>0</mn></msubsup><mo separator="true">,</mo><msubsup><mi>x</mi><mi>i</mi><mn>1</mn></msubsup></mrow><annotation encoding="application/x-tex">x_i^0,x_i^1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span>&#xFF0C;&#x548C;&#x673A;&#x5236; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="script">M</mi><mi>i</mi></msub><mo>&#x2208;</mo><mrow><mi mathvariant="script">F</mi></mrow></mrow><annotation encoding="application/x-tex">\mathcal{M}_i \in \mathcal{F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord"><span class="mord mathcal">M</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&#x2208;</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.09931em;">F</span></span></span></span></span>&#xFF0C;&#x4E14;&#x53C2;&#x6570;&#x4E3A; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span>&#x3002;</li>
+</ol>
+</li>
+<li><ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base"><span class="mord mathit">A</span></span></span></span> &#x63A5;&#x6536; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>y</mi><mi>i</mi></msub><msub><mo>&#x2208;</mo><mi>R</mi></msub><msub><mi mathvariant="script">M</mi><mi>i</mi></msub><mo>(</mo><msub><mi>w</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>b</mi></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">y_i \in_{R} \mathcal{M}_i(w_i,x_{i,b})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mrel">&#x2208;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord"><span class="mord mathcal">M</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathit mtight">b</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5141;&#x8BB8;&#x4E0A;&#x9762;&#x7684;&#x5BF9;&#x624B;A&#x5728;&#x6574;&#x4E2A;&#x5B9E;&#x9A8C;&#x4E2D;&#x90FD;&#x662F;&#x6709;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5148;&#x524D;&#x673A;&#x5236;&#x7684;&#x8F93;&#x51FA;&#x81EA;&#x9002;&#x5E94;&#x5730;&#x9009;&#x62E9;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x673A;&#x5236;&#x548C;&#x53C2;&#x6570;&#x3002;&#x6211;&#x4EEC;&#x5C06;A&#x5BF9;&#x5B9E;&#x9A8C;&#x7684;&#x770B;&#x6CD5;&#x5B9A;&#x4E49;&#x4E3A;A&#x6295;&#x63B7;&#x786C;&#x5E01;&#x548C;&#x6240;&#x6709;&#x673A;&#x5236;&#x8F93;&#x51FA; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>y</mi><mn>1</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>y</mi><mi>k</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">(y_1,...,y_k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base"><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span></span></span></span>&#x3002;&#xFF08;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mi>j</mi></msubsup><mo separator="true">,</mo><msub><mi mathvariant="script">M</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i^j,\mathcal{M}_i,w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.942572em;"></span><span class="strut bottom" style="height:1.219436em;vertical-align:-0.276864em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.942572em;"><span style="top:-2.4231360000000004em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.1809080000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.276864em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathcal">M</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span> &#x90FD;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x770B;&#x6CD5;&#x4E2D;&#x91CD;&#x5EFA;&#x3002;&#xFF09;</p>
+<p>&#x51FA;&#x4E8E;&#x76F4;&#x89C2;&#x8868;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x5BF9;&#x624B;&#x603B;&#x662F;&#x9009;&#x62E9; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>0</mn></msubsup></mrow><annotation encoding="application/x-tex">x_i^0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span> x&#x4FDD;&#x5B58; Bob &#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>1</mn></msubsup></mrow><annotation encoding="application/x-tex">x_i^1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span> &#x4E0E; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>0</mn></msubsup></mrow><annotation encoding="application/x-tex">x_i^0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span> &#x7684;&#x533A;&#x522B;&#x53EA;&#x6709; Bob &#x7684;&#x6570;&#x636E;&#x5728; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>x</mi><mi>i</mi><mn>1</mn></msubsup></mrow><annotation encoding="application/x-tex">x_i^1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.072772em;vertical-align:-0.258664em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span> &#x4E2D;&#x88AB;&#x5220;&#x9664;&#x3002;&#x7136;&#x540E;&#x5B9E;&#x9A8C;0&#x53EF;&#x4EE5;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x201C;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x201D;&#xFF0C;Bob &#x5141;&#x8BB8;&#x4ED6;&#x7684;&#x6570;&#x636E;&#x5728;&#x8BB8;&#x591A;&#x6570;&#x636E;&#x53D1;&#x5E03;&#x4E2D;&#x4F7F;&#x7528;&#xFF1B;&#x5B9E;&#x9A8C;1&#x662F;&#x201C;&#x7406;&#x60F3;&#x4E16;&#x754C;&#x201D;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x53D1;&#x5E03;&#x7684;&#x7ED3;&#x679C;&#x4E0D;&#x4F9D;&#x8D56;&#x4E8E;Bob&#x7684;&#x6570;&#x636E;&#x3002;&#x5C31;&#x50CF;&#x5DEE;&#x5206;&#x9690;&#x79C1;&#x5B9A;&#x4E49;&#x6240;&#x8981;&#x6C42;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;&#x9690;&#x79C1;&#x7684;&#x5B9A;&#x4E49;&#x4ECD;&#x7136;&#x8981;&#x6C42;&#x8FD9;&#x4E24;&#x4E2A;&#x5B9E;&#x9A8C;&#x76F8;&#x4E92;&#x201C;&#x63A5;&#x8FD1;&#x201D;&#x3002;&#x5BF9; Bob &#x7684;&#x76F4;&#x89C2;&#x4FDD;&#x8BC1;&#x662F;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x6240;&#x6709; <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> &#x4E2A;&#x673A;&#x5236;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x5BF9;&#x624B;&#x201C;&#x4E0D;&#x77E5;&#x9053;&#x201D; Bob &#x7684;&#x6570;&#x636E;&#x662F;&#x5426;&#x88AB;&#x4F7F;&#x7528;&#x4E86;&#x3002; </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; <a href="https://github.com/GuoJohnny" target="_blank">GuoJohnny</a> 2019 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2019-11-24 19:05:39
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Composition-some-technicalities.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 3.5.1 组成：一些技术细节">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3.5.2 高级组成技术","level":"1.5.5.2","depth":3,"next":{"title":"3.5.3 拉普拉斯vs高斯","level":"1.5.5.3","depth":3,"ref":"","articles":[]},"previous":{"title":"3.5.1 组成：一些技术细节","level":"1.5.5.1","depth":3,"path":"3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-some-technicalities.md","ref":"3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-some-technicalities.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex-plus","chapter-fold","splitter","github-buttons","copy-code-button","-lunr","-search","search-plus","expandable-chapters","expandable-chapters-small","donate","favicon","github","github-buttons","tbfed-pagefooter","sharing","anchors"],"styles":{"website":"assets/styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy <a href='https://github.com/GuoJohnny' target='_blank'>GuoJohnny</a> 2019","modify_label":"修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"github":{"url":"https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn"},"splitter":{},"donate":{"alipay":"https://differential-privacy.cn/assets/images/Alipay.png","alipayText":"支付宝打赏","button":"赏","title":"","wechat":"https://differential-privacy.cn/assets/images/Wechat.png","wechatText":"微信打赏"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":true,"multipleH1":false,"mode":"float","showGoTop":true,"float":{"floatIcon":"fa fa-navicon","showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"sharing":{"qq":true,"all":["facebook","google","twitter","weibo","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":false,"weibo":true,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":true,"vk":false,"pocket":false,"google":true,"viber":false,"stumbleupon":false,"qzone":true,"linkedin":true}},"favicon":{"shortcut":"../assets/images/favicon/favicon.ico","bookmark":"../assets/images/favicon/favicon.ico","appleTouch":"../assets/images/favicon/apple-touch-icon.png","appleTouchMore":{"120x120":"../assets/images/favicon/apple-touch-icon-120x120.png","180x180":"../assets/images/favicon/apple-touch-icon-180x180.png"}},"katex-plus":{},"github-buttons":{"buttons":[{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"star","size":"small","count":true},{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"fork","size":"small","count":true},{"user":"GuoJohnny","repo":"algorithmic-foundation-of-dp-zh-cn","type":"watch","size":"small","count":true}]},"expandable-chapters-small":{},"copy-code-button":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"search-plus":{}},"theme":"default","author":"guoJohnny","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"Introduction.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Algorithmic Foundations of Differential Pivacy-zh-CN","language":"zh-hans","gitbook":"3.2.3","description":"差分隐私算法基础-中文翻译"},"file":{"path":"3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Advanced-composition.md","mtime":"2019-11-24T11:05:39.319Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-24T11:12:43.284Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
