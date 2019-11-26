@@ -14,11 +14,11 @@ $i=1,...,k$
 - 1. $A$ 输出两个相邻数据集 $x_i^0,x_i^1$，和机制 $\mathcal{M}_i \in \mathcal{F}$，且参数为 $w_i$。
 - 2. $A$ 接收 $y_i \in_{R} \mathcal{M}_i(w_i,x_{i,b})$
 
-我们允许上面的对手 $A$ 在整个实验中都是有状态的，因此，它可以根据先前机制的输出自适应地选择数据库，机制和参数。我们将 $A$ 对实验的看法定义为A投掷硬币和所有机制输出 $(y_1,...,y_k)$。（$x_i^j,\mathcal{M}_i,w_i$ 都可以从这些看法中重建。）
+我们允许上面的对手 $A$ 在整个实验中都是有状态的，因此，它可以根据先前机制的输出自适应地选择数据库，机制和参数。我们将 $A$ 对实验的看法定义为 $A$ 投掷硬币和所有机制输出 $(y_1,...,y_k)$。（$x_i^j,\mathcal{M}_i,w_i$ 都可以从这些看法中重建。）
 
 出于直观表示，我们假设一个对手总是选择 $x_i^0$ 保存 Bob 的数据，而 $x_i^1$ 与 $x_i^0$ 的区别只有 Bob 的数据在 $x_i^1$ 中被删除。然后实验0 可以被认为是“真实世界”，Bob 允许他的数据在许多数据发布中使用；实验1 是“理想世界”，这些数据发布的结果不依赖于 Bob 的数据。就像差分隐私定义所要求的那样，我们对隐私的定义仍然要求这两个实验相互“接近”。对 Bob 的直观保证是，考虑到所有 $k$ 个机制的输出，对手“不知道” Bob 的数据是否被使用了。
 
-**定义 3.7**  如果对每个对手 $A$，我们都有 $D_{\infty}(V^0||V^1)\leq \varepsilon$，则数据库访问机制族 $\mathcal{F}$ 满足 **$k$ 倍自适应合成下的 $\varepsilon$-差分隐私**(*ε-differential privacy under k-fold adaptive compositio*n)，其中 $V^b$ 表示 $A$ 的观点在上述 $k$ 倍合成实验b 中。
+**定义 3.7**  如果对每个对手 $A$，我们都有 $D_{\infty}(V^0||V^1)\leq \varepsilon$，则数据库访问机制族 $\mathcal{F}$ 满足 **$k$ 倍自适应合成下的 $\varepsilon$-差分隐私**(*ε-differential privacy under k-fold adaptive compositio*n)，其中 $V^b$ 表示在上述 $k$ 倍合成实验b 中 $A$ 的观点。
 在 $k$ 倍自适应组合下的 $(\varepsilon,\delta)$-差分隐私要求$D_{\infty}^{\delta}(V^0||V^1)\leq \varepsilon$。
 
 **定理 3.20（高级合成）**。 对于所有 $\varepsilon,\delta,\delta'\geq 0$，$(\varepsilon,\delta)$-差分隐私机制类满足 **$k$ 倍自适应合成下的 $(\varepsilon',k\delta+\delta')$-差分隐私**，其中：

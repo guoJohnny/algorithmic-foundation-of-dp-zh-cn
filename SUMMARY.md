@@ -24,7 +24,7 @@
 	* [合成定理](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.md)
         * [3.5.1 合成：一些技术细节](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-some-technicalities.md)
     	* [3.5.2 高级合成技术](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Advanced-composition.md)
-    	* [3.5.3 拉普拉斯vs高斯]()
+    	* [3.5.3 拉普拉斯vs高斯](3-Basic-Techniques-and-Composition-Theorems/Laplace-versus-Gauss.md)
     	* [3.5.4 合成定理注释]()
 	* [稀疏向量技术]()
 	* [参考文献]()
