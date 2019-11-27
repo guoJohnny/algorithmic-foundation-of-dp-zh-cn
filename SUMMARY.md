@@ -26,7 +26,10 @@
     	* [3.5.2 高级合成技术](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Advanced-composition.md)
     	* [3.5.3 拉普拉斯vs高斯](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Laplace-versus-Gauss.md)
     	* [3.5.4 合成定理注释](3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Remarks-on-composition.md)
-	* [稀疏向量技术]()
+	* [稀疏向量技术](3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/The-sparse-vector-technique-1.md)
+    	* [3.6.1 高于阈值算法]()
+    	* [3.6.2 稀疏算法]()
+    	* [3.6.3 数值稀疏算法]()
 	* [参考文献]()
 
 * [四、带相关误差的线性查询](4-Releasing-Linear-Quries-with-Correlated-Error/Overview.md)
