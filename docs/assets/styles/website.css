@@ -5,3 +5,9 @@
 p {
     text-indent: 2em;
 }
+
+img{
+    width: 85%;
+    padding-left: 5%;
+    padding-right: 5%;
+}

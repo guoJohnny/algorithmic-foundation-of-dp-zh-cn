@@ -21,7 +21,8 @@
         "github-buttons",
         "tbfed-pagefooter",
         "sharing",
-        "anchors"      
+        "anchors",
+        "popup"      
     ],
     "pluginsConfig": {
         "anchor-navigation-ex": {
