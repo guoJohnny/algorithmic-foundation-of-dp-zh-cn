@@ -87,3 +87,13 @@ $$
 
 *详见：[指示函数定义](https://en.wikipedia.org/wiki/Indicator_function)*
 ）
+
+**定义3.9（准确度）** 如果一个算法它的应答流 $a_1,...,\in \{\top,\bot\}^{*}$ 作为对 $k$ 个查询流 $f_1,...,f_k$ 的响应。如果除了概率最大为 $\beta$ 之外，算法在 $f_k$ 之前不停止，并且对于所有 $a_i = \top$ 有：
+$$
+f_i(D) \geq T - \alpha
+$$
+对于所有 $a_i = \bot$ 有：
+$$
+f_i(D) \leq T + \alpha
+$$
+那么，我们称这个算法对于阈值 $T$ 是 **$(\alpha,\beta)$ -准确的**。
