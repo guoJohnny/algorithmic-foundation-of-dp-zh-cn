@@ -35,7 +35,7 @@ $$
 \end{aligned}
 $$
 
-注意，对于任何 $D,D',|\hat{v}-v|\leq 2,|\hat{t}-t|\leq 1$ 。这是因为每个查询 $f_i(D)$ 的敏感度都是 $1$ 的，因此量 $g(D)$ 的敏感度也是 $1$ 。应用变量的这种变化，我们有：
+注意，对于任何 $D,D'$，有 $|\hat{v}-v|\leq 2,|\hat{t}-t|\leq 1$ 。这是因为每个查询 $f_i(D)$ 的敏感度都是 $1$ 的，因此量 $g(D)$ 的敏感度也是 $1$ 。应用变量的这种变化，我们有：
 
 $$
 \begin{aligned}
@@ -50,6 +50,31 @@ $$
 $$
 
 不等式来自 $|\hat{v}-v|$ 和 $|\hat{t}-t|$的界，以及 **Laplace** 分布的概率密度函数。
+
+【**补充**：*对上述证明过程中的不等式步骤拓展解释。由 **Laplace** 分布概率密度函数（ $v$ 的尺度参数为 $4/\varepsilon$）可知：*
+
+$$
+\begin{aligned}
+    \text{Pr}[v_k = \hat{v}] &= \frac{1}{2\cdot\frac{4}{\varepsilon}}\exp\big(-\frac{|\hat{v}|}{4/\varepsilon}\big)\\
+    \text{Pr}[v_k = v] &= \frac{1}{2\cdot\frac{4}{\varepsilon}}\exp\big(-\frac{|v|}{4/\varepsilon}\big)\\
+\end{aligned}
+$$
+
+*由于 $|\hat{v}-v|\leq 2$，并且由绝对值不等式，可以作出如下推导：*
+
+$$
+\begin{aligned}
+    \frac{\text{Pr}[v_k = \hat{v}]}{\text{Pr}[v_k = v]} &= \exp\bigg(\frac{|v|-|\hat{v}|}{\frac{4}{\varepsilon}}\bigg)\\
+    &\leq \exp\bigg(\frac{|v-\hat{v}|}{\frac{4}{\varepsilon}}\bigg)\\
+    &\leq \exp\bigg(\frac{2}{\frac{4}{\varepsilon}}\bigg)\\
+    &= \exp\big(\frac{\varepsilon}{2}\big)\\
+    \implies \text{Pr}[v_k = \hat{v}] &\leq \exp\big(\frac{\varepsilon}{2}\big)\cdot \text{Pr}[v_k = v]
+\end{aligned}
+$$
+
+*同样的方法应用于 $\hat{T}$ 上，其 **Laplace** 分布的尺度参数为 $2/\varepsilon$，且 $|\hat{t}-t|\leq 1$*
+
+】
 
 （*译者注<1> **指示函数**：是定义在某集合 $X$ 上的函数，表示其中有哪些元素属于某一子集 $A$。集合 $X$ 的子集 $A$ 的指示函数是函数 $\mathbf{1}_{A}:X\to \lbrace 0,1\rbrace$，定义为*：
 
