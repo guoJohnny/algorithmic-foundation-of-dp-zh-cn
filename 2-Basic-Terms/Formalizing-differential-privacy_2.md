@@ -5,19 +5,19 @@
 
 **群隐私**：$(\varepsilon,0)$- 差分隐私机制的群隐私也遵循从定义2.4，隐私保证的强度随群的大小线性下降。
 
-（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](../3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html) *
+（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](../3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html)*
 ）
 
-**定理2.2** 对于大小为 $k$ 的群，任何 $(\varepsilon,0)$- 差分隐私机制$\mathcal{M}$ 是 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $||x-y||_1 \leq 1$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ :
+**定理2.2** 对于大小为 $k$ 的群，任何 $(\varepsilon,0)$- 差分隐私机制 $\mathcal{M}$ 是 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $||x-y||_1 \leq k$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ 有:
 $$
 \text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] 
 $$
-概率空间在机$\mathcal{M}$的硬币翻转上。
+概率空间在机制 $\mathcal{M}$ 的硬币翻转上。
 
-例如，这解决了包括多个家庭成员的调查中的隐私问题$\ ^{[1]}$。
-更普遍的说，差分隐私的合成和群体隐私不是同一回事，**第3.5.2节（定理3.20）**中改善的合成范围（实质上改善了$k$因子）不会（也不能）为群体带来相同的收益隐私，即使 $\delta=0$。
+例如，这解决了包括多个群体成员的调查中的隐私问题$\ ^{[1]}$。
+更普遍的说，差分隐私的合成和群体隐私不是同一回事，**第3.5.2节(定理3.20)** 中改善的合成范围（实质上改善了$k$因子）不会（也不能）为群体带来相同的收益隐私，即使 $\delta=0$。
 
-（原文注[1]：然而，随着群体的扩大，隐私保障也随之恶化，这正是我们想要的：很明显，如果我们用一个完全不同的群体，比如健康的青少年，来代替整个被调查的癌症患者群体，对于那些经常每天跑三英里的受访者，我们应该得到不同的答案。虽然$(\varepsilon,\delta)$ 差分隐私保密性类似，但近似项 $\delta$ 受到了很大的冲击，我们只得到 $k$ 个群的$(k\varepsilon,ke^{(k-1)\varepsilon})$-差分隐私。）
+（原文注[1]：然而，随着群体的扩大，隐私保障也随之恶化，这正是我们想要的：很明显，如果我们用一个完全不同的群体，比如健康的青少年，来代替整个被调查的癌症患者群体，对于那些经常每天跑三英里的受访者，我们应该得到不同的答案。虽然$(\varepsilon,\delta)$ 差分隐私保密性类似，但近似项 $\delta$ 受到了很大的冲击，我们只得到大小为 $k$ 的群体是$(k\varepsilon,ke^{(k-1)\varepsilon})$-差分隐私。）
 
 （*个人理解不了，有待后期学习*)
 
