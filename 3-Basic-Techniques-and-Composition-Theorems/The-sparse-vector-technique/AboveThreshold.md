@@ -139,3 +139,23 @@ f_i(D) \leq \hat{T} \leq T+|T-\hat{T}|+|\nu_i|\leq T+\alpha
 $$
 
 我们将会有对于任意 $i<k:f_i(D)<T-\alpha<T-|\nu_i|-|T-\hat{T}|$。所以： $f_i(D)+\nu_i\leq \hat{T}$，即：$a_i=\bot$。因此，算法在第k个查询被回答前不会停止。
+
+我们现在完成证明。回忆一下 [**事实3.7**](/3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.html)，当 $Y\backsim Lap(b)$ 时，$\text{Pr}[|Y|\geq t\cdot b]=\exp(-t)$，算法中$\hat{T}$ 的尺度参数 $b=2/\varepsilon$ 因此我们有：
+
+$$
+\text{Pr}[|T-\hat{T}|\geq \frac{\alpha}{2}]=\exp\Big(-\frac{\varepsilon \alpha}{4}\Big)
+$$
+
+由定理设定最大概率为 $\beta/2$，我们可以得知：$\alpha\geq \frac{4\log(2/\beta)}{\varepsilon}$
+。
+
+同样，由 [**布尔不等式**](/3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.html)，且算法中 $\nu_k$ 的尺度参数 $b=4/\varepsilon$可知：
+
+$$
+\text{Pr}[\max_{i\in [k]}|\nu_i|\geq \alpha/2]\leq k\cdot\exp\Big(-\frac{\varepsilon \alpha}{8}\Big)
+$$
+
+由定理设定最大概率为 $\beta/2$，我们可以得知：$\alpha\geq \frac{4\log(2/\beta)+\log k}{\varepsilon}$
+。
+
+这两个推导共同证明了该定理。
