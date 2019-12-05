@@ -104,32 +104,42 @@ f_i(D) \leq T + \alpha
 $$
 那么，我们称这个算法对于阈值 $T$ 是 **$(\alpha,\beta)$ -准确的**。
 
-**算法1** 可能出什么问题？噪声阈值 $\hat{T}$ 可能离 $T$ 很远，例如 $|\hat{T}-T|\geq \alpha$。 另外，小的 $f_i(D)<T-\alpha$ 可能会添加大量噪声，以至于报告为高于阈值（即使阈值接近正确），而大 $f_i(D)>T+\alpha$ 可能报告为低于阈值。所有这些都以 $\alpha$ 的指数形式发生，概率很小。总而言之，我们在选择噪声阈值时可能会遇到问题，或者在一个或多个单独的噪声值 $ν_i$ 中可能会遇到这两种问题。当然，我们可能同时存在两种错误。因此在下面的分析中，我们为每种类型分配 $\alpha/2$。
+**算法1** 可能出什么问题？噪声阈值 $\hat{T}$ 可能离 $T$ 很远，例如 $|\hat{T}-T|\geq \alpha$。 另外，小的 $f_i(D)<T-\alpha$ 可能会添加大量噪声，以至于报告为高于阈值（即使阈值接近正确），而大 $f_i(D)>T+\alpha$ 可能报告为低于阈值。所有这些都以 $\alpha$ 的指数形式发生，概率很小。总而言之，我们在选择噪声阈值时可能会遇到问题，或者在一个或多个单独的噪声值 $ν_i$ 中可能会遇到这种问题。当然，我们可能同时存在两种错误。因此在下面的分析中，我们为每种类型分配 $\alpha/2$。
 
-**定理3.24** 对于k个查询的任何序列，$f_1,...,f_k$ 使得 $|\{i<k:f_i(D)\geq T - \alpha\}|=0$（即，唯一接近阈值以上的查询可能是最后一个），**AboveThreshold** 算法 $(D,{f_i},T,\varepsilon)$ 的 $(\alpha,\beta)$ 精确度为：
+（*个人理解：**AboveThreshold** 中需要向阈值 $T$ 和扰动 $\nu_k$ 添加 Laplace 噪声。根据 Laplace 分布的特点（下图）：*
+
+![LaplaceDistribution](/3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/img/LaplaceDistribution.png)
+
+*可以看出，算法会以小概率对阈值和扰动添加过大的噪声。如图的左右两侧。这就会造成上文提到的 “**噪声阈值 $\hat{T}$ 可能离 $T$ 很远，例如 $|\hat{T}-T|\geq \alpha$**”。同样，对扰动的噪声也可能过大。这样就导致，即使 $\hat{T}$ 与 $T$ 接近的情况下，造成小值回答（不允许释放）超过阈值被释放；大值回答（允许释放）小于阈值被拒绝。由于 **AboveThreshold** 会出现这两种错误，进而不满足 **定义3.9** 的规定。所以对于这两种错误情况，下面定理为噪声阈值 $\hat{T}$ 和 扰动 $\nu_k$ 各分配 $\alpha/2$ 的界。并将概率上界 $\beta$ 和噪声取之范围 $\alpha$ 关联起来，使得 **AboveThreshold** 算法不会出现两种错误情况，进而满足 **定义3.9** 的规定。*
+）
+
+**定理3.24** 对于 k 个查询的任何序列，$f_1,...,f_k$ 使得 $|\{i<k:f_i(D)\geq T - \alpha\}|=0$（即，唯一接近阈值以上的查询是最后一个），当：
 
 $$
 \alpha = \frac{8(\log k+\log(2/\beta))}{\varepsilon}
 $$
 
-【证明】 如果我们能够证明除概率最大为 $\beta$ 以外:
+**AboveThreshold** 算法 $(D,{f_i},T,\varepsilon)$ 是 $(\alpha,\beta)$-准确的：
+
+
+【证明】 如果我们能够证明除概率最大为 $\beta$ 以外，当:
 
 $$
-\max_{i \in [k]}|\nu_i|+|T-\hat{T}|\leq\alpha
+ \max_{i \in [k]}|\nu_i|+|T-\hat{T}|\leq\alpha  \qquad  (*)
 $$
 
-则，由观察得该定理。
+时，由观察易得该定理。
 
 如果是这样的情况，那么对于任意 $a_i=\top$，有：
 
 $$
-f_i(D) + \nu_i \geq \hat{T} \geq T-|T-\hat{T}|
+f_i(D) + \nu_i \geq \hat{T} \geq T-|T-\hat{T}| \qquad  (1)
 $$
 
 进一步推导：
 
 $$
-f_i(D) \geq T-|T-\hat{T}|-|\nu_i|\geq T-\alpha
+f_i(D) \geq T-|T-\hat{T}|-|\nu_i|\geq T-\alpha \qquad  (2)
 $$
 
 同样的，对于任意 $a_i = \bot$，有：
@@ -138,9 +148,9 @@ $$
 f_i(D) \leq \hat{T} \leq T+|T-\hat{T}|+|\nu_i|\leq T+\alpha
 $$
 
-我们将会有对于任意 $i<k:f_i(D)<T-\alpha<T-|\nu_i|-|T-\hat{T}|$。所以： $f_i(D)+\nu_i\leq \hat{T}$，即：$a_i=\bot$。因此，算法在第k个查询被回答前不会停止。
+我们将会有对于任意 $i<k:f_i(D)<T-\alpha<T-|\nu_i|-|T-\hat{T}|$。所以： $f_i(D)+\nu_i\leq \hat{T}$，即：$a_i=\bot$。因此，算法在第 k 个查询被回答前不会停止。
 
-我们现在完成证明。回忆一下 [**事实3.7**](/3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.html)，当 $Y\backsim Lap(b)$ 时，$\text{Pr}[|Y|\geq t\cdot b]=\exp(-t)$，算法中$\hat{T}$ 的尺度参数 $b=2/\varepsilon$ 因此我们有：
+我们现在完成证明。回忆一下 [**事实3.7**](/3-Basic-Techniques-and-Composition-Theorems/The-laplace-mechanism.html)，当 $Y\backsim Lap(b)$ 时，$\text{Pr}[|Y|\geq t\cdot b]=\exp(-t)$，算法中 $\hat{T}$ 的尺度参数 $b=2/\varepsilon$ 因此我们有：
 
 $$
 \text{Pr}[|T-\hat{T}|\geq \frac{\alpha}{2}]=\exp\Big(-\frac{\varepsilon \alpha}{4}\Big)
@@ -159,3 +169,18 @@ $$
 。
 
 这两个推导共同证明了该定理。
+
+【**补充(1)式**：*在 **AboveThreshold** 算法中，当 $a_i=\top,f_i(D)+\nu_i\geq \hat{T}$，$|T-\hat{T}|$ 为 Laplace 噪声，故阈值必然大于等于其下界 $T-|T-\hat{T}|$* 】
+
+【**补充(2)式**：*由 $(*)$ 可以推得：*
+
+$$
+\begin{aligned}
+    \max_{i \in [k]}|\nu_i|+|T-\hat{T}|&\leq\alpha\\
+    \implies |\nu_i|+|T-\hat{T}| &\leq \max_{i \in [k]}|\nu_i|+|T-\hat{T}| \leq \alpha\\
+    \implies -|\nu_i|-|T-\hat{T}| &\geq -\alpha\\
+    \implies T-|\nu_i|-|T-\hat{T}| &\geq T-\alpha
+\end{aligned}
+$$
+
+ 】
