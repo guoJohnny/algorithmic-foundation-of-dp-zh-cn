@@ -113,6 +113,11 @@
                 "120x120": "../assets/images/favicon/apple-touch-icon-120x120.png",
                 "180x180": "../assets/images/favicon/apple-touch-icon-180x180.png"
             }
+        },
+        "fontsettings": {
+            "theme": "white", 
+            "family": "sans", 
+            "size": 3         
         }
     },
      "styles": {
