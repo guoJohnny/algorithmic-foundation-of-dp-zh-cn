@@ -8,7 +8,7 @@
 
 **定理 3.25** 稀疏算法是 $(\varepsilon,\delta)$-差分隐私的。
 
-**【证明】** 我们观察到 **Sparse** 算法完全等同于以下过程：我们对查询流 $\{f_i\}$ 运行 **AboveThreshold** 算法 $(D,\{f_i\},T,\varepsilon')$，并设置：
+**【证明】** 我们发现到 **Sparse** 算法完全等同于以下过程：我们对查询流 $\{f_i\}$ 运行 **AboveThreshold** 算法 $(D,\{f_i\},T,\varepsilon')$，并设置：
 
 $$
 \varepsilon' = \begin{cases}
@@ -17,10 +17,10 @@ $$
 \end{cases}
 $$
 
-使用 **AboveThreshold** 算法提供答案。当 **AboveThreshold** 算法停止时（在回答了1个超过阈值的查询之后），我们只需在剩余的查询流上重新启动 **Sparse**算法$(D,\{f_i\},T,\varepsilon')$ ，并继续这个过程直到我们重新启动 **AboveThreshold** 算法 $c$ 次。第 $c$ 次 **AboveThreshold** 算法停止后，**Sparse**算法 也停止。我们已经证明了**AboveThreshold** 算法 $(D,\{f_i\},T,\varepsilon')$ 是$(\varepsilon',0)$-差分隐私的。最后，根据高级合成定理（[**定理3.20**](/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Advanced-composition.html)），$c$ 个
+使用 **AboveThreshold** 算法提供答案。当 **AboveThreshold** 算法停止时（在回答了1个超过阈值的查询之后），我们只需在剩余的查询流上重新启动 **Sparse**算法$(D,\{f_i\},T,\varepsilon')$ ，并继续这个过程直到我们重新启动 **AboveThreshold** 算法 $c$ 次。第 $c$ 次 **AboveThreshold** 算法停止后，**Sparse**算法 也停止。我们已经证明了**AboveThreshold** 算法 $(D,\{f_i\},T,\varepsilon')$ 是$(\varepsilon',0)$-差分隐私的。最后，根据高级合成定理（[**定理 3.20 和 推论 3.21**](/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Advanced-composition.html)），$c$ 个
  $\varepsilon' = \frac{\varepsilon}{\sqrt{8c\ln \frac{1}{\delta}}}$-差分隐私算法的合成是 $(\varepsilon,\delta)$ -差分隐私，并且 $c$ 个 $\varepsilon' = \varepsilon/c$- 差分隐私算法的合成是 $(\varepsilon,0)$ -差分隐私。
 
- 通过再次观察包含 $c$ 个 **AboveThreshold** 算法 的 **Sparse** 算法，需要证明 **Sparse** 算法的准确性。我们注意到，如果对于每个 **AboveThreshold** 算法 $(\alpha,\beta/c)$ 精确的，那么 **Sparse** 算法将是 $(\alpha,\beta)$ 精确的。
+ 需要证明 包含 $c$ 个 **AboveThreshold** 算法 的 **Sparse** 算法的准确性。我们注意到，如果对于每个 **AboveThreshold** 算法 $(\alpha,\beta/c)$ 精确的，那么 **Sparse** 算法将是 $(\alpha,\beta)$ 精确的。
 
  **定理 3.26** 对于 k 个查询的任何序列，$f_1,...,f_k$ 使得 $L(T)\equiv|\{i:f_i(D)\geq T - \alpha\}|\leq c$。如果 $\delta >0$，当：
  
@@ -39,3 +39,4 @@ $$
 **Sparse** 算法是 $(\alpha,\beta)$ 精确的。 
 
 **【证明】** 运用 [**定理3.24**](/3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/AboveThreshold.html) 的证明方法，将 $\beta$ 设为$\beta/c$，并分别根据 $\delta > 0$ 或 $\delta=0$ 将 $\varepsilon$ 设为 $\frac{\varepsilon}{\sqrt{8c\ln \frac{1}{\delta}}}$ 和 $\varepsilon/c$ 即可。
+
