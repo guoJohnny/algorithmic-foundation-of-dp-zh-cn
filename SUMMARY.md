@@ -30,7 +30,7 @@
     	* [3.6.1 高于阈值算法](3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/AboveThreshold.md)
     	* [3.6.2 稀疏算法](3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/Sparse.md)
     	* [3.6.3 数值稀疏算法](3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/NumericSparse.md)
-	* [参考文献]()
+	* [参考文献](3-Basic-Techniques-and-Composition-Theorems/Bibliographic-notes.md)
 
 * [四、带相关误差的线性查询](4-Releasing-Linear-Quries-with-Correlated-Error/Overview.md)
 	* [SmallDB：离线算法]()
