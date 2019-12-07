@@ -4,9 +4,9 @@
 
 让我们先从一个简单的预热开始：我们将看到独立的 $(\varepsilon_1,0)$ -差分隐私算法和（$(\varepsilon_2,0)$ -差分隐私算法使用在一起是 $(\varepsilon_1 + \varepsilon_2,0)$ -差分隐私算法。
 
-**定理 3.14** 设 $\mathcal{M}_1:\mathbb{N}^{|\chi|}\to \mathcal{R}_1$ 为 $\varepsilon_1$ -差分隐私算法，设 $\mathcal{M}_2:\mathbb{N}^{|\chi|}\to \mathcal{R}_2$ 为 $\varepsilon_2$ -差分隐私算法。然后将它们的组合，定义为$\mathcal{M}_{1,2}:\mathbb{N}^{|\chi|}\to \mathcal{R}_1 \times \mathcal{R}_2$ ，映射为： $\mathcal{M}_{1,2}(x) = (\mathcal{M}_{1}(x),\mathcal{M}_{2}(x))$ 是 $(\varepsilon_1 + \varepsilon_2)$ -差分隐私算法。
+**定理 3.14** 设 $\mathcal{M}_1:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_1$ 为 $\varepsilon_1$ -差分隐私算法，设 $\mathcal{M}_2:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_2$ 为 $\varepsilon_2$ -差分隐私算法。然后将它们的组合，定义为$\mathcal{M}_{1,2}:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_1 \times \mathcal{R}_2$ ，映射为： $\mathcal{M}_{1,2}(x) = (\mathcal{M}_{1}(x),\mathcal{M}_{2}(x))$ 是 $(\varepsilon_1 + \varepsilon_2)$ -差分隐私算法。
 
-**【证明】** 令 $x,y \in \mathbb{N}^{|\chi|}$ 满足 $||x-y||_1 \leq 1$，任意 $(r_1,r_2) \in \mathcal{R}_1 \times \mathcal{R}_2$，则：
+**【证明】** 令 $x,y \in \mathbb{N}^{|\mathcal{X}|}$ 满足 $||x-y||_1 \leq 1$，任意 $(r_1,r_2) \in \mathcal{R}_1 \times \mathcal{R}_2$，则：
 
 $$
 \begin{aligned}
@@ -21,10 +21,10 @@ $$
 
 组合定理能反复应用以获得以下推论：
 
-**推论 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\chi|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,0)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\chi|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,0)$- 差分隐私。
+**推论 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,0)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\mathcal{X}|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,0)$- 差分隐私。
 
 该定理推广到 $(\varepsilon,\delta)$-差分隐私的证明见附录B：
 
-**定理 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\chi|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,\delta_i)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\chi|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,\sum_{i=1}^{k}\delta_i)$- 差分隐私。
+**定理 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,\delta_i)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\mathcal{X}|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,\sum_{i=1}^{k}\delta_i)$- 差分隐私。
 
 差异隐私的一个优点：其合成是“自动”的，因为获得的限制是保持不变，无需数据提供者对其做任何修改。

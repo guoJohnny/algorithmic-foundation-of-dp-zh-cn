@@ -18,3 +18,5 @@ $$
 $$
 f(x)=\sum_{i=1}^{|\mathcal{X}|}x_i\cdot f(\chi_i)
 $$
+
+【**补充：** 该部分约定的符号所代表的含义可以参考[2.3节](/2-Basic-Terms/Formalizing-differential-privacy_1.html)。】

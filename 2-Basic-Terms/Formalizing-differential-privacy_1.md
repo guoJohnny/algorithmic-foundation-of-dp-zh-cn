@@ -63,31 +63,31 @@ $$
 
 （*个人理解：$\mathcal{M}$ 是种映射算法（机制），将原始域数据成为其他离散形式（比如直方图）。上文的翻转硬币机制就是该定义中的 $\mathcal{M}$  。此处的$\mathcal{M}$与映射 $M:A \to \Delta(B)$有联系但不相同，$\mathcal{M}$指将原始数据变成其他数据的方法，$M:A \to \Delta(B)$是指从$A \to B$的各个映射的概率。）*）
 
-我们将数据库 $x$ 视为来自全集 $\chi$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\chi|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中元素的数量。 类型 $i\in\chi$（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的     $\ell_1$ 距离：
+我们将数据库 $x$ 视为来自全集 $\mathcal{X}$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\mathcal{X}|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中类型 $i\in\mathcal{X}$ 元素的数量。（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的     $\ell_1$ 距离：
 
 **定义 2.3 (数据库之间距离)** 将数据库的$\ell_1$ 范数距离表示为 $||x||_1$ 其定义为:
 
 $$
-||x||_1 = \sum_{i=1}^{|\chi|}|x_i|
+||x||_1 = \sum_{i=1}^{|\mathcal{X}|}|x_i|
 $$
 
 数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $||x-y||_1$
 
 注意到 $||x||_1$ 是衡量数据库 $x$ 的大小（也就是说，数据库 $x$ 包含的记录数），而 $||x-y||_1$ 表示数据库 $x$ 和 $y$ 之间相差多少条记录。我们称这种记录相差为1的数据库为相邻数据集。
 
-数据库也可以由行的多集（ $\chi$ 的元素）甚至行的有序列表来表示(这是一组的特例,其中行号成为元素名称的一部分)。 在这种情况下，数据库之间的距离通常由汉明距离（即汉明距离不同）来衡量。  
+数据库也可以由行的多集（ $\mathcal{X}$ 的元素）甚至行的有序列表来表示(这是一组的特例,其中行号成为元素名称的一部分)。 在这种情况下，数据库之间的距离通常由汉明距离（即汉明距离不同）来衡量。  
 
 但是，除非另有说明，否则我们将使用上述直方图表示形式。 （但是请注意，即使直方图表示法在数学上更方便，在实际的实现中，多集表示通常也会更加简洁）。  
 
 现在，我们可以正式定义差分隐私了，这将直观地保证随机算法在相似输入数据库上的行为类似。 
 
-**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\chi|}$ 有 $||x-y||_1 \leq 1$，如果满足下列关系：
+**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $||x-y||_1 \leq 1$，如果满足下列关系：
 
 $$
 \text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
 $$
 
-则将这个域在 $\mathbb{N}^{|\chi|}$ 的随机算法 $\mathcal{M}$ 称为 $(\varepsilon,\delta)$ 差分隐私(即 $(\varepsilon,\delta) \text{--} Differentially \ private$)。  
+则将这个域在 $\mathbb{N}^{|\mathcal{X}|}$ 的随机算法 $\mathcal{M}$ 称为 $(\varepsilon,\delta)$ 差分隐私(即 $(\varepsilon,\delta) \text{--} Differentially \ private$)。  
 
 特别的，如果 $\delta=0$ ，则将 $\mathcal{M}$ 称为 $\varepsilon$ 差分隐私(即 $\varepsilon \text{--} Differentially \ private$)。
 
@@ -104,7 +104,7 @@ $$
 
 差分隐私不受后处理的影响：在没有其他有关私有数据库的知识的情况下，数据分析人员无法计算私有算法$\mathcal{M}$的输出函数，也无法使其差分隐私程度降低。 就是说，如果算法保护了个人的隐私，那么无论是在正式定义下，还是在任何直观的意义上，数据分析师都无法仅仅通过坐在角落里思考算法的输出来增加隐私损失。 形式上，具有（$(\varepsilon,\delta)$-  差分隐私算法$\mathcal{M}$的数据独立映射 $f$ 的合成也具有（$(\varepsilon,\delta)$-  差分隐私：
 
-**命题2.1（后处理）** 令 $\mathcal{M}: \mathbb{N}^{|\chi|} \to R$ 是 $(\varepsilon,\delta)$-  差分隐私随机算法。 令 $f:R \to R'$为任意随机映射。 则 $f \circ \mathcal{M}: \mathbb{N}^{|\chi|} \to R'$ 是 $(\varepsilon,\delta)$- 差分隐私。
+**命题2.1（后处理）** 令 $\mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R$ 是 $(\varepsilon,\delta)$-  差分隐私随机算法。 令 $f:R \to R'$为任意随机映射。 则 $f \circ \mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R'$ 是 $(\varepsilon,\delta)$- 差分隐私。
 
 【证明】我们证明了一个确定性函数$f:R \to R'$的命题。结果如下，因为任何随机映射都可以分解为确定性函数的凸组合，而差分隐私机制的凸组合是差分隐私的。
 

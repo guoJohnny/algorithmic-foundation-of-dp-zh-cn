@@ -6,7 +6,7 @@
 
 **例 3.5（南瓜竞拍）** 假设我们有大量的南瓜和四个竞标者：A，F，I，K，其中A，F，I分别出价1.00美元和K出价3.01美元，最优价格是多少？在 3.01美元时，收入为 3.01美元（只符合K的价格，故只有K买，收入3.01美元）；在 3.00美元 和 1.00美元 时候，收入为 3.00美元（只有A、F、I符合价格，收入共3美元）；但在 3.02美元时，收入为零（无人符合价格）！
 
-指数机制是使用任意效用函数（或任意非数字范围）回答查询的天然模块（原文为“building block”积木，此处翻译为模块），同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 $x$，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；效用函数 $u$ 可以是任意敏感的：
+指数机制是使用任意效用函数（或任意非数字范围）回答查询的天然模块（原文为“building block”积木，此处翻译为模块），同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 $x$，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；效用函数 $u$ 可以是任意敏感的：
 
 $$
 \Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|
@@ -40,7 +40,7 @@ $$
 
 **定理 3.10** 指数机制满足 $(\varepsilon,0)$ -差分隐私。
 
-**【证明】** 为了清楚起见，我们假设指数机制的范围 $\mathcal{R}$ 是有限的，但这是不必要的。在所有的差分隐私证明中，我们考虑指数机制的一个实例,即在两个相邻的数据库 $x \in \mathbb{N}^{|\chi|},y \in \mathbb{N}^{|\chi|},||x-y||_1 \leq 1$上输出某个元素  $r \in \mathcal{R}$ 的概率之比。
+**【证明】** 为了清楚起见，我们假设指数机制的范围 $\mathcal{R}$ 是有限的，但这是不必要的。在所有的差分隐私证明中，我们考虑指数机制的一个实例,即在两个相邻的数据库 $x \in \mathbb{N}^{|\mathcal{X}|},y \in \mathbb{N}^{|\mathcal{X}|},||x-y||_1 \leq 1$上输出某个元素  $r \in \mathcal{R}$ 的概率之比。
 
 $$
 \begin{aligned}
@@ -81,7 +81,7 @@ $$
 
 】
 
-指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\chi|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
+指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
 
 **定理3.11** 固定数据库 $x$，令 $\mathcal{R}_{\text{OPT}}={r \in \mathcal{R}:u(x,r)=\text{OPT}_u(x)}$ 表示 $\mathcal{R}$ 中获得效用分数 $\text{OPT}_u(x)$ 的元素集合。则：
 
