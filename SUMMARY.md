@@ -33,7 +33,7 @@
 	* [参考文献](3-Basic-Techniques-and-Composition-Theorems/Bibliographic-notes.md)
 
 * [四、带相关误差的线性查询](4-Releasing-Linear-Quries-with-Correlated-Error/Overview.md)
-	* [SmallDB：离线算法]()
+	* [SmallDB：离线算法](4-Releasing-Linear-Quries-with-Correlated-Error/An-offline-algorithm-SmallDB.md)
 	* [隐私可乘权重：在线机制]()
 	* [参考文献]()
 
