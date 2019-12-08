@@ -4,7 +4,7 @@
 
 **定义3.1 $(\ell_1$敏感度)** 方法 $f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^k$ 的 $\ell_1$敏感度为：
 $$
-\Delta f = \max_{x,y\in\mathbb{N}^{|\mathcal{X}|},||x-y||_1=1}||f(x)-f(y)||_1
+\Delta f = \max_{x,y\in\mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1=1}\Vert f(x)-f(y)\Vert _1
 $$
 
 函数 $f$ 的 $\ell_1$ 敏感度反映了单体的数据在最坏情况下可以改变函数 $f$ 的程度，因此，直观地讲，为了隐藏单个人的参与，我们必须引入响应的不确定性。确实，我们将这种动机形式化：函数的敏感性为我们对输出施加多少扰动以保护隐私提供了一个上界。自然而然地，一种噪声分布可带来差分隐私。
@@ -31,34 +31,34 @@ $$
 
 **定理 3.6**  拉普拉斯机制是 $(\varepsilon,0)$-差分隐私。
 
-**【证明】**：设 $x \in \mathbb{N}^{|\mathcal{X}|},y \in \mathbb{N}^{|\mathcal{X}|}$，同时满足 $||x-y||_1 \leq 1$ （即两者为相邻数据集）。并设 $f(\cdot)$ 是函数 $f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^k$。用 $p_x$ 表示概率密度函数 $\mathcal{M}_L(x,f,\varepsilon)$, $p_y$ 表示概率密度函数 $\mathcal{M}_L(y,f,\varepsilon)$。我们用任意点 $z$ 比较这两者的概率密度：
+**【证明】**：设 $x \in \mathbb{N}^{|\mathcal{X}|},y \in \mathbb{N}^{|\mathcal{X}|}$，同时满足 $\Vert x-y\Vert _1 \leq 1$ （即两者为相邻数据集）。并设 $f(\cdot)$ 是函数 $f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^k$。用 $p_x$ 表示概率密度函数 $\mathcal{M}_L(x,f,\varepsilon)$, $p_y$ 表示概率密度函数 $\mathcal{M}_L(y,f,\varepsilon)$。我们用任意点 $z$ 比较这两者的概率密度：
 
 $$
 \begin{aligned}
     \frac{p_x(z)}{p_y(z)} &= \prod_{i=1}^{k}\Bigg(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Bigg)\\
     &= \prod_{i=1}^{k}exp\Bigg( \frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f} \Bigg)\\
     &\leq \prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
-    &= exp\Bigg(\frac{\varepsilon||f(x)-f(y)||_1}{\Delta f} \Bigg)\\
+    &= exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)\\
     &\leq exp(\varepsilon)
 \end{aligned}
 $$
 
-第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$||x-y||_1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq exp(-\varepsilon)$。
+第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$\Vert x-y\Vert _1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq exp(-\varepsilon)$。
 
 【补充1: $\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Big(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Big)$ 表示形式是拉普拉斯分布的分量形式，即：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}exp\Big(\frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f}\Big)$ 
 
 亦即：$p_x(\overrightarrow{z})= \frac{\varepsilon}{2\Delta f}exp\Big(\frac{\varepsilon(|f(y)-\overrightarrow{z}|-|f(x)-\overrightarrow{z}|)}{\Delta f}\Big)$ 】
 
-【补充2：由于 **定义 2.3 (数据库之间距离)** 定义了数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $||x-y||_1$
+【补充2：由于 **定义 2.3 (数据库之间距离)** 定义了数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $\Vert x-y\Vert _1$
 
 $$
-||x-y||_1 = \sum_{i=1}^{|\mathcal{X}|}|x_i-y_i|
+\Vert x-y\Vert _1 = \sum_{i=1}^{|\mathcal{X}|}|x_i-y_i|
 $$
-故：上述证明中的 $\prod_{i=1}^{k}exp\Big(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Big)=exp\Big(\frac{\varepsilon||f(x)-f(y)||_1}{\Delta f} \Big)$ 可由如下步骤得到：
+故：上述证明中的 $\prod_{i=1}^{k}exp\Big(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Big)=exp\Big(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Big)$ 可由如下步骤得到：
 $$
 \begin{aligned}
     \prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg) &= exp\Bigg(\frac{\varepsilon\sum_{i=1}^{k}|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
-    &= exp\Bigg(\frac{\varepsilon||f(x)-f(y)||_1}{\Delta f} \Bigg)
+    &= exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)
 \end{aligned}
 $$
 】
@@ -84,14 +84,14 @@ $$
 
 **定理 3.8** ：设 $f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^k,y=\mathcal{M}_L(x,f(\cdot),\varepsilon)$。则 $\forall\delta \in (0,1]$：
 $$
-\text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
+\text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \leq \delta
 $$
 
 **【证明】** 我们有：
 
 $$
 \begin{aligned}
-   \text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] &= \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]\\
+   \text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] &= \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]\\
   & \leq k\cdot \text{Pr}\Big[|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big] \\
   &= k\cdot(\frac{\delta}{k})\\
   &= \delta
@@ -102,10 +102,10 @@ $$
 
 （**译者注<1> 布尔不等式**：指对于全部事件的概率不大于单个事件的概率总和，对于事件 $A_1,A_2,A_3...: P(\bigcup_{i}A_i)\leq \sum_iP(A_i)$）
 
-【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$||x||$为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：
+【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$\Vert x\Vert $为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：
 
 $$
-||x||_{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|
+\Vert x\Vert _{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|
 $$
 
 】
@@ -114,11 +114,11 @@ $$
 
 又因切比雪夫距离定义：
 
-$||f(x)-y||_\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
+$\Vert f(x)-y\Vert _\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
 
 故证明的第一步可以由此推导出： 
 
-$\text{Pr}\Big[||f(x)-y||_\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
+$\text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
 
 证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：
 

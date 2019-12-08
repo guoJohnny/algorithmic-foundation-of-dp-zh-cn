@@ -8,7 +8,7 @@
 （**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](../3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html)*
 ）
 
-**定理2.2** 任意一个大小为 $k$ 的群体，这个群体的机制 $\mathcal{M}$ 是 $(\varepsilon,0)$- 差分隐私，则这个机制 $\mathcal{M}$ 会变成 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $||x-y||_1 \leq k$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ 有:
+**定理2.2** 任意一个大小为 $k$ 的群体，这个群体的机制 $\mathcal{M}$ 是 $(\varepsilon,0)$- 差分隐私，则这个机制 $\mathcal{M}$ 会变成 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $\Vert x-y\Vert _1 \leq k$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ 有:
 $$
 \text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] 
 $$
@@ -26,7 +26,7 @@ $$
 
 **经济观点** ：差分隐私承诺保护个人信息免受任何额外的损害，这种伤害的出现是因为他们的数据在私有数据库 $x$ 中。如果他们的数据不是 $x$ 的一部分，他们就不会遭到这些损害。尽管一旦差分隐私机制 $\mathcal{M}$ 的结果 $\mathcal{M}(x)$ 发布，个人信息确实可能会面临伤害。差分隐私承诺，他们选择参与数据发布并不会显著增加伤害的可能性。这是一个非常功利的隐私定义，因为当一个人决定是否将她的数据包含在差分隐私数据库中时，她会考虑这种差异：与没参与数据发布相比，她的个人信息在参与后遭到损害的概率。因为她无法控制数据库的其余内容，所以考虑到了差别隐私的承诺，她能确信从未来的损害来看，参与与不参与数据发布造成的影响几乎没什么差别。如果给予任何激励———从利他主义到金钱回报——差分隐私可能会说服她允许使用她的数据。这种直觉可以在效用理论的意义上被形式化，我们在这里简单地描述一下。  
 
-考虑一个对所有可能的未来事件集合有任意偏好的个体 $i$ ，我们用 $\mathcal{A}$ 来表示。这些偏好由一个效用函数 $u_i$ 来表示 $u_i:\mathcal{A} \to \mathbb{R}_{\geqslant0}$ ，我们说个体$i$在 $a \in \mathcal{A}$ 的情况下,其效用为 $u_i(a)$。假设 $x \in \mathbb{N}^{|\mathcal{X}|}$ 是一个包含个体 $i$ 的私有数据的数据集，$\mathcal{M}$ 是一个 $\varepsilon$- 差分隐私算法。设$y$为与$x$ 相邻的数据集，它不包括个体 $i$ 的数据（$||x-y||_1 \leq 1$）。并设 $f:Range(\mathcal{M} ) \to \Delta(\mathcal{A})$ 为（任意）函数，该函数决定未来事件 $\mathcal{A}$ 的分布，以机制M的输出为条件（*注：此处$\Delta(\mathcal{A})$函数为定义2.1（概率单纯形）函数*）。通过差分隐私的保证以及命题2.1保证的任意后处理的弹性，我们可以有：
+考虑一个对所有可能的未来事件集合有任意偏好的个体 $i$ ，我们用 $\mathcal{A}$ 来表示。这些偏好由一个效用函数 $u_i$ 来表示 $u_i:\mathcal{A} \to \mathbb{R}_{\geqslant0}$ ，我们说个体$i$在 $a \in \mathcal{A}$ 的情况下,其效用为 $u_i(a)$。假设 $x \in \mathbb{N}^{|\mathcal{X}|}$ 是一个包含个体 $i$ 的私有数据的数据集，$\mathcal{M}$ 是一个 $\varepsilon$- 差分隐私算法。设$y$为与$x$ 相邻的数据集，它不包括个体 $i$ 的数据（$\Vert x-y\Vert _1 \leq 1$）。并设 $f:Range(\mathcal{M} ) \to \Delta(\mathcal{A})$ 为（任意）函数，该函数决定未来事件 $\mathcal{A}$ 的分布，以机制M的输出为条件（*注：此处$\Delta(\mathcal{A})$函数为定义2.1（概率单纯形）函数*）。通过差分隐私的保证以及命题2.1保证的任意后处理的弹性，我们可以有：
 $$
 \begin{aligned}
     \mathbb{E}_{a \backsim f(\mathcal{M}(x))}[u_i(a)] &= \sum_{a \in \mathcal{A}}u_i(a) \cdotp \underset{f(\mathcal{M}(x))}{\text{Pr}}[a] \\

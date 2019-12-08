@@ -65,15 +65,15 @@ $$
 
 我们将数据库 $x$ 视为来自全集 $\mathcal{X}$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\mathcal{X}|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中类型 $i\in\mathcal{X}$ 元素的数量。（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的     $\ell_1$ 距离：
 
-**定义 2.3 (数据库之间距离)** 将数据库的$\ell_1$ 范数距离表示为 $||x||_1$ 其定义为:
+**定义 2.3 (数据库之间距离)** 将数据库的$\ell_1$ 范数距离表示为 $\Vert x\Vert _1$ 其定义为:
 
 $$
-||x||_1 = \sum_{i=1}^{|\mathcal{X}|}|x_i|
+\Vert x\Vert _1 = \sum_{i=1}^{|\mathcal{X}|}|x_i|
 $$
 
-数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $||x-y||_1$
+数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $\Vert x-y\Vert _1$
 
-注意到 $||x||_1$ 是衡量数据库 $x$ 的大小（也就是说，数据库 $x$ 包含的记录数），而 $||x-y||_1$ 表示数据库 $x$ 和 $y$ 之间相差多少条记录。我们称这种记录相差为1的数据库为相邻数据集。
+注意到 $\Vert x\Vert _1$ 是衡量数据库 $x$ 的大小（也就是说，数据库 $x$ 包含的记录数），而 $\Vert x-y\Vert _1$ 表示数据库 $x$ 和 $y$ 之间相差多少条记录。我们称这种记录相差为1的数据库为相邻数据集。
 
 数据库也可以由行的多集（ $\mathcal{X}$ 的元素）甚至行的有序列表来表示(这是一组的特例,其中行号成为元素名称的一部分)。 在这种情况下，数据库之间的距离通常由汉明距离（即汉明距离不同）来衡量。  
 
@@ -81,7 +81,7 @@ $$
 
 现在，我们可以正式定义差分隐私了，这将直观地保证随机算法在相似输入数据库上的行为类似。 
 
-**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $||x-y||_1 \leq 1$，如果满足下列关系：
+**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $\Vert x-y\Vert _1 \leq 1$，如果满足下列关系：
 
 $$
 \text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
@@ -91,14 +91,14 @@ $$
 
 特别的，如果 $\delta=0$ ，则将 $\mathcal{M}$ 称为 $\varepsilon$ 差分隐私(即 $\varepsilon \text{--} Differentially \ private$)。
 
-通常，我们对 $\delta$ 的值感兴趣，该值小于多项式数据库大小的倒数。 特别是，$\delta$  值接近 $1/||x||_1$ 是非常危险（因为在第1节中讨论“少数人”原则）：这种做法通过发布少量数据库参与者的完整记录来“保护隐私”（以获得可用性）。 
+通常，我们对 $\delta$ 的值感兴趣，该值小于多项式数据库大小的倒数。 特别是，$\delta$  值接近 $1/\Vert x\Vert _1$ 是非常危险（因为在第1节中讨论“少数人”原则）：这种做法通过发布少量数据库参与者的完整记录来“保护隐私”（以获得可用性）。 
 
 但是，即使 $\delta$ 可以忽略不计，$\varepsilon$ 和 $(\varepsilon,\delta)$-  差分隐私之间也存在理论上的区别。 其中最主要的是量化顺序的转换。 $\varepsilon$- 差分隐私可确保对于机制 $\mathcal{M}(x)$ 的每次运行，在每个相邻数据库上同时观察到的输出的可能性几乎相同。相反，从事后观察值得出结论， $(\varepsilon,\delta)$-  差分隐私对于每对相邻数据库$x, \ y$，当数据库是$x$，而不是$y$时，机制  $\mathcal{M}$ 或更大概率生成或小概率生成值 $\mathcal{M}(x)$ 。 但是，给定输出$\xi \backsim \mathcal{M}(x)$，可能会找到一个数据库$y$，使得 $\xi$ 在 $y$ 上产生的可能性比数据库为 $x$ 时的可能性大得多。 即，分布 $\mathcal{M}(y)$ 中的 $\xi$ 的质量可以实质上大于分布 $\mathcal{M}(x)$ 中的 $\xi$ 的质量。
 
 所以，机制质量：
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack}{\text{Pr}\lbrack \mathcal{M}(y) = \xi \rbrack})
+\mathcal{L}_{\mathcal{M}(x)\Vert \mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack}{\text{Pr}\lbrack \mathcal{M}(y) = \xi \rbrack})
 $$
 对我们至关重要。我们将其称为观察 $\xi$ 导致的**隐私损失**。 这种损失可能是正的（当事件在$x$之下比在$y$之下更有可能发生），也可能是负的（当事件在$y$之下比$x$之下更有可能）。正如我们将在**引理3.17**看到，$(\varepsilon,\delta)$-  差分隐私确保对于所有相邻的$x$、$y$，隐私损失的绝对值被$\varepsilon$界定的概率至少为$1-\delta$。 与往常一样，概率空间位于机制$\mathcal{M}$的硬币上。（*over the coins of machanism $\mathcal{M}$?这句话原文无法理解。*）
 
@@ -108,7 +108,7 @@ $$
 
 【证明】我们证明了一个确定性函数$f:R \to R'$的命题。结果如下，因为任何随机映射都可以分解为确定性函数的凸组合，而差分隐私机制的凸组合是差分隐私的。
 
-设任意一对相邻数据库 $x,y$ 的 $||x-y||_1 \leq 1$，且任意事件 $S\subseteq R'$，设 $T = \{ r \in R: f(r) \in S \}$ ，则：
+设任意一对相邻数据库 $x,y$ 的 $\Vert x-y\Vert _1 \leq 1$，且任意事件 $S\subseteq R'$，设 $T = \{ r \in R: f(r) \in S \}$ ，则：
 
 $$
 \begin{aligned}

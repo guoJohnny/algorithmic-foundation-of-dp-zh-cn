@@ -4,7 +4,7 @@
 **定义3.8（$\ell_2$-敏感度）** 一个方法 $f:\mathbb{N}^{|\mathcal{X}|}\to\mathbb{R}^k$ 的 $\ell_2$-敏感度为：
 
 $$
-\Delta_2(f)=\max_{x,y\in\mathbb{N}^{|\mathcal{X}|},||x-y||_1=1}||f(x)-f(y)||_2
+\Delta_2(f)=\max_{x,y\in\mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1=1}\Vert f(x)-f(y)\Vert _2
 $$
 
 参数为 $b$ 的高斯机制在每个 $k$ 协调中添加方差为 $b$ 的零均值高斯噪声。以下定理在附录A中得到了证明。

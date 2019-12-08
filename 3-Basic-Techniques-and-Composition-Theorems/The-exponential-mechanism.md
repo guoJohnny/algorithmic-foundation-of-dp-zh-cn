@@ -9,7 +9,7 @@
 指数机制是使用任意效用函数（或任意非数字范围）回答查询的天然模块（原文为“building block”积木，此处翻译为模块），同时保留了差异隐私。给定任意范围 $\mathcal{R}$，将指数机制定义为某些效用函数 $u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$，它将数据库输出对映射到效用分数。直观地讲，对于固定的数据库 $x$，用户更喜欢该机制输出 $\mathcal{R}$ 的某些元素具有最大的效用得分。请注意，当我们谈论效用分数 $u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$ 的敏感度时，我们只关心 $u$ 相对于其数据库参数的敏感性；效用函数 $u$ 可以是任意敏感的：
 
 $$
-\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|
+\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:\Vert x-y\Vert _1 \leq 1}|u(x,r)-u(y,r)|
 $$
 
 从直观上来看指数机制，其思想是输出每个可能的 $r \in \mathcal{R}$ ，其概率与 $\exp(\varepsilon u(x,r)/\Delta u)$ 成正比，这样隐私损失才能约为：
@@ -23,7 +23,7 @@ $$
 (**个人理解**：*根据效用函数敏感度 $\Delta u$ 的定义可知，数据库 $x,y$ 是相邻数据库，相差为 1，则可以构造构造一个机制，将效用得分和与输出概率关联，使得满足 $\varepsilon$-差分隐私定义的隐私损失。由 [**2.3节中的隐私损失（机制质量)**](../2-Basic-Terms/Formalizing-differential-privacy_1.html) 可得出：当机制正比于 $\exp(\varepsilon u(x,r)/\Delta u),(\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack \propto \exp(\varepsilon u(x,r)/\Delta u))$， 该机制的隐私损失是 $\varepsilon$*
 
 $$
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x,u) = r \rbrack}{\text{Pr}\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
+\mathcal{L}_{\mathcal{M}(x)\Vert \mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x,u) = r \rbrack}{\text{Pr}\lbrack \mathcal{M}(y,u) = r \rbrack}) = \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta u)}{\exp(\varepsilon u(y,r)/\Delta u)}\Big)
 $$
 
 )
@@ -40,7 +40,7 @@ $$
 
 **定理 3.10** 指数机制满足 $(\varepsilon,0)$ -差分隐私。
 
-**【证明】** 为了清楚起见，我们假设指数机制的范围 $\mathcal{R}$ 是有限的，但这是不必要的。在所有的差分隐私证明中，我们考虑指数机制的一个实例,即在两个相邻的数据库 $x \in \mathbb{N}^{|\mathcal{X}|},y \in \mathbb{N}^{|\mathcal{X}|},||x-y||_1 \leq 1$上输出某个元素  $r \in \mathcal{R}$ 的概率之比。
+**【证明】** 为了清楚起见，我们假设指数机制的范围 $\mathcal{R}$ 是有限的，但这是不必要的。在所有的差分隐私证明中，我们考虑指数机制的一个实例,即在两个相邻的数据库 $x \in \mathbb{N}^{|\mathcal{X}|},y \in \mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1 \leq 1$上输出某个元素  $r \in \mathcal{R}$ 的概率之比。
 
 $$
 \begin{aligned}
@@ -58,14 +58,14 @@ $$
 
 $$
 \begin{aligned}
-\mathcal{L}_{\mathcal{M}(x)||\mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
+\mathcal{L}_{\mathcal{M}(x)\Vert \mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]}) &= \ln \Big(\frac{\exp(\varepsilon u(x,r)/\Delta 2u)}{\exp(\varepsilon u(y,r)/\Delta 2u)}\Big) \\
 &=\varepsilon[u(x,r)-u(y,r)]/\Delta 2u \leq \varepsilon/2\\
 \implies \exp(\varepsilon u(x,r)/\Delta 2u) &\leq e^{\varepsilon/2} \cdot \exp(\varepsilon u(y,r)/\Delta 2u)\\
 \implies \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(x,r')}{2\Delta u}) &\leq e^{\varepsilon/2} \cdot \sum_{r'\in \mathcal{R}}\exp(\frac{\varepsilon u(y,r')}{2\Delta u})
 \end{aligned}
 $$
 
-*很自然的我们由 $\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:||x-y||_1 \leq 1}|u(x,r)-u(y,r)|$ 可以推知 $u(x,r)-u(y,r) \leq \Delta u$ ，经过放缩之后得到结论。具体如下：*
+*很自然的我们由 $\Delta u = \max_{r \in \mathcal{R}} \ \max_{x,y:\Vert x-y\Vert _1 \leq 1}|u(x,r)-u(y,r)|$ 可以推知 $u(x,r)-u(y,r) \leq \Delta u$ ，经过放缩之后得到结论。具体如下：*
 
 $$
 \begin{aligned}

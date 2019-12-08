@@ -6,7 +6,7 @@
 
 **定理 3.14** 设 $\mathcal{M}_1:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_1$ 为 $\varepsilon_1$ -差分隐私算法，设 $\mathcal{M}_2:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_2$ 为 $\varepsilon_2$ -差分隐私算法。然后将它们的组合，定义为$\mathcal{M}_{1,2}:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_1 \times \mathcal{R}_2$ ，映射为： $\mathcal{M}_{1,2}(x) = (\mathcal{M}_{1}(x),\mathcal{M}_{2}(x))$ 是 $(\varepsilon_1 + \varepsilon_2)$ -差分隐私算法。
 
-**【证明】** 令 $x,y \in \mathbb{N}^{|\mathcal{X}|}$ 满足 $||x-y||_1 \leq 1$，任意 $(r_1,r_2) \in \mathcal{R}_1 \times \mathcal{R}_2$，则：
+**【证明】** 令 $x,y \in \mathbb{N}^{|\mathcal{X}|}$ 满足 $\Vert x-y\Vert _1 \leq 1$，任意 $(r_1,r_2) \in \mathcal{R}_1 \times \mathcal{R}_2$，则：
 
 $$
 \begin{aligned}
