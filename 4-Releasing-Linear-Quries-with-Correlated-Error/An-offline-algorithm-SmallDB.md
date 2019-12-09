@@ -1,6 +1,6 @@
 # 4.1 SmallDB：离线算法
 
-在本节中，我们给出一种基于使用指数机制对小型数据库进行采样的思想的算法。 我们将表明，对于计数查询，只需考虑较小的数据库即可：它们的大小仅是查询类的函数以及我们所需的近似精度$\alpha$，而私有数据库大小 $\Vert x\Vert _1$ 不是关键。这很重要，因为它将允许我们同时为所有足够大的数据库保证在指数机制范围内至少有一个数据库，这个数据库在查询 $\mathcal{Q}$ 中可以很好地近似于 $x$，并且还能保证在数据库中没有太多数据库消除“好”数据库上的概率质量。
+在本节中，我们给出一种基于使用指数机制采样得到一个小数据库的算法。我们将表明，对于计数查询，只需考虑较小的数据库即可：它们的大小仅是查询类的函数以及我们所需的近似精度$\alpha$，而私有数据库大小 $\Vert x\Vert _1$ 不是关键。这很重要，因为它将允许我们同时为所有足够大的数据库保证在指数机制范围内至少有一个数据库，这个数据库在查询 $\mathcal{Q}$ 中可以很好地近似于 $x$，并且还能保证在数据库中没有太多数据库消除“好”数据库上的概率质量。
 
 ![SmallDB](/4-Releasing-Linear-Quries-with-Correlated-Error/img/SmallDB.png)
 
@@ -76,3 +76,14 @@ $\text{SmallDB}(x,\mathcal{Q},\varepsilon,\alpha)$输出的数据库。然后以
 $$
 \max_{f\in\mathcal{Q}}|f(x)-f(y)|\leq \alpha + \frac{2\Big(\frac{\log|\mathcal{X}|\log|\mathcal{Q}|}{\alpha^2}+\log(\frac{1}{\beta})\Big)}{\varepsilon\Vert x \Vert_1}
 $$
+
+**【证明】** 应用指数机制的效用边界定理 （[**定理 3.11**](/3-Basic-Techniques-and-Composition-Theorems/The-exponential-mechanism.html)），其中 $\Delta u=\frac{1}{\Vert x \Vert_1}, \text{OPT}_u(D)\leq \alpha$（由 **定理 4.2** 得来），我们发现：
+
+$$
+\text{Pr}[\max_{f \in \mathcal{Q}}|f(x)-f(y)|\geq \alpha + \frac{2}{\varepsilon \Vert x \Vert_1}(\log(|\mathcal{R}|)+t)]\leq e^{-t}
+$$
+
+我们通过两步完成证明：（1）注意到数据库 $y$ 的大小 $\mathcal{R}$ 至多为 $\log|\mathcal{Q}|/\alpha^2$，所以 $|\mathcal{R}|\leq |\mathcal{X}|^{\log|\mathcal{Q}|/\alpha^2}$；（2）由于概率为：$1-\beta$，所以令 $t=\log(\frac{1}{\beta})$。证毕。
+
+最后，我们要声明 **SmallDB** 的效用定理。
+
