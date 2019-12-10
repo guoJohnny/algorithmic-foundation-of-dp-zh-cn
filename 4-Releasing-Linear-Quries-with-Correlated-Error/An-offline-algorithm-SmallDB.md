@@ -87,3 +87,38 @@ $$
 
 最后，我们要声明 **SmallDB** 的效用定理。
 
+**定理4.5** 通过适当选择 $\alpha$，令 $y$ 为 $\text{SmallDB}(x,\mathcal{Q},\varepsilon,\frac{\alpha}{2})$ 的数据库输出，我们可以确保概率为 $1-\beta$ 时有：
+
+$$
+\max_{f\in\mathcal{Q}}|f(x)-f(y)|\leq \Bigg( \frac{16\log |\mathcal{X}|\log|\mathcal{Q}|+4\log(\frac{1}{\beta})}{\varepsilon\Vert x \Vert_1}\Bigg)^{1/3}    \qquad \qquad (4.2)
+$$
+
+等价地，对于任何数据库 $x$ ，其：
+
+$$
+\Vert x \Vert_1 \geq \frac{16\log |\mathcal{X}|\log|\mathcal{Q}|+4\log(\frac{1}{\beta})}{\varepsilon \alpha^3}\qquad \qquad (4.3)
+$$
+
+**【证明】** 根据**定理 4.4** 我们有 ：
+
+$$
+\max_{f\in\mathcal{Q}}|f(x)-f(y)|\leq \frac{\alpha}{2} + \frac{2\Big(\frac{4\log|\mathcal{X}|\log|\mathcal{Q}|}{\alpha^2}+\log(\frac{1}{\beta})\Big)}{\varepsilon\Vert x \Vert_1}
+$$
+
+设置该量最大为 $\alpha$ ，则证明式（4.3）成立。即可推出式 （4.2），同时能能出式（4.4）
+
+请注意，该定理指出，对于固定的 $\alpha$ 和 $\varepsilon$，即使 $\delta=0$，也可以回答与数据库大小成指数数量的查询（查询数量 $k\leq \exp\Big(O\Big(\frac{\alpha^3\varepsilon\Vert x\Vert_1}{\log|\mathcal{X}|}\Big)\Big)$）。这与拉普拉斯机制相反，当我们直接拉普拉斯机制用于回答线性查询时，只能线性大小的查询。
+
+还请注意，在此讨论中，考虑标准化查询最为方便。 但是，我们可以简单地乘以 $\Vert x \Vert_1$来获得未标准化查询的相应范围：
+
+**定理4.6（非标准化查询的精度定理）** 通过适当选择 $\alpha$，令 $y$ 为 $\text{SmallDB}(x,\mathcal{Q},\varepsilon,\frac{\alpha}{2})$ 的数据库输出，我们可以确定当概率为 $1-\beta$ 时：
+
+$$
+\max_{f\in\mathcal{Q}}|f(x)-f(y)|\leq \Vert x\Vert_1^{2/3}\Bigg( \frac{16\log |\mathcal{X}|\log|\mathcal{Q}|+4\log(\frac{1}{\beta})}{\varepsilon\Vert x \Vert_1}\Bigg)^{1/3}    \qquad \qquad (4.4)
+$$
+
+**更精确的边界** 我们证明，每组线性查询 $\mathcal{Q}$ 都有一个最大为 $|\mathcal{X}|^{\log|\mathcal{Q}|/\alpha^2}$ 的数据库集合，这些数据库相对于 $\mathcal{Q}$ 很好地近似了每个数据库 $x$，且误差最大为 $\alpha$。但是，这通常被高估了，因为它完全忽略了查询的结构。例如，如果 $\mathcal{Q}$ 仅包含相同的查询，并且每次以不同的伪装一次又一次地重复，那么就没有理由使指数机制的范围大小随 $|\mathcal{Q}|$ 增大。类似地，甚至可能存在具有无限基数的查询类 $\mathcal{Q}$，但是尽管如此，小型数据库仍可以很好地近似它们。例如，判断一个点是否在实线上的给定间隔内的查询形成了一个无限大的查询类 $\mathcal{Q}$，因为实线上有无数的间隔。但是，此类查询具有非常简单的结构，可使其被小型数据库很好地近似。通过考虑查询类的更精细的结构，我们将能够为差分隐私机制提供边界，这些差分隐私机将改善简单采样边界（**引理4.3**），即使对于双倍指数级的大查询类也可以说是不平凡的。此处并未完全阐明这些界限，但会针对较简单的计数查询类声明一些结果。回想一下计数查询 $f:\mathcal{X}\to \{0,1\}$ 将数据库点映射为布尔值，而不是像线性查询那样映射到 $[0,1]$ 中的任何值。
+
+**定义4.1（Shattering）** 如果对于每个 $T\subseteq S$，存在一个 $f \in \mathcal{Q}$ 使得 $\{x\in S:f(x)=1\}=T$，则称这一类计数查询 $\mathcal{Q}$ 会“**破坏**”点 $S\subseteq \mathcal{X}$ 的集合。也就是说：如果在 $2^{|S|}$ 中的每一个 $S$ 的子集 $T$，$\mathcal{Q}$ 中有一些函数将这些元素准确地标记为正，而不标记 $S \backslash T$ 其中的任何元素为正，则称为 $\mathcal{Q}$ “**破坏**” $S$。
+
+注意，要使 $\mathcal{Q}$ “**破坏**” $S$，必须是 $|\mathcal{Q}\geq 2^{|S|}|$ 的情况。  因为 $\mathcal{Q}$ 必须为每个子集 $T\subseteq S$ 包含一个函数 $f$。现在，我们可以定义计数查询的复杂性度量。
