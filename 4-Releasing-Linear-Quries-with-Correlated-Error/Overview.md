@@ -19,7 +19,7 @@ $$
 f(x)=\sum_{i=1}^{|\mathcal{X}|}x_i\cdot f(\chi_i)
 $$
 
-【**补充：** 该部分约定的符号所代表的含义可以参考[2.3节](/2-Basic-Terms/Formalizing-differential-privacy_1.html)中内容。其中 $\mathcal{X}=\{\chi_1,\chi_2,...,\chi_{|\mathcal{X}|}\}$ 表示数据全体， $\chi_i$ 表示不同类别的数据集。$x_i$ 表示 $\chi_i$ 的记录数量。$\Vert x\Vert _1$ 代表 $\ell_1$ 距离概念，$\Vert x\Vert _1$ 表示数据库 $x$ 的记录数。$|\mathcal{X}|$ 表示数据全体中所有的类别总数。又有 $f(\chi_i)\to [0,1]$】
+【**补充：** 该部分约定的符号所代表的含义可以参考[2.3节](/2-Basic-Terms/Formalizing-differential-privacy/Formalizing-differential-privacy-Overview.html)中内容。其中 $\mathcal{X}=\{\chi_1,\chi_2,...,\chi_{|\mathcal{X}|}\}$ 表示数据全体， $\chi_i$ 表示不同类别的数据集。$x_i$ 表示 $\chi_i$ 的记录数量。$\Vert x\Vert _1$ 代表 $\ell_1$ 距离概念，$\Vert x\Vert _1$ 表示数据库 $x$ 的记录数。$|\mathcal{X}|$ 表示数据全体中所有的类别总数。又有 $f(\chi_i)\to [0,1]$】
 
 无论何时我们声明一个界限，都应该从上下文中清楚地知道我们所说的是标准化查询还是非标准化查询，因为它们接受的值在非常不同的范围内。注意，标准化线性查询采用 $[0,1]$ 中的值，而非标准化查询采用$[0,\Vert x\Vert _1]$ 中的值。
 
