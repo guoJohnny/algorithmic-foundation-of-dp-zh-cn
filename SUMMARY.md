@@ -36,8 +36,8 @@
 	* [SmallDB：离线算法](4-Releasing-Linear-Quries-with-Correlated-Error/An-offline-algorithm-SmallDB/An-offline-algorithm-SmallDB.md)
     	* [SmallDB：精确边界](4-Releasing-Linear-Quries-with-Correlated-Error/An-offline-algorithm-SmallDB/An-offline-algorithm-SmallDB-Refined-Bounds.md)
 	* [可乘权重算法：在线机制](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/An-online-mechanism-private-multiplicative-weights-Overview.md)
-    	* [可乘权重算法]()
-    	* [数值稀疏向量可乘权重算法]()
+    	* [可乘权重算法更新规则](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-multiplicative-weight-update-rule.md)
+    	* [数值稀疏向量可乘权重算法](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-OnlineMW-via-NumericSparse-algorithm.md)
 	* [参考文献]()
 
 * [五、差分隐私泛化](5-Generalizations/Overview.md)
