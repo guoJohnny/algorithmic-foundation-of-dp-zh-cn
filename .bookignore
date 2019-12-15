@@ -1,1 +1,4 @@
 deploy.sh
+.bookignore
+.gitignore
+README.md
