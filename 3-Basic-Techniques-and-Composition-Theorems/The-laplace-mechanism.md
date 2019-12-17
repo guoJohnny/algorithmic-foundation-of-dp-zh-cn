@@ -45,6 +45,8 @@ $$
 
 第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$\Vert x-y\Vert _1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq exp(-\varepsilon)$。
 
+**【定理 3.6 证毕】**
+
 【补充1: $\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Big(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Big)$ 表示形式是拉普拉斯分布的分量形式，即：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}exp\Big(\frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f}\Big)$ 
 
 亦即：$p_x(\overrightarrow{z})= \frac{\varepsilon}{2\Delta f}exp\Big(\frac{\varepsilon(|f(y)-\overrightarrow{z}|-|f(x)-\overrightarrow{z}|)}{\Delta f}\Big)$ 】
@@ -156,10 +158,9 @@ $$
 
 注意到 “**Report Noisy Max**” 算法中的“信息最小化”原理：仅公开与最大值相对应的索引，而不是发布所有噪声计数并让分析人员找到最大值及其索引。 由于一个人的数据会影响所有计数，因此计数向量具有较高的 $\ell_1$ 灵敏度，即 $\Delta f = m$，如果我们想使用拉普拉斯机制发布所有计数，则需要更多的噪声。
 
-**声明3.9** Report Noisy Max 算法是 $(\varepsilon,0)$-差分隐私。
+**命题 3.9** Report Noisy Max 算法是 $(\varepsilon,0)$-差分隐私。
 
-【证明】 令 $D=D' \cup \{a\}$ 。 令 $c,c'$ 分别表示数据库为 $D,D'$的计数向量。我们使用两个属性：
-
+**【证明】** 令 $D=D' \cup \{a\}$ 。 令 $c,c'$ 分别表示数据库为 $D,D'$的计数向量。我们使用两个属性：
 
 - 1.计数的单调性。对于所有 $j \in [m],c_j \geq c'_j$ 
 - 2.利普希茨（Lipschitz）属性。对于所有 $j \in [m],c'_j + 1 \geq c_j$（*注：Lipschitz连续，要求函数图像的曲线上任意两点连线的斜率一致有界，就是任意的斜率都小于同一个常数，这个常数就是 Lipschitz 常数，此处Lipschitz常数为1。*）   
@@ -225,3 +226,5 @@ $$
 $$
 
 上面等式两边乘上 $e^{\varepsilon}$ 第二种情况证明完毕。
+
+**【命题 3.9 证毕】**

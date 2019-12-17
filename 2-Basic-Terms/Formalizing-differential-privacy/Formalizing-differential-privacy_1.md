@@ -23,9 +23,9 @@ $$
 
 差分隐私不受后处理的影响：在没有其他有关私有数据库的知识的情况下，数据分析人员无法计算私有算法$\mathcal{M}$的输出函数，也无法使其差分隐私程度降低。 就是说，如果算法保护了个人的隐私，那么无论是在正式定义下，还是在任何直观的意义上，数据分析师都无法仅仅通过坐在角落里思考算法的输出来增加隐私损失。 形式上，具有（$(\varepsilon,\delta)$-  差分隐私算法$\mathcal{M}$的数据独立映射 $f$ 的合成也具有（$(\varepsilon,\delta)$-  差分隐私：
 
-**命题2.1（后处理）** 令 $\mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R$ 是 $(\varepsilon,\delta)$-  差分隐私随机算法。 令 $f:R \to R'$为任意随机映射。 则 $f \circ \mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R'$ 是 $(\varepsilon,\delta)$- 差分隐私。
+**命题 2.1（后处理）** 令 $\mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R$ 是 $(\varepsilon,\delta)$-  差分隐私随机算法。 令 $f:R \to R'$为任意随机映射。 则 $f \circ \mathcal{M}: \mathbb{N}^{|\mathcal{X}|} \to R'$ 是 $(\varepsilon,\delta)$- 差分隐私。
 
-【证明】我们证明了一个确定性函数$f:R \to R'$的命题。结果如下，因为任何随机映射都可以分解为确定性函数的凸组合，而差分隐私机制的凸组合是差分隐私的。
+**【证明】** 我们证明了一个确定性函数$f:R \to R'$的命题。结果如下，因为任何随机映射都可以分解为确定性函数的凸组合，而差分隐私机制的凸组合是差分隐私的。
 
 设任意一对相邻数据库 $x,y$ 的 $\Vert x-y\Vert _1 \leq 1$，且任意事件 $S\subseteq R'$，设 $T = \{ r \in R: f(r) \in S \}$ ，则：
 
@@ -36,7 +36,8 @@ $$
    &= exp(\varepsilon)\text{Pr}[f(\mathcal{M}(y)) \in S] + \delta
 \end{aligned}
 $$
-即证。
+
+**【命题 2.1 证毕】**。
 
 从**定义2.4**可以立即得出 $(\varepsilon,0)$- 差分隐私的合成很简单：两个$(\varepsilon,0)$- 差分隐私机制的合成是 $(2\varepsilon,0)$- 差分隐私。 这个定理再进一步拓展（即定理3.16:“ $\varepsilon$ 和 $\delta$ 相加定理”)：
 设有 $k$ 个差分隐私机制的合成，其中第 $i$ 个机制为 $(\varepsilon_i,\delta_i)$-  差分隐私。易知，当 $1 \leq i \leq k$时，$k$ 个差分隐私机制合成的结果是 $(\sum_{i=1}^{k}\varepsilon_i,\sum_{i=1}^{k}\delta_i)$- 差分隐私。

@@ -53,6 +53,8 @@ $$
 $$
 
 同样，对称情况也成立 $\frac{\text{Pr}[\mathcal{M}_E(y,u,\mathcal{R})=r]}{\text{Pr}[\mathcal{M}_E(x,u,\mathcal{R})=r]} \geq \exp(-\varepsilon)$
+**【定理 3.10 证毕】**
+
 
 【**补充**：*原文中，上述公式个人认为有问题，证明的公式中符号有误，下面是个人更正，同时增加证明过程辅助理解。该证明需要用到上文关于指数机制隐私损失部分证明结论，其结论如下：*
 
@@ -83,7 +85,7 @@ $$
 
 指数机制通常可以提供强大的效用保证，因为随着效用得分的下降，它会指数级折减结果。对于给定的数据库 $x$ 和给定的效用函数：$u:\mathbb{N}^{|\mathcal{X}|} \times \mathcal{R} \to \mathbb{R}$ ，令 $\text{OPT}_u(x)=\max_{r \in \mathcal{R}}u(x,r)$ 表示任何元素 $r \in \mathcal{R}$ 相对于数据库 $x$ 的最大效用得分。我们将限制指数机制返回 $\mathcal{R}$ 的“良好”元素的概率，其中“良好”将根据 $\text{OPT}_u(x)$ 进行度量。这种做法的结果是，返回元素 $r$ 的效用得分不太可能低于 $\text{OPT}_u(x)$ 超过 $O(\Delta u/\varepsilon)\log|\mathcal{R}|$ 可加因子。  
 
-**定理3.11** 固定数据库 $x$，令 $\mathcal{R}_{\text{OPT}}={r \in \mathcal{R}:u(x,r)=\text{OPT}_u(x)}$ 表示 $\mathcal{R}$ 中获得效用分数 $\text{OPT}_u(x)$ 的元素集合。则：
+**定理 3.11** 固定数据库 $x$，令 $\mathcal{R}_{\text{OPT}}={r \in \mathcal{R}:u(x,r)=\text{OPT}_u(x)}$ 表示 $\mathcal{R}$ 中获得效用分数 $\text{OPT}_u(x)$ 的元素集合。则：
 
 $$
 \text{Pr}\Big[u(\mathcal{M}_E(x,u,\mathcal{R})) \leq \text{OPT}_u(x)-\frac{2\Delta u}{\varepsilon}\Big(\ln \Big(\frac{|\mathcal{R}|}{|\mathcal{R}_{\text{OPT}}|}\Big)+t\Big)\Big] \leq e^{-t}
@@ -99,6 +101,8 @@ $$
 $$
 
 这个不等式是由这样一个观察结果得出的：每一个 $r\in \mathcal{R},u(x,r)\leq c$ 所具有最大的未归一化概率质量为 $\exp(\varepsilon c/2\Delta u)$ $^{<1>}$，因此这类“坏”元素 $r$ 的整个集合的未归一化概率质量总和最大为 $|\mathcal{R}|\exp(\varepsilon c/2\Delta u)$ 。与此相反，我们知道至少存在 $|\mathcal{R}_{\text{OPT}}|\geq 1$ 个元素具有 $u(x,r)=\text{OPT}_u(x)$ ，并且因此未归一化概率质量为 $\exp(\varepsilon \text{OPT}_u(x)/2\Delta u)$ ，因此这是正规化项的下界。
+
+**【定理 3.11 证毕】**
 
 这个定理是通过插入c的适当值得出的。  
 
