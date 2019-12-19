@@ -45,6 +45,8 @@ $$
 
 **【证明】** 当 $\varepsilon'<1$ 时，我们期望 $\varepsilon^*\leq\varepsilon'$。由**定理 3.20** 可知对于所有 $\delta'$ 合成的隐私损失为 $(\varepsilon^*,k\delta+\delta')$ ，其中 $\varepsilon^*=\sqrt{2k\ln(1/\delta')}\cdot\varepsilon + k\varepsilon^2$。
 
+**【推论 3.21 证毕】**
+
 （*此处有疑问，是通过 $(e^\varepsilon-1) \backsim \varepsilon \implies \varepsilon^*=\sqrt{2k\ln(1/\delta')}\cdot\varepsilon + k\varepsilon^2$ 然后解一元二次方程得出公式？*）
 
 注意，上面的推论给出了如何在差分隐私合成中设置所需的隐私参数 $\varepsilon$ 的粗略指导。当我们关心优化常数（在处理实际实现时会这样做）时，可以通过直接应用合成定理来更紧密地设置 $\varepsilon$。

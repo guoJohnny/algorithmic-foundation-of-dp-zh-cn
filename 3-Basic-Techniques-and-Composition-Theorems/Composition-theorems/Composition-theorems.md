@@ -19,6 +19,8 @@ $$
 
 由对称性，$\frac{\text{Pr}[\mathcal{M}_{1,2}(y)=(r_1,r_2)]}{\text{Pr}[\mathcal{M}_{1,2}(x)=(r_1,r_2)]} \geq \exp(-(\varepsilon_1+\varepsilon_2))$ 也成立。
 
+**【定理 3.14 证毕】**
+
 组合定理能反复应用以获得以下推论：
 
 **推论 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,0)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\mathcal{X}|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,0)$- 差分隐私。
