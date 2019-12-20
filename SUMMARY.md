@@ -38,7 +38,7 @@
 	* [可乘权重算法：在线机制](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/An-online-mechanism-private-multiplicative-weights-Overview.md)
     	* [可乘权重算法更新规则](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-multiplicative-weight-update-rule.md)
     	* [数值稀疏向量可乘权重算法](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-OnlineMW-via-NumericSparse-algorithm.md)
-	* [参考文献]()
+	* [参考文献](4-Releasing-Linear-Quries-with-Correlated-Error/Bibliographic-notes.md)
 
 * [五、差分隐私泛化](5-Generalizations/Overview.md)
 	* [𝞪-nets机制]()
