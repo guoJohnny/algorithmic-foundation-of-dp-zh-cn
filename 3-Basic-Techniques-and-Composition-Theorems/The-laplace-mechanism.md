@@ -12,7 +12,7 @@ $$
 **定义3.2（拉普拉斯分布）**  以0为中心，以 $b$ 为尺度的拉普拉斯分布，其概率密度函数的分布为：
 
 $$
-Lap(x|b) = \frac{1}{2b}exp(-\frac{|x|}{b})
+Lap(x|b) = \frac{1}{2b}\exp(-\frac{|x|}{b})
 $$
 
 这个分布的方差是 $\sigma^2=2b^2$ 。我们有时会写 $Lap(b)$ 来表示带尺度为 $b$ 的Laplace分布，有时会滥用符号，写 $Lap(b)$ 来表示随机变量 $X \backsim Lap(b)$。
@@ -35,32 +35,51 @@ $$
 
 $$
 \begin{aligned}
-    \frac{p_x(z)}{p_y(z)} &= \prod_{i=1}^{k}\Bigg(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Bigg)\\
-    &= \prod_{i=1}^{k}exp\Bigg( \frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f} \Bigg)\\
-    &\leq \prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
-    &= exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)\\
-    &\leq exp(\varepsilon)
+    \frac{p_x(z)}{p_y(z)} &= \prod_{i=1}^{k}\Bigg(\frac{\exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{\exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Bigg)\\
+    &= \prod_{i=1}^{k}\exp\Bigg( \frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f} \Bigg)\\
+    &\leq \prod_{i=1}^{k}\exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
+    &= \exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)\\
+    &\leq \exp(\varepsilon)
 \end{aligned}
 $$
 
-第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$\Vert x-y\Vert _1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq exp(-\varepsilon)$。
+第一个不等式由三角不等式推导得来，最后一个不等式是由敏感度定义得到，即：$\Vert x-y\Vert _1 \leq 1$。且由对称性可得 $\frac{p_x(z)}{p_y(z)} \geq \exp(-\varepsilon)$。
 
 **【定理 3.6 证毕】**
 
-【补充1: $\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Big(\frac{exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Big)$ 表示形式是拉普拉斯分布的分量形式，即：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}exp\Big(\frac{\varepsilon(|f(y)_i-z_i|-|f(x)_i-z_i|)}{\Delta f}\Big)$ 
+【**补充1:** *由 Laplace机制的定义:*
 
-亦即：$p_x(\overrightarrow{z})= \frac{\varepsilon}{2\Delta f}exp\Big(\frac{\varepsilon(|f(y)-\overrightarrow{z}|-|f(x)-\overrightarrow{z}|)}{\Delta f}\Big)$ 】
+$$
+\mathcal{M}_L(x,f(\cdot),\varepsilon)=f(x) + (Y_1,\dots,Y_k)
+$$ 
 
-【补充2：由于 **定义 2.3 (数据库之间距离)** 定义了数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $\Vert x-y\Vert _1$
+*为直观表示，使用随机变量的分量形式。即：$\overrightarrow{Y}=(Y_1,\dots,Y_k)$，$f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^k=\overrightarrow{f(x)}=(f(x)_1,...,f(x)_k)$。 所以，根据定理 3.6中的条件：*
+
+$$
+\begin{aligned}
+ p_x(\overrightarrow{z}) &=\text{Pr}[\mathcal{M}_L(x,f(\cdot),\varepsilon)=\overrightarrow{z}]\\
+ &= \text{Pr}[\overrightarrow{f(x)} + \overrightarrow{Y} =\overrightarrow{z}]\\
+ &=\text{Pr}[\overrightarrow{Y}=\overrightarrow{z}-\overrightarrow{f(x)}]\\
+ &= \frac{\varepsilon}{2\Delta f}\exp\Big(-\frac{\varepsilon|\overrightarrow{f(x)}-\overrightarrow{z}|}{\Delta f}\Big)\\
+ &= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}\exp\Big(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f}\Big)
+\end{aligned}
+$$
+
+$\frac{p_x(z)}{p_y(z)} = \prod_{i=1}^{k}\Big(\frac{\exp(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f})}{\exp(-\frac{\varepsilon|f(y)_i-z_i|}{\Delta f})} \Big)$ *表示形式就是上式拉普拉斯分布的分量形式，即*：$p_x(z)= \frac{\varepsilon}{2\Delta f}\prod_{i=1}^{k}\exp\Big(-\frac{\varepsilon|f(x)_i-z_i|}{\Delta f}\Big)$ 
+
+
+【**补充2**：*由于 **定义 2.3 (数据库之间距离)** 定义了数据库 $x$ 和 $y$ 之间的 $\ell_1$ 距离为 $\Vert x-y\Vert _1$*
 
 $$
 \Vert x-y\Vert _1 = \sum_{i=1}^{|\mathcal{X}|}|x_i-y_i|
 $$
-故：上述证明中的 $\prod_{i=1}^{k}exp\Big(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Big)=exp\Big(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Big)$ 可由如下步骤得到：
+
+*故：上述证明中的 $\prod_{i=1}^{k}\exp\Big(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Big)=\exp\Big(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Big)$ 可由如下步骤得到：*
+
 $$
 \begin{aligned}
-    \prod_{i=1}^{k}exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg) &= exp\Bigg(\frac{\varepsilon\sum_{i=1}^{k}|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
-    &= exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)
+    \prod_{i=1}^{k}\exp\Bigg(\frac{\varepsilon|f(x)_i-f(y)_i|}{\Delta f} \Bigg) &= \exp\Bigg(\frac{\varepsilon\sum_{i=1}^{k}|f(x)_i-f(y)_i|}{\Delta f} \Bigg)\\
+    &= \exp\Bigg(\frac{\varepsilon\Vert f(x)-f(y)\Vert _1}{\Delta f} \Bigg)
 \end{aligned}
 $$
 】
@@ -78,7 +97,7 @@ $$
 **事实 3.7**： 如果 $Y \backsim Lap(b)$，则：
 
 $$
-\text{Pr}[|Y| \geq t \cdot b] = exp(-t)
+\text{Pr}[|Y| \geq t \cdot b] = \exp(-t)
 $$
 
 这个事实与布尔不等式（译者注：Union Bound，又称 Boole’s Inequality$^{<1>}$）一起为我们提供了一个
@@ -104,7 +123,7 @@ $$
 
 （**译者注<1> 布尔不等式**：指对于全部事件的概率不大于单个事件的概率总和，对于事件 $A_1,A_2,A_3...: P(\bigcup_{i}A_i)\leq \sum_iP(A_i)$）
 
-【补充3：上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$\Vert x\Vert $为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：
+【**补充3：** *上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$\Vert x\Vert $为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：*
 
 $$
 \Vert x\Vert _{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|
@@ -112,23 +131,23 @@ $$
 
 】
 
-【补充4: （定理3.8补充证明） 由 Laplace 机制可知 $Y_i \backsim Lap(\Delta f/\varepsilon)$ 和 $y=\mathcal{M}_L(x,f(\cdot\varepsilon)=f(x) + (Y_1,\dots,Y_k)$，则: $|f(x) - y|= |(Y_1,...Y_k)|$。
+【**补充4: （定理3.8补充证明）** *由 Laplace 机制可知 $Y_i \backsim Lap(\Delta f/\varepsilon)$ 和 $y=\mathcal{M}_L(x,f(\cdot\varepsilon)=f(x) + (Y_1,\dots,Y_k)$，则: $|f(x) - y|= |(Y_1,...Y_k)|$。*
 
-又因切比雪夫距离定义：
+*又因切比雪夫距离定义：*
 
 $\Vert f(x)-y\Vert _\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
 
-故证明的第一步可以由此推导出： 
+*故证明的第一步可以由此推导出：*
 
 $\text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
 
-证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：
+*证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：*
 
 $$
 \begin{aligned}
   \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] & \leq \text{Pr}\Big[ \bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \}\Big]\\
   &\leq \sum_i^k \cdot \text{Pr}\Big[|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big]\\
-  &= \sum_i^k \cdot exp\big(-ln(\frac{k}{\delta})\big)\\
+  &= \sum_i^k \cdot \exp\big(-ln(\frac{k}{\delta})\big)\\
   &= k\cdot(\frac{\delta}{k})\\
   &= \delta
 \end{aligned} 
@@ -138,7 +157,7 @@ $$
 
 **例3.3 名字频度**： 假设我们要使用 2010 年人口普查参与者数据，并从数据中统计出给定的 10,000 个名字里各个名字的频度。 这个问题可以用查询 $f:\mathbb{N}^{|\mathcal{X}|} \to \mathbb{R}^{10000}$ 表示。 这是一个直方图查询，因此灵敏度$\Delta f = 1$ ，因为每个人最多只能有一个名字。当频度查询是 $(1,0)$- 差分隐私的，并且概率要为 95％ ，我们使用上面的定理可以计算所有10,000名字的频度，其估计的相加误差不会超过 $\ln (10000/0.05) \thickapprox 12.2$。 对于一个人口超过 300,000,000 的国家来说，这是非常低的错误！
 
-【补充5: 由例3.3可知：$k=10000,\Delta f = 1,\varepsilon=1,\delta = 1 - 0.95 = 0.05$，并由定理3.8可以推得上述结论：
+【**补充5**: *由例3.3可知：$k=10000,\Delta f = 1,\varepsilon=1,\delta = 1 - 0.95 = 0.05$，并由定理3.8可以推得上述结论：*
 
 $$
 \begin{aligned}
