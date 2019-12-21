@@ -22,6 +22,8 @@ $$
 
  需要证明 包含 $c$ 个 **AboveThreshold** 算法 的 **Sparse** 算法的准确性。我们注意到，如果对于每个 **AboveThreshold** 算法 $(\alpha,\beta/c)$ 精确的，那么 **Sparse** 算法将是 $(\alpha,\beta)$ 精确的。
 
+ **【定理 3.25 证毕】**
+
  **定理 3.26** 对于 k 个查询的任何序列，$f_1,...,f_k$ 使得 $L(T)\equiv|\{i:f_i(D)\geq T - \alpha\}|\leq c$。如果 $\delta >0$，当：
  
 $$
