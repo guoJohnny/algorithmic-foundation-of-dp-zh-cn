@@ -2,7 +2,19 @@
     display: none!important ;
 }
 
-p {
+.markdown-section blockquote {
+    margin: 0;
+    margin-bottom: .85em;
+    padding: 0 15px;
+    color: #232629;
+    border-left: 5px solid #ecddb2;
+}
+
+.markdown-section blockquote p{
+    text-indent: 0em;
+}
+
+.markdown-section p {
     text-indent: 2em;
 }
 
