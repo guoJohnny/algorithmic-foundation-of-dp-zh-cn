@@ -14,7 +14,9 @@
 
 **引理 4.7** 对于任何有限类 $\mathcal{Q}$，$\text{VC-DIM}(\mathcal{Q})\leq \log|\mathcal{Q}|$ 。
 
-**证明** 如果 $\text{VC-DIM}(\mathcal{Q})=d$，则$\mathcal{Q}$ 打散基数为 $|S|=d$ 的一些集合 $S \subseteq \mathcal{X}$。但是根据打散的定义，由于 $S$ 具有 $2^d$ 个不同的子集， 所以 $\mathcal{Q}$ 必须在至少具有 $2^d$ 不同的函数。证毕。
+**证明** 如果 $\text{VC-DIM}(\mathcal{Q})=d$，则$\mathcal{Q}$ 打散基数为 $|S|=d$ 的一些集合 $S \subseteq \mathcal{X}$。但是根据打散的定义，由于 $S$ 具有 $2^d$ 个不同的子集， 所以 $\mathcal{Q}$ 必须在至少具有 $2^d$ 不同的函数。
+
+**【引理 4.7 证毕】**。
 
 事实证明，我们可以替换在 **SmallDB** 机制的范围内使用术语 $\log|\mathcal{Q}|$ 为 $\text{VC-DIM}(\mathcal{Q})$。通过前面的引理，这只能是对有限类 $\mathcal{Q}$ 的改进。
 
