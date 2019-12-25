@@ -7,7 +7,13 @@ $$
 \Delta f = \max_{x,y\in\mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1=1}\Vert f(x)-f(y)\Vert _1
 $$
 
-【*注：该处在哈弗大学的课程中表示为：$\Delta f = \max_{x,y\in\mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1=1}| f(x)-f(y)|$，而《差分隐私算法基础》将 $\ell_1$敏感度表示为上式。个人认为，对于以数值形式作为函数的输出，其敏感度计算应遵循哈弗大学课程中的计算公式。对于以分量形式作为函数的输出，应使用本书计算公式。哈弗大学课程中的表示为特例。*】
+【*注：该处在哈佛大学的课程中表示为：$\Delta f = \max_{x,y\in\mathbb{N}^{|\mathcal{X}|},\Vert x-y\Vert _1=1}| f(x)-f(y)|$，而《差分隐私算法基础》将 $\ell_1$敏感度表示为 **定义 3.1** 中形式。个人认为，对于以数值形式作为函数的输出，其敏感度计算应遵循哈弗大学课程中的计算公式。对于以分量形式作为函数的输出，应使用本书计算公式。下图使用哈佛大学课程中的举例，用平均值作为函数 $f$：*
+
+  ![sensitivity_1](/3-Basic-Techniques-and-Composition-Theorems/img/sensitivity_1.png)
+
+  ![sensitivity_2](/3-Basic-Techniques-and-Composition-Theorems/img/sensitivity_2.png)
+
+】
 
 函数 $f$ 的 $\ell_1$ 敏感度反映了单体的数据在最坏情况下可以改变函数 $f$ 的程度，因此，直观地讲，为了隐藏单个人的参与，我们必须引入响应的不确定性。确实，我们将这种动机形式化：函数的敏感性为我们对输出施加多少扰动以保护隐私提供了一个上界。自然而然地，一种噪声分布可带来差分隐私。
 
@@ -125,7 +131,7 @@ $$
 
 （**译者注<1> 布尔不等式**：指对于全部事件的概率不大于单个事件的概率总和，对于事件 $A_1,A_2,A_3...: P(\bigcup_{i}A_i)\leq \sum_iP(A_i)$）
 
-【**补充3：** *上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$\Vert x\Vert $为$x$向量各个元素绝对值最大那个元素的绝对值，形式化为：*
+【**补充3：** *上一证明过程缺少 $\ell_\infty$ 范数距离，又称**切比雪夫距离**，如下定义：$\Vert x \Vert$ 为 $x$ 向量各个元素绝对值最大那个元素的绝对值，形式化为：*
 
 $$
 \Vert x\Vert _{\infty}=\lim\limits_{k \to \infty}\Big(\sum_{i=1}^n|p_i-q_i|^k \Big)^{1/k}=\max_{i \in [k]}|p_i-q_i|
@@ -137,11 +143,15 @@ $$
 
 *又因切比雪夫距离定义：*
 
-$\Vert f(x)-y\Vert _\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|$，
+$$
+\Vert f(x)-y\Vert _\infty=max_{i \in k}|f(x)-y|=max_{i \in k}|Y_i|
+$$
 
 *故证明的第一步可以由此推导出：*
 
-$\text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]$
+$$
+\text{Pr}\Big[\Vert f(x)-y\Vert _\infty \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\Big] = \text{Pr}\Big[\max_{i \in [k]}|Y_i|\geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon}) \Big]
+$$
 
 *证明第二步是因为 $\max_{i \in [k]}|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})$ 的概率必然小于等于 $\bigcup_{i} \{|Y_i| \geq \ln(\frac{k}{\delta})\cdot(\frac{\Delta f}{\varepsilon})\}$ 全体的概率，且由布尔不等式推导而来，即最大值 $Y_i$ 概率不大于单个事件的概率总和。又因为 **事实3.7**，推导如下：*
 

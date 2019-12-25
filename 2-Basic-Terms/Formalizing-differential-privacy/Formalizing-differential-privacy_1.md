@@ -3,11 +3,11 @@
 **定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $\Vert x-y\Vert _1 \leq 1$，如果满足下列关系：
 
 $$
-\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
+\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq \exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
 $$
 
-则将这个域在 $\mathbb{N}^{|\mathcal{X}|}$ 的随机算法 $\mathcal{M}$ 称为 $(\varepsilon,\delta)$ 差分隐私(即 $(\varepsilon,\delta) \text{--} Differentially \ private$)。  
-
+则将这个域在 $\mathbb{N}^{|\mathcal{X}|}$ 的随机算法 $\mathcal{M}$ 称为 $(\varepsilon,\delta)$ 差分隐私（ $(\varepsilon,\delta)$- Differentially  private）。其中概率空间在算法$\mathcal{M}$的硬币翻转上。
+  
 特别的，如果 $\delta=0$ ，则将 $\mathcal{M}$ 称为 $\varepsilon$ 差分隐私(即 $\varepsilon \text{--} Differentially \ private$)。
 
 通常，我们对 $\delta$ 的值感兴趣，该值小于多项式数据库大小的倒数。 特别是，$\delta$  值接近 $1/\Vert x\Vert _1$ 是非常危险（因为在第1节中讨论“少数人”原则）：这种做法通过发布少量数据库参与者的完整记录来“保护隐私”（以获得可用性）。 
@@ -31,25 +31,33 @@ $$
 
 $$
 \begin{aligned}
-   \text{Pr}\lbrack f(\mathcal{M}(x) \in S) \rbrack &= \text{Pr}[\mathcal{M}(x) \in T]\\
-   & \leq exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in T] + \delta\\
-   &= exp(\varepsilon)\text{Pr}[f(\mathcal{M}(y)) \in S] + \delta
+   \text{Pr}\lbrack f(\mathcal{M}(x)) \in S \rbrack &= \text{Pr}[\mathcal{M}(x) \in T]\\
+   & \leq \exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in T] + \delta\\
+   &= \exp(\varepsilon)\text{Pr}[f(\mathcal{M}(y)) \in S] + \delta
 \end{aligned}
 $$
 
 **【命题 2.1 证毕】**。
 
-从**定义2.4**可以立即得出 $(\varepsilon,0)$- 差分隐私的合成很简单：两个$(\varepsilon,0)$- 差分隐私机制的合成是 $(2\varepsilon,0)$- 差分隐私。 这个定理再进一步拓展（即定理3.16:“ $\varepsilon$ 和 $\delta$ 相加定理”)：
+从**定义2.4**可以立即得出 $(\varepsilon,0)$- 差分隐私的合成很简单：两个$(\varepsilon,0)$- 差分隐私机制的合成是 $(2\varepsilon,0)$- 差分隐私。这个定理再进一步拓展（即 [**定理3.16**](/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html))：
 设有 $k$ 个差分隐私机制的合成，其中第 $i$ 个机制为 $(\varepsilon_i,\delta_i)$-  差分隐私。易知，当 $1 \leq i \leq k$时，$k$ 个差分隐私机制合成的结果是 $(\sum_{i=1}^{k}\varepsilon_i,\sum_{i=1}^{k}\delta_i)$- 差分隐私。
+
+【**补充举例：**
+
+- 许多机器学习算法（例如，随机梯度下降）可以描述为对数据集中进行低敏感度查询序列，并且可以容忍查询得到的带噪声回答（“统计查询模型”。）
+- 可以通过添加拉普拉斯噪声来回答每个查询。 
+- 通过合成和后处理，训练的模型是差分隐私的且可以安全输出。
+  
+】
 
 **群隐私**：$(\varepsilon,0)$- 差分隐私机制的群隐私也遵循从定义2.4，隐私保证的强度随群的大小线性下降。
 
-（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](../3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html)*
+（**个人理解**：*由定义可知，机制的叠加不能增加差分隐私的隐私保护程度，相反会以线性方式增加 $\varepsilon$，进而增大隐私泄露的可能。详细的推导证明见 [3.5节](/3-Basic-Techniques-and-Composition-Theorems/Composition-theorems/Composition-theorems.html)*
 ）
 
 **定理2.2** 任意一个大小为 $k$ 的群体，这个群体的机制 $\mathcal{M}$ 是 $(\varepsilon,0)$- 差分隐私，则这个机制 $\mathcal{M}$ 会变成 $(k\varepsilon,0)$- 差分隐私。也就是说，对于所有 $\Vert x-y\Vert _1 \leq k$ 和所有 $\mathcal{S} \subseteq Range(\mathcal{M})$ 有:
 $$
-\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] 
+\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq \exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] 
 $$
 概率空间在机制 $\mathcal{M}$ 的硬币翻转上。
 
@@ -57,6 +65,6 @@ $$
 
 更普遍的说，差分隐私的合成和群体隐私不是同一回事，**第3.5.2节(定理3.20)** 中改善的合成范围（实质上改善了$k$因子）不会（也不能）为群体带来相同的收益隐私，即使 $\delta=0$。
 
-（原文注[1]：然而，随着群体的扩大，隐私保障也随之恶化，这正是我们想要的：很明显，如果我们用替换一个完全不同的调查群体，比如健康的青少年，来代替整个被调查的癌症患者群体，对于那些经常每天跑三英里的受访者，我们应该得到不同的答案。虽然与 $(\varepsilon,\delta)$ 差分隐私保密性类似，但近似项 $\delta$ 受到了很大的冲击，我们只得到大小为 $k$ 的群体是$(k\varepsilon,ke^{(k-1)\varepsilon})$-差分隐私。）
+（原文注[1]：然而，随着群体的扩大，隐私保障也随之恶化，这正是我们想要的：很明显，如果我们替换一个完全不同的调查群体，比如健康的青少年，来代替整个被调查的癌症患者群体。在这种替换下，如果我们查询哪部分人每天经常跑三英里，我们应该得到不同的答案。虽然与 $(\varepsilon,\delta)$ 差分隐私保密性类似，但近似项 $\delta$ 受到了很大的冲击，我们只得到大小为 $k$ 的群体是$(k\varepsilon,ke^{(k-1)\varepsilon})$-差分隐私。注意，此处与隐私参数合成相加定理不同。）
 
 （*个人理解：多个群体共用一个隐私保护机制，那么随着群体个数的增加，这个隐私保护机制的保护能力会随之下降。上文说明了，$\varepsilon$ 会线性增加。比如，青少年、老年人、健康人、患不同疾病人等等共同使用一个差分隐私机制。显然各个群体有各个群体的特点，其结果必然会有差异，可想而知这种差异会对隐私保护机制参数造成影响。如上文所述，会呈现线性变化。*)

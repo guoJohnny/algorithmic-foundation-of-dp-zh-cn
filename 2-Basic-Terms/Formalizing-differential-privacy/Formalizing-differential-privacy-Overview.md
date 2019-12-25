@@ -24,13 +24,13 @@ $$
 
 （*上述的例子可以得出，经过随机化之后，对个人数据是会有不确定性，无法得知个人是什么样的属性，但最后经过“抛硬币机制”处理后得到的总体概率却能还原出数据集原有总体概率。可以尝试，将原有的 $P_A$ 取任何值，都能从最后的 $P_B$ 还原出来，但此时单个个体的属性是随机化的。*）
 
-随机化是必不可少的；更确切地说，任何非平凡的隐私都要对所有现有的或未来的辅助信息来源随机化处理（包括其他数据库、研究、网站、在线社区、闲话、报纸、政府统计等等）。下面我们来说明一个简单的混合参数。出于矛盾的原因，我们假设有一个非平凡的确定性算法。存在一个查询，并且有两个数据库在此查询下产生不同的输出。一次更改一行，我们看到存在一对仅在单行值上有所不同的数据库，在同一数据库上同一查询产生不同的输出。 知道该数据库是这两个几乎完全相同的数据库之一的对手将了解未知行中数据的值。
+随机化是必不可少的；更确切地说，任何非平凡的隐私都要对所有现有的或未来的辅助信息来源随机化处理（包括其他数据库、研究、网站、在线社区、闲话、报纸、政府统计等等）。下面我们来说明一个简单的混合参数。出于矛盾的原因，我们假设有一个非平凡的确定性算法。存在一个查询，并且有两个数据库在此查询下产生不同的输出。一次更改一行，我们看到存在一对仅在单行值上有所不同的数据库，在同一数据库上同一查询产生不同的输出。知道该数据库是这两个几乎完全相同的数据库其中之一的敌手将了解未知行中数据的值。
 
 （*注1：“**非平凡的**” 具有一定复杂度，需要一定脑力活动、加工过程才能得到的结果或结论。The antonym nontrivial is commonly used by engineers and mathematicians to indicate a statement or theorem that is not obvious or easy to prove. 摘自wikipedia*） 
 
 （*注2:为引入随机化和相邻数据集做铺垫。*）
 
-因此，我们将需要讨论随机算法的输入和输出空间。 在本专论中，我们使用离散的概率空间。 有时我们会将算法描述为从连续分布中采样，但是应始终以适当的方式将其离散化为有限精度（请参见后文的备注2.1）。 通常，具有域 $A$ 和（离散）范围 $B$ 的随机算法将与从$A$到$B$上的概率单纯形的映射相关联，表示为$\Delta(B)$：
+因此，我们将需要讨论随机算法的输入和输出空间。 在本专论中，我们使用离散的概率空间。有时我们会将算法描述为从连续分布中采样，但是应始终以适当的方式将其离散化为有限精度（请参见后文的备注2.1）。通常，具有域 $A$ 和（离散）范围 $B$ 的随机算法将与从$A$到$B$上的概率单纯形的映射相关联，表示为$\Delta(B)$：
 
 **定义2.1（概率单纯形）**  给定一个离散集 $B$，将 $B$ 上的概率单纯形，表示为 $\Delta(B)$ ，其定义为：  
 
@@ -40,14 +40,16 @@ $$
   
 （*个人理解：此处的 $\mathbb{R}$ 可以与数据库中的数据集合类比，$x_i$ 即映射后得到数据的类概率，将数据集映射到各个离散状态集合 $B$ 的元素中，且这些映射产生离散点 $x_i$ 的概率之和为 $1$*）
 
-（*个人理解2:对概率单纯形定义进行拓展，即有一个包含$\mathbb{R}^{|B|}$个分量的向量$\overrightarrow{x}$,其分量之和为$1$,如下：*
+（*个人理解2：对概率单纯形定义进行拓展，即有一个包含 $|B|$ 个分量的向量 $\overrightarrow{x}$，其分量之和为 $1$,如下：*
 $$
 \begin{aligned}
 \overrightarrow{x} \in \mathbb{R}^{|B|},\overrightarrow{x} = (x_1,x_2...x_{|B|})  \\ 
 x_i \in \overrightarrow{x},\sum_{i=1}^{|B|}x_i = 1,and \ x_i \geqslant 0 \\
 \end{aligned}
 $$
-$\ \ \ \ \ \ e.g. \  as \ the \ coin \ flip:$
+
+**例如硬币翻转随机响应机制则为：**
+
 $$
 \begin{aligned}
 
@@ -59,11 +61,27 @@ $$
 
 ）
 
-**定义2.2（随机化算法）** 具有域$A$和离散范围$B$的随机算法$\mathcal{M}$ 与 映射 $M:A \to \Delta(B)$相关联。 在输入$a∈A$时，算法$\mathcal{M}$以概率$M(a)_b$输出$\mathcal{M}(a)=b$（$b∈B$）。概率空间包括了硬币翻转算法$\mathcal{M}$的概率空间。
+**定义2.2（随机化算法）** 具有域$A$和离散范围$B$的随机算法$\mathcal{M}$ 与 映射 $M:A \to \Delta(B)$相关联。 在输入$a∈A$时，算法$\mathcal{M}$以概率$M(a)_b$输出$\mathcal{M}(a)=b$（$b∈B$）。概率空间在算法 $\mathcal{M}$ 的硬币翻转上。
 
-（*个人理解：$\mathcal{M}$ 是种映射算法（机制），将原始域数据成为其他离散形式（比如直方图）。上文的翻转硬币机制就是该定义中的 $\mathcal{M}$ 。此处的$\mathcal{M}$与映射 $M:A \to \Delta(B)$有联系但不相同，$\mathcal{M}$指将原始数据变成其他数据的方法，$M:A \to \Delta(B)$是指从$A \to B$的各个映射的概率。）*）
+（*个人理解：$\mathcal{M}$ 是种映射算法（机制），将原始域数据成为其他离散形式（比如直方图）。上文的翻转硬币随机响应机制就是该定义中的 $\mathcal{M}$ 。）*）
 
-我们将数据库 $x$ 视为来自全集 $\mathcal{X}$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\mathcal{X}|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中类型 $i\in\mathcal{X}$ 元素的数量。（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的     $\ell_1$ 距离：
+（**注3：** *随机化算法中最后一句 “**概率空间在算法 $\mathcal{M}$ 的硬币翻转上。**”的原文是 “**The probability space is over the coin flips of the algorithm $\mathcal{M}$.**”。通过查找资料，在[国外论坛](https://security.stackexchange.com/questions/128472/what-does-probability-space-is-over-coin-flips-of-algorithm-m-mean)上找到了比较清楚的解释，原文如下：*
+
+> I have contacted the authors and they were very helpful. The original quote says it all:
+> 
+> > The book is about randomized algorithms that act on data sets. You can always view these as deterministic algorithms, which take two inputs -- the data set, and also a string of random bits.
+> >
+> >The definition of differential privacy has a probability operator, and what that remark means is that the probability is taken over the randomness of the random bit string (i.e. the internal randomness of the algorithm), holding the data set fixed.  
+> 
+> The key to this is that the definition says: "the algorithm $\mathcal{M}$ outputs ... with probability ...". This is a random choice, and the source of randomness is defined by the sentence "The probability space is over the coin flips of the algorithm $\mathcal{M}$".
+
+*个人对其意思的理解与解释为：我们可以把随机机制看成是一个确定的函数，这个函数的输出结果是有两个参数决定：一个固定数据集和一个随机的比特串。这个比特串的目的就是为了是为了使输出结果随机（即，使得算法内部随机）。算法 $\mathcal{M}$ 的目的就是为了随机选择输出，这种随机性用数学术语表达即为：“**概率空间在算法 $\mathcal{M}$ 的硬币翻转上。**” 意思是对这种随机串的比特位进行随机翻转，从而造成的机制的随机性。*
+
+*在后文的差分隐私定义中，同样提及了这个提法，因为定义中存在概率，而这个概率是由随机串的随机性决定的。*
+
+）
+
+我们将数据库 $x$ 视为来自全集 $\mathcal{X}$ 的记录的集合。用它们的直方图表示数据库通常会很方便：$x \in \mathbb{N}^{|\mathcal{X}|}$ ，其中每个项  $x_i$ 表示数据库 $x$ 中类型 $i\in\mathcal{X}$ 元素的数量。（我们略微滥用了符号，让符号 $\mathbb{N}$ 表示所有非负整数的集合，包括零）。 在这个表示中，两个数据库 $x$ 和 $y$ 之间距离的自然度量将是它们的 $\ell_1$ 距离：
 
 **定义 2.3 (数据库之间距离)** 将数据库的$\ell_1$ 范数距离表示为 $\Vert x\Vert _1$ 其定义为:
 

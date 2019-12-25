@@ -41,7 +41,7 @@
 	* [参考文献](4-Releasing-Linear-Quries-with-Correlated-Error/Bibliographic-notes.md)
 
 * [五、差分隐私泛化](5-Generalizations/Overview.md)
-	* [𝞪-nets机制]()
+	* [𝞪-nets机制](5-Generalizations/Mechanisms-via-alpha-nets.md)
 	* [迭代构建机制]()
 	* [机制关联]()
 	* [参考文献]()
