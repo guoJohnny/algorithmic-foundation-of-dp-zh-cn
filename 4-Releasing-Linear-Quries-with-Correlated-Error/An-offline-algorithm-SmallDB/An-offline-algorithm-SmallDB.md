@@ -12,6 +12,8 @@
 
 我们可以类似地使用指数机制分析方式，对 **SmallDB** 机制进行分析，以了解其效用保证。但是首先，我们必须证明我们选择范围 $\mathcal{R}=\{y \in \mathbb{N}^{|\mathcal{X}|}:\Vert y\Vert _1 = \frac{\log |\mathcal{Q}|}{\alpha^2}\}$，其输出的所有数据库集合的大小为：$\log |\mathcal{Q}|/\alpha^2$。
 
+**【命题 4.1 证毕】**
+
 **定理 4.2** 对于线性查询 $\mathcal{Q}$ 的任何有限类，如果 $\mathcal{R}=\{y \in \mathbb{N}^{|\mathcal{X}|}:\Vert y\Vert _1 = \frac{\log |\mathcal{Q}|}{\alpha^2}\}$ 则对于所有 $x \in \mathbb{N}^{|\mathcal{X}|}$，存在一个 $y \in \mathcal{R}$ 使得：
 
 $$
@@ -66,11 +68,13 @@ $$
 \text{Pr}\big[\max_{f \in \mathcal{Q}}|f(y)-f(x)|>\alpha\big]\leq 2|\mathcal{Q}|e^{-2m\alpha^2}
 $$
 
-当 $m=\frac{\log|\mathcal{Q}|}{\alpha^2}$ 使等式右边小于 $1$（只要 $\mathcal{Q}>2$ ），z这证明了存在一个满足上述界限的大小为 $m$ 的数据库，从而完成了引理的证明。证毕。
+当 $m=\frac{\log|\mathcal{Q}|}{\alpha^2}$ 使等式右边小于 $1$（只要 $\mathcal{Q}>2$ ），z这证明了存在一个满足上述界限的大小为 $m$ 的数据库，从而完成了引理的证明。
+
+**【引理 4.3 证毕】**。
 
 因为 $\mathcal{R}$ 必包含所有大小为 $\frac{\log|\mathcal{Q}|}{\alpha^2}$ 的数据库，可以简单地得出 **定理4.2** 的证明。
 
-**命题4.4** 令 $\mathcal{Q}$ 为线性查询的任何类别。 令 $y$ 为
+**命题 4.4** 令 $\mathcal{Q}$ 为线性查询的任何类别。 令 $y$ 为
 $\text{SmallDB}(x,\mathcal{Q},\varepsilon,\alpha)$输出的数据库。然后以 $1-\beta$ 的概率有：
 
 $$
@@ -83,7 +87,9 @@ $$
 \text{Pr}[\max_{f \in \mathcal{Q}}|f(x)-f(y)|\geq \alpha + \frac{2}{\varepsilon \Vert x \Vert_1}(\log(|\mathcal{R}|)+t)]\leq e^{-t}
 $$
 
-我们通过两步完成证明：（1）注意到数据库 $y$ 的大小 $\mathcal{R}$ 至多为 $\log|\mathcal{Q}|/\alpha^2$，所以 $|\mathcal{R}|\leq |\mathcal{X}|^{\log|\mathcal{Q}|/\alpha^2}$；（2）由于概率为：$1-\beta$，所以令 $t=\log(\frac{1}{\beta})$。证毕。
+我们通过两步完成证明：（1）注意到数据库 $y$ 的大小 $\mathcal{R}$ 至多为 $\log|\mathcal{Q}|/\alpha^2$，所以 $|\mathcal{R}|\leq |\mathcal{X}|^{\log|\mathcal{Q}|/\alpha^2}$；（2）由于概率为：$1-\beta$，所以令 $t=\log(\frac{1}{\beta})$。
+
+**【命题 4.4 证毕】**。
 
 最后，我们要声明 **SmallDB** 的效用定理。
 
