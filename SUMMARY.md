@@ -14,6 +14,7 @@
 	* [形式化差分隐私](2-Basic-Terms/Formalizing-differential-privacy/Formalizing-differential-privacy-Overview.md)
 		* [形式化差分隐私（1）](2-Basic-Terms/Formalizing-differential-privacy/Formalizing-differential-privacy_1.md)
 		* [形式化差分隐私（2）](2-Basic-Terms/Formalizing-differential-privacy/Formalizing-differential-privacy_2.md)
+		* [差分隐私定义补充说明](2-Basic-Terms/Formalizing-differential-privacy/Additional-definition-of-dp.md)
 	* [参考文献](2-Basic-Terms/Bibliographic-notes.md)
 
 * [三、基本技术与合成定理](3-Basic-Techniques-and-Composition-Theorems/Overview.md)
