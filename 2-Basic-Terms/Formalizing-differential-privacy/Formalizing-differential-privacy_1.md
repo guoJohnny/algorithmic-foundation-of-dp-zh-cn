@@ -1,6 +1,6 @@
 # 2.3 形式化差分隐私（1）
 
-**定义2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $\Vert x-y\Vert _1 \leq 1$，如果满足下列关系：
+**定义 2.4 （差分隐私）** 对于所有的$\mathcal{S} \subseteq Range(\mathcal{M})$ 且所有的 $x,y\in \mathbb{N}^{|\mathcal{X}|}$ 有 $\Vert x-y\Vert _1 \leq 1$，如果满足下列关系：
 
 $$
 \text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq \exp(\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}] + \delta
@@ -12,14 +12,14 @@ $$
 
 通常，我们对 $\delta$ 的值感兴趣，该值小于多项式数据库大小的倒数。 特别是，$\delta$  值接近 $1/\Vert x\Vert _1$ 是非常危险（因为在第1节中讨论“少数人”原则）：这种做法通过发布少量数据库参与者的完整记录来“保护隐私”（以获得可用性）。 
 
-但是，即使 $\delta$ 可以忽略不计，$\varepsilon$ 和 $(\varepsilon,\delta)$-  差分隐私之间也存在理论上的区别。 其中最主要的是量化顺序的转换。 $\varepsilon$- 差分隐私可确保对于机制 $\mathcal{M}(x)$ 的每次运行，在每个相邻数据库上同时观察到的输出的可能性几乎相同。相反，从事后观察值得出结论， $(\varepsilon,\delta)$-  差分隐私对于每对相邻数据库$x, \ y$，当数据库是$x$，而不是$y$时，机制  $\mathcal{M}$ 或更大概率生成或小概率生成值 $\mathcal{M}(x)$ 。 但是，给定输出$\xi \backsim \mathcal{M}(x)$，可能会找到一个数据库$y$，使得 $\xi$ 在 $y$ 上产生的可能性比数据库为 $x$ 时的可能性大得多。 即，分布 $\mathcal{M}(y)$ 中的 $\xi$ 的质量可以实质上大于分布 $\mathcal{M}(x)$ 中的 $\xi$ 的质量。
+但是，即使 $\delta$ 可以忽略不计，$\varepsilon$- 差分隐私和 $(\varepsilon,\delta)$- 差分隐私之间也存在理论上的区别。 其中最主要的是量化顺序的转换。 $\varepsilon$- 差分隐私可确保对于机制 $\mathcal{M}(x)$ 的每次运行，在每个相邻数据库上同时观察到的输出的可能性几乎相同。相反，从事后观察值得出结论， $(\varepsilon,\delta)$-  差分隐私对于每对相邻数据库$x, \ y$，可能出现这样一种情况：值 $\mathcal{M}(x)$ 更可能由 $x$ 产生。但是，给定一个输出 $\xi \backsim \mathcal{M}(x)$，也可能会找到一个数据库$y$，使得 $\xi$ 在 $y$ 上产生的概率比数据库为 $x$ 时的概率大得多。 即，分布 $\mathcal{M}(y)$ 中的 $\xi$ 的概率可以实质上大于分布 $\mathcal{M}(x)$ 中的 $\xi$ 的概率。
 
 所以，机制质量：
 
 $$
 \mathcal{L}_{\mathcal{M}(x)\Vert \mathcal{M}(y)}^{(\xi)} = \ln(\frac{\text{Pr}\lbrack \mathcal{M}(x) = \xi \rbrack}{\text{Pr}\lbrack \mathcal{M}(y) = \xi \rbrack})
 $$
-对我们至关重要。我们将其称为观察 $\xi$ 导致的**隐私损失**。 这种损失可能是正的（当事件在$x$之下比在$y$之下更有可能发生），也可能是负的（当事件在$y$之下比$x$之下更有可能）。正如我们将在**引理3.17**看到，$(\varepsilon,\delta)$-  差分隐私确保对于所有相邻的$x$、$y$，隐私损失的绝对值被$\varepsilon$界定的概率至少为$1-\delta$。 与前文一样，概率空间位于机制$\mathcal{M}$的硬币上。
+对我们至关重要。我们将其称为：当机制输出为 $\xi$ 时的**隐私损失**。 这种损失可能是正的（当事件在$x$之下比在$y$之下更有可能发生），也可能是负的（当事件在$y$之下比$x$之下更有可能）。正如我们将在**引理3.17**看到，$(\varepsilon,\delta)$-  差分隐私确保对于所有相邻的$x$、$y$，隐私损失的绝对值小于等于 $\varepsilon$的概率至少为 $1-\delta$。 与前文一样，概率空间位于机制$\mathcal{M}$的硬币上。
 
 差分隐私不受后处理的影响：在没有其他有关私有数据库的知识的情况下，数据分析人员无法计算私有算法$\mathcal{M}$的输出函数，也无法使其差分隐私程度降低。 就是说，如果算法保护了个人的隐私，那么无论是在正式定义下，还是在任何直观的意义上，数据分析师都无法仅仅通过坐在角落里思考算法的输出来增加隐私损失。 形式上，具有（$(\varepsilon,\delta)$-  差分隐私算法$\mathcal{M}$的数据独立映射 $f$ 的合成也具有（$(\varepsilon,\delta)$-  差分隐私：
 
