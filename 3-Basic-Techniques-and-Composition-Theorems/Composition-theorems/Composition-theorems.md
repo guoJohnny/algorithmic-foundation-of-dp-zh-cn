@@ -23,7 +23,7 @@ $$
 
 组合定理能反复应用以获得以下推论：
 
-**推论 3.16** 令 $\mathcal{M}_i:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,0)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\mathcal{X}|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,0)$- 差分隐私。
+**推论 3.15** 令 $\mathcal{M}_i:\mathbb{N}^{|\mathcal{X}|}\to \mathcal{R}_i$ 是 $(\varepsilon_i,0)$- 差分隐私算法（$i \in [k]$）。如果将 $\mathcal{M}_{[k]}:\mathbb{N}^{|\mathcal{X}|}\to \prod_{i=1}^{k}\mathcal{R}_i$ 定义为 ：$(\mathcal{M}_{1}(x),...,\mathcal{M}_{k}(x))$，则 $\mathcal{M}_{[k]}$ 是 $(\sum_{i=1}^{k}\varepsilon_i,0)$- 差分隐私。
 
 该定理推广到 $(\varepsilon,\delta)$-差分隐私的证明见附录B：
 
