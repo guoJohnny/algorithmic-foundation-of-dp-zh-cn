@@ -43,7 +43,7 @@
 
 * [五、差分隐私泛化](5-Generalizations/Overview.md)
 	* [𝞪-nets机制](5-Generalizations/Mechanisms-via-alpha-nets.md)
-	* [迭代构建机制]()
+	* [迭代构建机制](5-Generalizations/The-iterative-construction-mechanism.md)
 	* [机制关联]()
 	* [参考文献]()
 
