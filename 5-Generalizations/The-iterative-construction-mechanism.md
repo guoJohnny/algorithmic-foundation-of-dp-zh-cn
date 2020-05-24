@@ -20,3 +20,5 @@
 $T(\alpha)$- 数据库更新算法的定义表明如果 $U$ 是 $T(\alpha)$- 数据库更新算法，则给定最大 $(U,x,\mathcal{Q},\alpha,U)$-数据库更新序列，最终数据库 $D^L$ 必须满足 $\max_{f\in\mathcal{Q}}|f(x)-f(D^L)|\leq \alpha$，否则将存在满足定义5.3的条件2的另一个查询，因此将存在一个 $(U,x,\mathcal{Q},\alpha,L+1)$-数据库更新序列，与最大矛盾。 也就是说，$T(\alpha)$-数据库更新规则的目标是生成最大的数据库更新序列，并且最大数据库更新序列中的最终数据结构必须对每个查询 $f\in \mathcal{Q}$ 的近似响应进行编码。
 
 既然我们已经定义了数据库更新算法，那么在 [**定理4.10**](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-multiplicative-weight-update-rule.html) 中我们真正证明的是，可乘权重算法是 $T(\alpha)=4\log|\mathcal{X}|/\alpha^2$ 的 $T(\alpha)$-数据库更新算法。 
+
+到此让我们为数据库更新算法建立一些直观概念。 $T(\alpha)$-数据库更新算法开始于一些有关真实数据库 $x$ 的初始猜测 $D^1$。因为该猜测不基于任何信息，所以 $D^1$ 和 $x$ 很可能几乎没有相似之处，并且存在一些查询 $f\in \mathcal{Q}$ 以至少 $\alpha$ 的精度区分这两个数据库：即 $f(x)$ 和 $f(D^1)$ 的值相差至少为 $\alpha$。数据库更新算法的作用是在有证明当前假设 $D^{t-1}$ 不正确的情况下更新其假设 $D^t$：在每个阶段，它以 $\mathcal{Q}$ 中的某个查询作为输入，这些查询能区别其当前假设与真实数据库的偏差，然后输出一个新的假设。参数 $T(\alpha)$ 是数据库更新算法更新其假设的次数的上限：这个上限保证在提供最多 $T(\alpha)$ 区别查询之后，该算法将最终产生了一个关于查询 $\mathcal{Q}$ 的假设数据集 $D^t$，$D^t$ 看起来像是真正的数据库 $x$（至少不超过误差 $\alpha$）【书注】。对于数据库更新算法，更希望使用较小的边界 $T(\alpha)$。

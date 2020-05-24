@@ -2,7 +2,7 @@
 
 给定一个查询集 $\mathcal{Q}$，下面我们开始定义 $\alpha$-nets。
 
-**定义 5.2（$\alpha$-nets。）** 关于查询类 $\mathcal{Q}$ 的数据结构 $\alpha$-nets 为集合 $\mathcal{N}\subset \mathbb{N}^{|\mathcal{X}|}$。对于所有 $x\in \mathbb{N}^{\mathcal{|X|}}$，都存在一个 $\alpha$-nets 的元素 $y\in \mathcal{N}$，使得：
+**定义 5.2（$\alpha$-nets）** 关于查询类 $\mathcal{Q}$ 的数据结构 $\alpha$-nets 为集合 $\mathcal{N}\subset \mathbb{N}^{|\mathcal{X}|}$。对于所有 $x\in \mathbb{N}^{\mathcal{|X|}}$，都存在一个 $\alpha$-nets 的元素 $y\in \mathcal{N}$，使得：
 
 $$
 \max_{f\in\mathcal{Q}}|f(x)-f(y)|\leq \alpha
@@ -43,3 +43,4 @@ $$
 因此，我们可以知道，通过 $\left|\mathcal{N}_{\alpha}(\mathcal{Q})\right|$ 的上界（$\mathcal{Q}$ 为函数集合），推得差分隐私机制能同时为 $\mathcal{Q}$ 类中的所有函数提供的精度的上界。
 
 这正是我们在 **第4.1节** 中所做的，我们看到当 $\mathcal{Q}$ 是一类线性查询时，关键质量是 $\mathcal{Q}$ 的 $\text{VC}$ 维。
+
