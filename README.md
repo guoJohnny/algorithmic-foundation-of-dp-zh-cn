@@ -22,9 +22,13 @@
 
 guoJohnny @guoJohnny
 
+asKylin @asKylin
+
 ## 项目源码
 
 项目源码存放于 Github 上，[https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn](https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn)。  
+
+因为原译者更新到第五章就停止更新了，我暂时无法联系到原译者，因此fork了该仓库并继续后续翻译工作，欢迎联系我并一同翻译讨论。源码存放于Github上，[https://github.com/doubleheiker/algorithmic-foundation-of-dp-zh-cn](https://github.com/doubleheiker/algorithmic-foundation-of-dp-zh-cn)。
 
 ## 欢迎建议指正或直接贡献翻译
 
