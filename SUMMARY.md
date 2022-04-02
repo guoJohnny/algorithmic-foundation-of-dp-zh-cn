@@ -45,6 +45,7 @@
 	* [𝞪-nets机制](5-Generalizations/Mechanisms-via-alpha-nets.md)
 	* [迭代构建机制](5-Generalizations/The-iterative-construction-mechanism/The-iterative-construction-mechanism.md)
 	  * [应用：其他数据库更新算法](\5-Generalizations\The-iterative-construction-mechanism\Applications-other-database-update-algorithms.md)
+	  * [迭代构建机制和在线算法](\5-Generalizations\The-iterative-construction-mechanism\Iterative-construction-mechanisms-and-online-algorithms.md)
 	* [机制关联]()
 	* [参考文献]()
 	
