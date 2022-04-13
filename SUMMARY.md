@@ -47,6 +47,9 @@
 	  * [应用：其他数据库更新算法](\5-Generalizations\The-iterative-construction-mechanism\Applications-other-database-update-algorithms.md)
 	  * [迭代构建机制和在线算法](\5-Generalizations\The-iterative-construction-mechanism\Iterative-construction-mechanisms-and-online-algorithms.md)
 	* [机制关联]()
+	  * [迭代构建机制和𝞪-nets](\5-Generalizations\Connections\Iterative-construction-mechanism-and-alpha-nets.md)
+	  * [不可知论学习](\5-Generalizations\Connections\Agnostic-learning.md)
+	  * [查询发布的博弈论观点](\5-Generalizations\Connections\A-game-theoretic-view-of-query-release.md)
 	* [参考文献]()
 	
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
