@@ -28,7 +28,13 @@ asKylin @asKylin
 
 ## 欢迎建议指正或直接贡献翻译
 
-https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn/issues
+{% embed url="https://github.com/guoJohnny/algorithmic-foundation-of-dp-zh-cn/issues" %}
+guoJohnny
+{% endembed %}
+
+{% embed url="https://github.com/doubleheiker/algorithmic-foundation-of-dp-zh-cn" %}
+doubleheiker
+{% endembed %}
 
 ## LICENSE
 
