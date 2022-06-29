@@ -6,27 +6,27 @@
 
 ![OnlineIC](/5-Generalizations/img/OnlineIC.png)
 
-**定理 5.13** OnlineIC是$(\varepsilon,\delta)-$差分隐私的。
+**定理 5.13** OnlineIC是$$(\varepsilon,\delta)-$$差分隐私的。
 
 【证明】这直接来自NumericSparse的隐私分析，因为OnlineIC算法仅通过NumericSparse访问数据库。
 
-**定理 5.14** 对于$\delta=0$，以至少$1-\beta$的概率，对于所有查询$f_i$，OnlineIC返回一个回答$a_i$有$|f_i(x)-a_i|\leq 3\alpha$，对于任何$\alpha$有：
+**定理 5.14** 对于$$\delta=0$$，以至少$$1-\beta$$的概率，对于所有查询$$f_i$$，OnlineIC返回一个回答$$a_i$$有$$|f_i(x)-a_i|\leq 3\alpha$$，对于任何$$\alpha$$有：
 $$
 \alpha\geq\frac{9T(\alpha)(\log(2|\mathcal{Q}|)+\log(4T(\alpha)/\beta))}{\varepsilon||x||_1}
 $$
-【证明】回顾[**定理3.28**](/3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/NumericSparse.html)，给定$k$个查询和一个阈值$c$以上查询的最大数量，稀疏向量是$(\alpha,\beta)-$准确的对于：
+【证明】回顾[**定理3.28**](/3-Basic-Techniques-and-Composition-Theorems/The-sparse-vector-technique/NumericSparse.html)，给定$$k$$个查询和一个阈值$$c$$以上查询的最大数量，稀疏向量是$$(\alpha,\beta)-$$准确的对于：
 $$
 \alpha=\frac{9c(\log\space k+\log(4c/\beta))}{\varepsilon||x||_1}
 $$
-这里，我们有$c=T(\alpha)$和$k=2|\mathcal{Q}|$。请注意，我们在这个算法中设置了阈值$T=2\alpha$。首先我们假设稀疏向量算法不会过早停止。在这种情况下，根据效用定理，除了至多$\beta$概率，我们有对于所有$i$满足$a_i=f_i(D^t):|f_i(D)-f_i(D^t)|\leq T+\alpha=3\alpha$，正如我们想要的。除此之外，对于所有$i$满足$a_i=a'_{2i-1}$或者$a_i=a_{2i}'$，我们有$|f_i(D)-a_i'|\leq\alpha$。
+这里，我们有$$c=T(\alpha)$$和$$k=2|\mathcal{Q}|$$。请注意，我们在这个算法中设置了阈值$$T=2\alpha$$。首先我们假设稀疏向量算法不会过早停止。在这种情况下，根据效用定理，除了至多$$\beta$$概率，我们有对于所有$$i$$满足$$a_i=f_i(D^t):|f_i(D)-f_i(D^t)|\leq T+\alpha=3\alpha$$，正如我们想要的。除此之外，对于所有$$i$$满足$$a_i=a'_{2i-1}$$或者$$a_i=a_{2i}'$$，我们有$$|f_i(D)-a_i'|\leq\alpha$$。
 
-注意到我们也有对于所有$i$满足$a_i=a'_{2i-1}$或者$a_i=a_{2i}'$：$f_i(D)-f_i(D^t)\leq T-\alpha=\alpha$，因为$T=2\alpha$。因此，$f_i,a_i$组成了在数据库更新序列的一个有效步骤。因此，这种更新步骤最多有$c=T(\alpha)$次，而且因此稀疏向量算法不会过早停止。
+注意到我们也有对于所有$$i$$满足$$a_i=a'_{2i-1}$$或者$$a_i=a_{2i}'$$：$$f_i(D)-f_i(D^t)\leq T-\alpha=\alpha$$，因为$$T=2\alpha$$。因此，$$f_i,a_i$$组成了在数据库更新序列的一个有效步骤。因此，这种更新步骤最多有$$c=T(\alpha)$$次，而且因此稀疏向量算法不会过早停止。
 
-类似地，我们可以证明$(\varepsilon,\delta)$的对应界限。
+类似地，我们可以证明$$(\varepsilon,\delta)$$的对应界限。
 
-**定理 5.15** 对$\delta>0$，以至少$1-\beta$的概率，对于所有查询$f_i$，OnlineIC返回一个回答$a_i$有$|f_i(x)-a_i|\leq 3\alpha$，对于任何$\alpha$有：
+**定理 5.15** 对$$\delta>0$$，以至少$$1-\beta$$的概率，对于所有查询$$f_i$$，OnlineIC返回一个回答$$a_i$$有$$|f_i(x)-a_i|\leq 3\alpha$$，对于任何$$\alpha$$有：
 $$
 \alpha\geq\frac{(\sqrt{521}+1)(\ln(2|\mathcal{Q}|)+\ln\frac{4T(\alpha)}{\beta})\sqrt{T(\alpha\ln{\frac{2}{\delta}})}}{\varepsilon||x||_1}
 $$
-我们可以通过回忆MW数据库更新算法是$T(\alpha)=\frac{4\log|\mathcal{X}|}{\alpha^2}$的$T(\alpha)-$数据库更新算法来恢复我们证明的在线乘法权重的界限。更一般地说，我们认为迭代构造框架中的任何算法都可以转换为在交互式环境中工作的算法，而不会损失准确性。(例如，我们同样可以代入中位数机制数据库更新算法或者感知机数据库更新算法，或者其他任何更新算法)。诱人的是，这意味着（至少在迭代构建框架中），在线与离线查询发布模型可实现的准确性没有差距，尽管在线模型看起来应该更困难。
+我们可以通过回忆MW数据库更新算法是$$T(\alpha)=\frac{4\log|\mathcal{X}|}{\alpha^2}$$的$$T(\alpha)-$$数据库更新算法来恢复我们证明的在线乘法权重的界限。更一般地说，我们认为迭代构造框架中的任何算法都可以转换为在交互式环境中工作的算法，而不会损失准确性。(例如，我们同样可以代入中位数机制数据库更新算法或者感知机数据库更新算法，或者其他任何更新算法)。诱人的是，这意味着（至少在迭代构建框架中），在线与离线查询发布模型可实现的准确性没有差距，尽管在线模型看起来应该更困难。
 
