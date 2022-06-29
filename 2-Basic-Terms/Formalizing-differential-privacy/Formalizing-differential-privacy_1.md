@@ -57,9 +57,9 @@ $$
 **群隐私**：$$(\varepsilon,0)$$- 差分隐私机制的群隐私也遵循从定义2.4，隐私保证的强度随群的大小线性下降。
 
 **定理2.2** 任意一个大小为 $$k$$ 的群体，这个群体的机制 $$\mathcal{M}$$ 是 $$(\varepsilon,0)$$- 差分隐私，则这个机制 $$\mathcal{M}$$ 会变成 $$(k\varepsilon,0)$$- 差分隐私。也就是说，对于所有 $$\Vert x-y\Vert _1 \leq k$$ 和所有 $$\mathcal{S} \subseteq Range(\mathcal{M})$$ 有:
-$$$$
-\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq \exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}]$$$$
-
+$$
+\text{Pr}[\mathcal{M}(x) \in \mathcal{S}] \leq \exp(k\varepsilon)\text{Pr}[\mathcal{M}(y) \in \mathcal{S}]
+$$
 概率空间在机制 $$\mathcal{M}$$ 的硬币翻转上。
 
 例如，这解决了包括多个群体成员的调查中的隐私问题$$\ ^{[1]}$$。
