@@ -36,48 +36,48 @@
     * [数值稀疏向量可乘权重算法](4-Releasing-Linear-Quries-with-Correlated-Error/An-online-mechanism-private-multiplicative-weights/The-OnlineMW-via-NumericSparse-algorithm.md)
   * [参考文献](4-Releasing-Linear-Quries-with-Correlated-Error/Bibliographic-notes.md)
 * [五、差分隐私泛化](5-Generalizations/Overview.md)
-	* [𝞪-nets机制](5-Generalizations/Mechanisms-via-alpha-nets.md)
-	* [迭代构建机制](5-Generalizations/The-iterative-construction-mechanism/The-iterative-construction-mechanism.md)
-	  * [应用：其他数据库更新算法](5-Generalizations/The-iterative-construction-mechanism/Applications-other-database-update-algorithms.md)
-	  * [迭代构建机制和在线算法](5-Generalizations/The-iterative-construction-mechanism/Iterative-construction-mechanisms-and-online-algorithms.md)
-	* [机制关联](5-Generalizations/Connections/Overview.md)
-	  * [迭代构建机制和𝞪-nets](5-Generalizations/Connections/Iterative-construction-mechanism-and-alpha-nets.md)
-	  * [不可知论学习](5-Generalizations/Connections/Agnostic-learning.md)
-	  * [查询发布的博弈论观点](5-Generalizations/Connections/A-game-theoretic-view-of-query-release.md)
-	* [参考文献]()
+  * [𝞪-nets机制](5-Generalizations/Mechanisms-via-alpha-nets.md)
+  * [迭代构建机制](5-Generalizations/The-iterative-construction-mechanism/The-iterative-construction-mechanism.md)
+    * [应用：其他数据库更新算法](5-Generalizations/The-iterative-construction-mechanism/Applications-other-database-update-algorithms.md)
+    * [迭代构建机制和在线算法](5-Generalizations/The-iterative-construction-mechanism/Iterative-construction-mechanisms-and-online-algorithms.md)
+  * [机制关联](5-Generalizations/Connections/Overview.md)
+    * [迭代构建机制和𝞪-nets](5-Generalizations/Connections/Iterative-construction-mechanism-and-alpha-nets.md)
+    * [不可知论学习](5-Generalizations/Connections/Agnostic-learning.md)
+    * [查询发布的博弈论观点](5-Generalizations/Connections/A-game-theoretic-view-of-query-release.md)
+  * [参考文献](README.md)
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
-	* [查询算法增强]()
-	* [基本概要生成器]()
-	* [参考文献]()
+  *
+  *
+  *
 * [七、非典型最坏敏感度](7-When-Worst-Case-Sensitivity-is-Atypical/Overview.md)
-	* [子样本与聚合]()
-	* [提出、测试、发布]()
-	* [稳定性与隐私性]()
+  *
+  *
+  *
 * [八、差分隐私下界与分离结果](8-Lower-Bounds-and-Separation-Result/Overview.md)
-	* [重建攻击]()
-	* [差分隐私下界]()
-	* [参考文献]()
-* [九、差分隐私与计算复杂性](9-Differential-\text{Pr}ivacy-and-Computational-Complexity/Overview.md)
-	* [多项式时间数据提供者]()
-	* [难合成分布]()
-	* [多项式时间对手]()
-	* [参考文献]()
-* [十、差分隐私与机制设计](10-Differential-\text{Pr}ivacy-and-Mechanism-Design/Overview.md)
-	* [差分隐私作为解决概念]()
-	* [差分隐私作为机制设计的工具]()
-	* [设计隐私保护代理机制]()
-	* [参考文献]()
-* [十一、差分隐私与机器学习](11-Differential-\text{Pr}ivacy-and-Machine-Learning/Overview.md)
-	* [复杂差分隐私机器学习例子]()
-	* [差分隐私在线学习]()
-	* [经验风险最小化函数]()
-	* [参考文献]()
+  *
+  *
+  *
+* [九、差分隐私与计算复杂性](jiu-cha-fen-yin-si-yu-ji-suan-fu-za-xing/README.md)
+  *
+  *
+  *
+  *
+* [十、差分隐私与机制设计](shi-cha-fen-yin-si-yu-ji-zhi-she-ji/README.md)
+  *
+  *
+  *
+  *
+* [十一、差分隐私与机器学习](shi-yi-cha-fen-yin-si-yu-ji-qi-xue-xi/README.md)
+  *
+  *
+  *
+  *
 * [十二、其他差分隐私模型](12-Additional-Models/Overview.md)
-	* [本地模型]()
-	* [Pan-private流模型]()
-	* [连续观察]()
-	* [查询发布的平均案例错误]()
-	* [参考文献]()
+  *
+  *
+  *
+  *
+  *
 * [十三、思考](13-Reflections/Overview.md)
-	* [面向隐私保护实践]()
-	* [差分隐私展望]()
+  *
+  *
