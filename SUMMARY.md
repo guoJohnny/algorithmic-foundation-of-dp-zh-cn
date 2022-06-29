@@ -44,40 +44,12 @@
     * [迭代构建机制和𝞪-nets](5-Generalizations/Connections/Iterative-construction-mechanism-and-alpha-nets.md)
     * [不可知论学习](5-Generalizations/Connections/Agnostic-learning.md)
     * [查询发布的博弈论观点](5-Generalizations/Connections/A-game-theoretic-view-of-query-release.md)
-  * [参考文献]()
+  * [参考文献](README.md)
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
-  *
-  *
-  *
 * [七、非典型最坏敏感度](7-When-Worst-Case-Sensitivity-is-Atypical/Overview.md)
-  *
-  *
-  *
 * [八、差分隐私下界与分离结果](8-Lower-Bounds-and-Separation-Result/Overview.md)
-  *
-  *
-  *
 * [九、差分隐私与计算复杂性](jiu-cha-fen-yin-si-yu-ji-suan-fu-za-xing/README.md)
-  *
-  *
-  *
-  *
 * [十、差分隐私与机制设计](shi-cha-fen-yin-si-yu-ji-zhi-she-ji/README.md)
-  *
-  *
-  *
-  *
 * [十一、差分隐私与机器学习](shi-yi-cha-fen-yin-si-yu-ji-qi-xue-xi/README.md)
-  *
-  *
-  *
-  *
 * [十二、其他差分隐私模型](12-Additional-Models/Overview.md)
-  *
-  *
-  *
-  *
-  *
 * [十三、思考](13-Reflections/Overview.md)
-  *
-  *
