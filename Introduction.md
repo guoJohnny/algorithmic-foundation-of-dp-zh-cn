@@ -32,7 +32,7 @@ asKylin @asKylin
 guoJohnny
 {% endembed %}
 
-{% embed url="https://github.com/doubleheiker/algorithmic-foundation-of-dp-zh-cn" %}
+{% embed url="https://github.com/doubleheiker/algorithmic-foundation-of-dp-zh-cn/pulls" %}
 doubleheiker
 {% endembed %}
 
