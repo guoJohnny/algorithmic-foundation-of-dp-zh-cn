@@ -44,7 +44,7 @@
     * [迭代构建机制和𝞪-nets](5-Generalizations/Connections/Iterative-construction-mechanism-and-alpha-nets.md)
     * [不可知论学习](5-Generalizations/Connections/Agnostic-learning.md)
     * [查询发布的博弈论观点](5-Generalizations/Connections/A-game-theoretic-view-of-query-release.md)
-  * [参考文献](README.md)
+  * [参考文献]()
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
   *
   *
