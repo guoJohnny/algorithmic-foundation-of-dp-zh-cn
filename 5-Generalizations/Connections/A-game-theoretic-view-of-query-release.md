@@ -59,3 +59,9 @@ $$
 $$
 在这里，我们简单地注意到，根据定义， 如果$$\mathbb{E}_{\chi\sim\mathcal{D}_A}c(\chi,f)=c<0$$，那么$$\mathbb{E}_{\chi\sim\mathcal{D}_A}c(\chi,\hat{f})=-c>0$$，矛盾，因为$$\hat{f}\in\mathcal{Q}$$。（译者注：所以$$v=0$$）
 
+我们所建立的结果表明，对于任何分布$$\mathcal{D}_A$$是数据库玩家的$$\alpha-$$近似最小-最大策略， 我们有：对于所有查询$$f\in\mathcal{Q}:|\mathbb{E}_{\chi\sim\mathcal{D}_A}f(\chi)-f(x)|\leq\alpha$$。换句话说，分布$$\mathcal{D}_A$$可以被看作是一个以$$\alpha-$$精度回答$$\mathcal{Q}$$中的每个查询的合成数据库。 
+
+对于非线性查询呢？ 如果稍微更改查询发布博弈，我们可以重复上面的相同参数。 我们不是让数据库玩家拥有对应于域元素$$\chi\in\mathcal{X}$$的策略，而是让数据库玩家拥有对应于数据库本身的策略！那么，$$c(f,y)=|f(x)-f(y)|$$。不难看出，该博弈的值仍然为0，并且$$\alpha-$$近似最小-最大策略对应于对$$\mathcal{Q}$$中的查询给出$$\alpha-$$精度答案的合成数据。
+
+那么，我们如何计算零和博弈中的近似最小-最大策略呢？有很多方法！众所周知，如果Alice反复进行博弈游戏，则使用具有无后悔保证（no-regret guarantee）的在线学习算法来更新她的动作分布（定义在[11.2](/11-Differential-Privacy-and-Machine-Learning/Differentially-private-online-learning.html)节），Bob在每一轮都会做出近似-成本-最大化的响应，然后Alice的分布会迅速收敛到近似的最小-最大策略。可乘权重就是这样一种算法，理解可乘权重机制的一种方法是将其作为Alice在本节中定义的查询发布博弈中的策略。（私有区分器在这里扮演Bob的角色，在每一轮中挑选对应于近似最大化Alice的成本的查询）。对于Alice的策略对应于数据库而不是域元素的博弈，中位数机制是另一种这样的算法，并且因此也计算查询释放博弈的近似最小-最大解。
+
