@@ -39,3 +39,23 @@ $$
 考虑一个特殊的零和博弈，该博弈是针对在数据域$$\mathcal{X}$$上发布一组线性查询$$\mathcal{Q}$$的问题设计的。首先，在不丧失一般性的情况下假定对于每一个$$f\in \mathcal{Q}$$， 存在一个查询$$\hat{f}\in\mathcal{Q}$$使得$$\hat{f}=1-f$$（例如：对于每一个$$\chi\in\mathcal{X},\hat{f}(\chi)=1-f(\chi)$$）。将Alice的行动集合定义为$$\mathcal{A}=\mathcal{X}$$，将Bob的行动集合定义为$$\mathcal{B}=\mathcal{Q}$$。我们将Alice称为*数据库玩家*，Bob称为*查询玩家*。 最后，将一个真正的私有数据库$$x$$归一化为一个概率分布 （例如：$$||x||_1=1$$），定义成本函数$$c:\mathcal{A}\times\mathcal{B}\to[-1,1]$$为：$$c(\chi,f)=f(\chi)-f(x)$$。让我们称这个博弈为“查询发布博弈”。 
 
 我们从一个简单的观察开始： 
+
+**命题 5.16.** 查询发布博弈的值是$$v=0$$。
+
+【证明】我们首先证明$$v^A=v\leq0$$。考虑一下，如果我们让数据库玩家的策略对应于真正的数据库：$$\mathcal{D}_A=x$$会发生什么。 那么我们有： 
+$$
+\begin{aligned}
+v^A&\leq\max_{f\in\mathcal{B}}\mathbb{E}_{\chi\sim\mathcal{D}_A}[c(\chi,f)]\\
+&=\max_{f\in\mathcal{B}}\sum_{i=1}^{|\mathcal{X}|}f(\chi_i)\cdot x_i-f(x)\\
+&=f(x)-f(x)\\
+&=0.
+\end{aligned}
+$$
+（译者注：第一个等号是将$$c_i(\chi_i,f)=f(\chi_i)-f(x)$$带入右式，得到$$\max_{f\in\mathcal{B}}\sum_{i=1}^{|\mathcal{X}|}f(\chi_i)\cdot x_i-f(x)\sum_{i=1}^{|\mathcal{X}|}x_i$$，又因为$$\mathcal{D}_A=x$$，所以$$\sum_{i=1}^{|\mathcal{X}|}x_i=1$$，这样就得到了第一个等式。第二个等号就需要使用到$$\hat{f}=1-f$$这个条件，由该条件和线性查询$$f:\mathcal{X}\to[0,1]$$这两个条件可知：$$\forall f(\chi_i)\leq1$$，所以最大$$f(\chi_i)=1$$，带入第二个等式就得到了第三个等式。）
+
+接下来我们观察到$$v=v^B\geq0$$。对于矛盾点，假设$$v<0$$。换句话说，存在一个分布$$\mathcal{D}_A$$使得对于所有$$f\in\mathcal{Q}$$
+$$
+\mathbb{E}_{\chi\sim\mathcal{D}_A}c(\chi,f)<0
+$$
+在这里，我们简单地注意到，根据定义， 如果$$\mathbb{E}_{\chi\sim\mathcal{D}_A}c(\chi,f)=c<0$$，那么$$\mathbb{E}_{\chi\sim\mathcal{D}_A}c(\chi,\hat{f})=-c>0$$，矛盾，因为$$\hat{f}\in\mathcal{Q}$$。（译者注：所以$$v=0$$）
+
