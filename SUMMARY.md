@@ -48,7 +48,7 @@
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
 * [七、非典型最坏敏感度](7-When-Worst-Case-Sensitivity-is-Atypical/Overview.md)
 * [八、差分隐私下界与分离结果](8-Lower-Bounds-and-Separation-Result/Overview.md)
-* [九、差分隐私与计算复杂性](9-Differential-Privacy-and-Computational Complexity/Overview.md)
+* [九、差分隐私与计算复杂性](9-Differential-Privacy-and-Computational-Complexity/Overview.md)
 * [十、差分隐私与机制设计](10-Differential-Privacy-and-Mechanism-Design/Overview.md)
 * [十一、差分隐私与机器学习](11-Differential-Privacy-and-Machine-Learning/Overview.md)
 * [十二、其他差分隐私模型](12-Additional-Models/Overview.md)
