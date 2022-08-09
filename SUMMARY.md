@@ -46,6 +46,7 @@
     * [查询发布的博弈论观点](5-Generalizations/Connections/A-game-theoretic-view-of-query-release.md)
   * [参考文献](5-Generalizations/Bibliographic-notes.md)
 * [六、查询增强](6-Boosting-for-Queries/Overview.md)
+  * [查询算法的Boosting](6-Boosting-for-Queries/The-boosting-for-queries-algorithm.md)
 * [七、非典型最坏敏感度](7-When-Worst-Case-Sensitivity-is-Atypical/Overview.md)
 * [八、差分隐私下界与分离结果](8-Lower-Bounds-and-Separation-Result/Overview.md)
 * [九、差分隐私与计算复杂性](9-Differential-Privacy-and-Computational-Complexity/Overview.md)
